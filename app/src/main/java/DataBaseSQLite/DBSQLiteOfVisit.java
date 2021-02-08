@@ -118,7 +118,7 @@ public  class DBSQLiteOfVisit extends SQLiteOpenHelper  {
             values.put(dataBasePatient_sign,visitInformations.sign);
             values.put(dataBasePatient_visit_result,visitInformations.visitResult);
             values.put(dataBasePatient_scheduled_appointment_date,visitInformations.appointmentDate);
-            values.put(dataBasePatient_visit_date,visitInformations.visitDate);
+            values.put(dataBasePatient_visit_date,current_time);
             values.put(dataBasePatient_created_date,current_time); // i?lem zaman?n?ve tarihini kendisi otoamtik at?cak
 
 
@@ -321,6 +321,7 @@ public  class DBSQLiteOfVisit extends SQLiteOpenHelper  {
         ArrayList<VisitInformations> AllvisitInformations= new ArrayList<>();
         String query = "SELECT * FROM " + dataBasePatient_table_name + " WHERE "+ dataBasePatient_TC_NO +" = "+ "'"+tc_no+"'"+ " AND "+ dataBasePatient_visit_result +" = "+ "'"+VisitInformations.TAMAMLANDI+"'";
         Cursor cursor = db.rawQuery(query, null);
+
 
 
 

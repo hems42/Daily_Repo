@@ -140,6 +140,10 @@ public class Dialog_HastaIstatistikleri extends Dialog {
 
 
             try {
+
+
+
+
                 if(visitInformations.visitDate!=null)
                 {
                     dateArrayList.add(simpleDateFormat.parse(visitInformations.visitDate));
