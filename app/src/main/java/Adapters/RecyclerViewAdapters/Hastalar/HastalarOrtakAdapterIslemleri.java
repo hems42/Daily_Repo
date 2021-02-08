@@ -524,8 +524,6 @@ public class HastalarOrtakAdapterIslemleri {
                         }
 
 
-
-                        Toast.makeText(activity, "Seçilen Güne Oluþtutulmuþ Randevü Zaten Var!!!", Toast.LENGTH_SHORT).show();
                     }
 
                     else
