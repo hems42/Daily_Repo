@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="2dp"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:backgroundTint="#FFCA28"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+        >
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    android:layout_marginBottom="10dp"
+            >
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dp"
+                        android:text="Oluşturulmuş Randevüler"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal"
+                        android:layout_margin="2dp"
+                        android:textColor="#293241"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+
+                />
+
+
+
+
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="318dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:fitsSystemWindows="true"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:id="@+id/recyclerview_hasta_randevulari_oluturulmus_randevuler_listesi"
+
+            />
+
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                    style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+                    android:backgroundTint="@android:color/holo_red_dark"
+                    android:layout_width="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_height="wrap_content"
+                    android:text="RANDEVÜ EKLE"
+                    android:textColor="@android:color/white"
+                    android:id="@+id/btn_lyt_hastanin_olusuturlmus_randevuleri_listesi_randevu_ekle"
+
+            />
+
+            <androidx.appcompat.widget.AppCompatButton
+                    style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+                    android:backgroundTint="#066135"
+                    android:layout_width="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_height="wrap_content"
+                    android:text="ÇIK"
+                    android:textColor="@android:color/white"
+                    android:id="@+id/btn_lyt_hastanin_olusuturlmus_randevuleri_listesi_randevu_cik"
+
+            />
+
+
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+

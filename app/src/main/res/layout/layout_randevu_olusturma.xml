@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:elevation="10dp"
+        android:backgroundTint="@android:color/darker_gray"
+>
+
+    <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+    >
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:paddingBottom="7dp"
+                android:text="Randevü Oluşturma"
+                android:textAlignment="center"
+                android:paddingTop="3dp"
+                android:textColor="@android:color/white"
+                android:textSize="22dp"
+                android:textStyle="bold"/>
+
+
+        <EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtxt_lyt_add_appointment_patient_name_surname"
+                android:hint="hasta adı soyadı"
+                android:textAlignment="center"
+                android:textColorHint="@android:color/white"
+
+                android:layout_margin="3dp"
+        />
+
+        <EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtxt_lyt_add_appointment_patient_tc_no"
+                android:hint="tc no"
+                android:textAlignment="center"
+                android:inputType="numberDecimal"
+                android:textColorHint="@android:color/white"
+
+                android:layout_margin="3dp"
+        />
+
+        <EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtxt_lyt_add_appointment_select_appointment_day"
+                android:hint="randevü günü"
+                android:clickable="true"
+                android:textAlignment="center"
+                android:textColorHint="@android:color/white"
+                android:inputType="phone"
+                android:layout_margin="3dp"
+        />
+
+        <androidx.appcompat.widget.AppCompatButton
+                style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:layout_width="match_parent"
+                android:layout_margin="2dp"
+                android:layout_height="wrap_content"
+                android:text="TAMAM"
+                android:textColor="@android:color/white"
+                android:id="@+id/btn_lyt_add_appointment_ok"
+
+        />
+
+        <androidx.appcompat.widget.AppCompatButton
+                style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:layout_width="match_parent"
+                android:layout_margin="2dp"
+                android:layout_height="wrap_content"
+                android:text="VAZGEÇ"
+                android:textColor="@android:color/white"
+                android:id="@+id/btn_lyt_add_appointment_cancel"
+
+        />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+>
+    <androidx.cardview.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@android:color/darker_gray"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="30dp"
+            android:elevation="10dp"
+            android:clickable="true"
+            android:id="@+id/layout_patient_list_cardview"
+    >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+
+                android:id="@+id/layout_patient_list_firs_linear_layout"
+        >
+
+            <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/community"
+                    android:layout_margin="4dp"
+                    android:contextClickable="true"
+                    android:background="@drawable/ripple"
+                    android:layout_gravity="center"
+                    android:id="@+id/layout_patient_list_sex_img"
+                    android:clickable="true"
+
+
+            />
+
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    android:id="@+id/layout_patient_list_second_linearlayout"
+            >
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+                        android:layout_margin="1dp"
+                        android:id="@+id/layout_patient_list_third_linearlayout"
+                >
+
+                    <TextView
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:paddingLeft="5dp"
+
+                            android:text="OSMAN BARUTÇU"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/layout_patient_list_txtview_name_an_surname"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+
+                        android:layout_margin="1dp"
+                        android:id="@+id/layout_patient_list_tc_no_linearlayout"
+                >
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="5dp"
+                            android:id="@+id/layout_patient_list_txtview_tc__yazisi"
+                            android:text="TC:"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="2dp"
+
+                            android:paddingLeft="5dp"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/layout_patient_list_txtview_tc_no"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="1dp"
+                        android:id="@+id/layout_patient_list_appointment_day_linearlayout"
+                >
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="5dp"
+                            android:text="Randevü:"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="5dp"
+                            android:text="01.01.2021"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/layout_patient_list_txtview_appointment_day"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="1dp"
+                        android:id="@+id/layout_patient_list_fourth_linearlayout"
+                >
+
+                    <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/custom_tel_icon_foreground"
+                            android:layout_margin="2dp"
+                            android:tooltipText="hastayı arama"
+                            android:background="@drawable/ripple"
+                            app:tint="@android:color/white"
+                            android:id="@+id/layout_patient_list_imgbtn_dial"
+                    />
+
+                    <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/custom_location_icon_foreground"
+                            android:layout_margin="2dp"
+                            android:tooltipText="hastaya git"
+                            android:background="@drawable/ripple"
+                            app:tint="@android:color/white"
+                            android:id="@+id/layout_patient_list_imgbtn_location"
+                    />
+
+                    <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/custom_visit_icon_foreground"
+                            android:layout_margin="2dp"
+                            app:tint="@android:color/white"
+                            android:tooltipText="tedavi planı ekle"
+                            android:background="@drawable/ripple"
+                            android:id="@+id/layout_patient_list_imgbtn_appointments"
+                    />
+
+                    <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/custom_option_icon_foreground"
+                            android:layout_margin="2dp"
+                            app:tint="@android:color/white"
+                            android:background="@drawable/ripple"
+                            android:tooltipText="seçenekler"
+                            android:id="@+id/layout_patient_list_imgbtn_options"
+                    />
+
+                    <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/custom_appointment_icon_foreground"
+                            android:layout_margin="2dp"
+                            app:tint="@android:color/white"
+                            android:background="@drawable/ripple"
+                            android:tooltipText="randevü ekle"
+                            android:id="@+id/layout_patient_list_imgbtn_visit_list"
+                    />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:clickable="false"
+                    android:layout_marginLeft="15dp"
+                    android:layout_gravity="right|center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:id="@+id/layout_patient_list_img_patient_situation"
+            />
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
+
+

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="15dp"
+        android:elevation="10dp"
+
+        android:backgroundTint="#A8AAAAAA"
+>
+
+    <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+    >
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:paddingBottom="7dp"
+                android:id="@+id/txtview_lyt_listview_to_list_tel_number_number_owner"
+                android:background="#FFEB3B"
+                android:textAlignment="center"
+                android:paddingTop="3dp"
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
+                android:textStyle="italic"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:paddingBottom="7dp"
+                android:id="@+id/txtview_lyt_listview_to_list_tel_number_1"
+                android:clickable="true"
+                android:background="@android:color/holo_red_dark"
+                android:textAlignment="center"
+                android:paddingTop="3dp"
+                android:textColor="@android:color/white"
+                android:textSize="18dp"
+                android:elevation="15dp"
+                android:textStyle="italic"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:paddingBottom="7dp"
+                android:background="@android:color/holo_red_dark"
+                android:elevation="15dp"
+                android:clickable="true"
+                android:id="@+id/txtview_lyt_listview_to_list_tel_number_2"
+
+                android:textAlignment="center"
+                android:paddingTop="3dp"
+                android:textColor="@android:color/white"
+                android:textSize="18dp"
+                android:textStyle="italic"/>
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

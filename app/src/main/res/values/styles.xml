@@ -1,0 +1,27 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@android:color/holo_red_dark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="CustomBottomSheetDialogTheme" parent="Theme.MaterialComponents.BottomSheetDialog">
+
+        <item name="bottomSheetStyle">@style/CustomBottomSheetDialogStyle</item>
+
+
+    </style>
+
+
+    <style name="CustomBottomSheetDialogStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
+
+
+
+           <item name="android:background">@android:color/transparent</item>
+
+    </style>
+
+</resources>

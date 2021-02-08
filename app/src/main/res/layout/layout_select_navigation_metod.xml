@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:elevation="10dp"
+
+        android:backgroundTint="@android:color/darker_gray"
+>
+
+    <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+    >
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="Lütfen kullanmak istediğiniz adres metodunu seçiniz!!!"
+                android:id="@+id/txt_lyt_select_navigation_metod_title"
+                android:layout_margin="10dp"
+        />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+                style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+                android:backgroundTint="#C51162"
+                android:layout_width="match_parent"
+                android:layout_margin="1dp"
+                android:layout_height="50dp"
+                android:text="KONUMLAR"
+                android:paddingLeft="115dp"
+                android:drawableEnd="@drawable/ic_location_2_foreground"
+                android:textColor="@android:color/white"
+                android:id="@+id/btn_lyt_select_navigation_metod_map"
+
+        />
+        <androidx.appcompat.widget.AppCompatButton
+                style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+                android:backgroundTint="#304FFE"
+                android:layout_width="match_parent"
+                android:layout_margin="1dp"
+                android:layout_height="50dp"
+                android:text="ADRESLER"
+                android:paddingLeft="115dp"
+                android:drawableTint="@android:color/white"
+                android:drawableEnd="@drawable/ic_adress_2_foreground"
+                android:textColor="@android:color/white"
+                android:id="@+id/btn_lyt_select_navigation_metod_show_adress"
+
+        />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+                style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:layout_width="match_parent"
+                android:layout_margin="1dp"
+                android:layout_height="wrap_content"
+                android:text="ÇIK"
+                android:textColor="@android:color/white"
+                android:id="@+id/btn_lyt_select_navigation_metod_cancel"
+
+        />
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

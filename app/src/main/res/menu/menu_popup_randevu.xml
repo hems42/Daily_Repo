@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+            android:title="randevü ekle"
+            android:id="@+id/menu_popup_randevu_ekle"
+
+
+    />
+
+    <item
+            android:title="randevü iptal et"
+            android:id="@+id/menu_popup_randevu_iptal"
+
+    />
+
+
+    <item
+            android:title="hasta dosyasına git"
+            android:id="@+id/menu_popup_randevu_hasta_dosyasina_git"
+    />
+
+
+</menu>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item android:icon="@drawable/search_2"
+
+          android:id="@+id/menu_search_hastalar"
+          app:showAsAction="collapseActionView|always"
+          android:title="hasta bul"
+          android:visible="true"
+         app:actionViewClass="androidx.appcompat.widget.SearchView"
+          />
+
+
+
+    <item android:id="@+id/menu_hastalar_hasta_ekle"
+
+          app:showAsAction="never"
+          android:title="hasta ekle"
+    />
+
+
+
+    <item android:id="@+id/menu_hastalar_"
+
+          app:showAsAction="never"
+          android:title="sırala"
+    >
+        <menu
+        >
+            <item android:title="a-z"/>
+            <item android:title="yaş"/>
+
+        </menu>
+    </item>
+
+
+
+</menu>

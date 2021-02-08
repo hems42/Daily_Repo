@@ -1,0 +1,301 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:background="#F0D300"
+             tools:context="Fragments.frg_HastaDosyasi">
+
+   <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           >
+
+       <androidx.cardview.widget.CardView
+               android:layout_width="match_parent"
+               android:layout_height="120dp"
+               android:backgroundTint="#FFCCBD"
+               app:cardCornerRadius="25dp"
+                android:elevation="10dp"
+                android:layout_marginLeft="5dp"
+               android:layout_marginRight="5dp"
+               android:layout_marginTop="8dp"
+               android:layout_marginBottom="10dp"
+               android:background="#FFCCBD"
+       >
+
+           <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:orientation="vertical"
+                   android:layout_margin="10dp">
+
+
+               <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal"
+                       android:layout_margin="2dp">
+
+                   <ImageView
+                           android:layout_width="50dp"
+                           android:layout_height="50dp"
+                           android:src="@drawable/community"/>
+
+                   <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:orientation="vertical"
+                           android:layout_margin="2dp">
+
+
+
+                       <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="OSMAN BARUTÇU"
+                               android:paddingTop="5dp"
+                               android:layout_marginLeft="5dp"
+                               android:textSize="18sp"
+                               android:textColor="@android:color/black"
+                               android:textStyle="bold"
+                               android:textAlignment="center"
+
+                       />
+
+
+
+                       <LinearLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:orientation="horizontal"
+                               >
+
+                           <TextView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="SON ZİYARET TARİHİ:"
+                                   android:layout_marginLeft="5dp"
+                                   android:textSize="16sp"
+                                   android:textColor="@android:color/black"
+                                   android:textStyle="bold"
+                                   android:textAlignment="center"
+
+                           />
+
+                           <TextView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="15.01.2021"
+                                   android:paddingTop="3dp"
+                                   android:layout_marginLeft="2dp"
+                                   android:textSize="16sp"
+                                   android:textColor="#9040E6"
+                                   android:textStyle="bold"
+                                   android:textAlignment="center"
+
+                           />
+
+
+                       </LinearLayout>
+
+
+
+
+
+
+                   </LinearLayout>
+
+
+
+               </LinearLayout>
+
+
+               <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal"
+                       android:layout_margin="2dp">
+
+
+                   <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="YAŞ: "
+                           android:paddingTop="10dp"
+                           android:layout_marginLeft="5dp"
+                           android:textSize="16sp"
+                           android:textColor="@android:color/black"
+                           android:textStyle="bold"
+                           android:textAlignment="center"
+
+                   />
+
+                   <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="48"
+                           android:paddingTop="10dp"
+                           android:layout_marginLeft="2dp"
+                           android:textSize="16sp"
+                           android:textColor="#9040E6"
+                           android:textStyle="bold"
+                           android:textAlignment="center"
+
+                   />
+
+
+
+                   <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="CİNSİYET: "
+                           android:paddingTop="10dp"
+                           android:layout_marginLeft="5dp"
+                           android:textSize="16sp"
+                           android:textColor="@android:color/black"
+                           android:textStyle="bold"
+                           android:textAlignment="center"
+
+                   />
+
+                   <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="ERKEK"
+                           android:paddingTop="10dp"
+                           android:layout_marginLeft="2dp"
+                           android:textSize="16sp"
+                           android:textColor="#9040E6"
+                           android:textStyle="bold"
+                           android:textAlignment="center"
+
+                   />
+
+
+
+                   <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="DURUM: "
+                           android:paddingTop="10dp"
+                           android:layout_marginLeft="5dp"
+                           android:textSize="16sp"
+                           android:textColor="@android:color/black"
+                           android:textStyle="bold"
+                           android:textAlignment="center"
+
+                   />
+
+                   <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="AKTİF"
+                           android:paddingTop="10dp"
+                           android:layout_marginLeft="2dp"
+                           android:textSize="16sp"
+                           android:textColor="#9040E6"
+                           android:textStyle="bold"
+                           android:textAlignment="center"
+
+                   />
+
+
+               </LinearLayout>
+
+
+           </LinearLayout>
+
+       </androidx.cardview.widget.CardView>
+
+       <androidx.cardview.widget.CardView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:backgroundTint="#9040E6"
+               android:layout_weight="1"
+               app:cardCornerRadius="25dp"
+               android:layout_marginLeft="5dp"
+               android:layout_marginRight="5dp"
+               android:layout_marginTop="8dp"
+               android:layout_marginBottom="10dp"
+               android:background="#FFCCBD"
+       >
+           <LinearLayout android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:orientation="vertical"
+                         android:layout_marginRight="2dp"
+                         android:layout_marginLeft="2dp"
+                         android:layout_marginTop="2dp"
+                         android:layout_marginBottom="3dp"
+
+                         >
+
+               <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="ZİYARET LİSTESİ"
+                       android:textAlignment="center"
+                       android:textColor="@android:color/white"
+                       android:textStyle="bold"
+                       android:textSize="25sp"
+                       android:layout_marginTop="5dp"
+
+                       android:gravity="center"
+                       android:layout_gravity="center"/>
+
+
+               <ScrollView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center"
+               >
+
+                   <LinearLayout android:layout_width="match_parent"
+                                 android:layout_height="wrap_content"
+                                 android:orientation="vertical"
+
+                   >
+
+                       <include
+                           layout="@layout/layout_visit_list"/>
+                       <include
+                               layout="@layout/layout_visit_list"/>
+                       <include
+                               layout="@layout/layout_visit_list"/>
+                       <include
+                               layout="@layout/layout_visit_list"/>
+                       <include
+                               layout="@layout/layout_visit_list"/>
+                       <include
+                               layout="@layout/layout_visit_list"/>
+                       <include
+                               layout="@layout/layout_visit_list"/>
+                       <include
+                               layout="@layout/layout_visit_list"/>
+
+                   </LinearLayout>
+
+
+
+               </ScrollView>
+
+
+
+
+
+
+
+               />
+
+
+           </LinearLayout>
+
+
+       </androidx.cardview.widget.CardView>
+
+   </LinearLayout>
+
+
+
+
+</FrameLayout>

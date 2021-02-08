@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+            android:title="hasta son durumunu değiştir"
+
+            android:id="@+id/menu_popup_hastalar_son_durumu_degistir"
+
+    />
+    <item
+            android:title="hasta bağımlılığını değiştir"
+
+            android:id="@+id/menu_popup_hastalar_bagimlilik_durumunu_degistir"
+
+    />
+
+    <item
+            android:title="hasta bilgilerini düzenle"
+            android:id="@+id/menu_popup_hastalar_duzenle"
+
+    />
+
+    <item
+            android:title="hasta istatistikleri"
+            android:id="@+id/menu_popup_hastalar_istatistikler"
+
+    />
+
+
+
+
+    <item
+            android:title="hastaya telefon no ekle"
+
+            android:id="@+id/menu_popup_hastalar_tel_no_ekle"
+
+
+    />
+
+
+
+
+
+
+
+
+
+        <item
+                android:title="hastaya adres ekle"
+                android:id="@+id/menu_popup_hastalar_adress_ekle"
+
+        />
+
+
+
+
+
+        <item
+                android:title="hastaya lokasyon ekle"
+                android:id="@+id/menu_popup_hastalar_lokasyon_ekle"
+
+        />
+
+
+        <item
+                android:title="hasta yaşını gör"
+                android:id="@+id/menu_popup_hastalar_yasini_gor"
+
+        />
+        <item
+                android:title="hasta doğum tarihi gör"
+                android:id="@+id/menu_popup_hastalar_dogum_tarihi_gor"
+
+        />
+        <item
+                android:title="hasta dosyasına git"
+                android:id="@+id/menu_popup_hastalar_hasta_dosyasina_git"
+
+        />
+
+
+
+
+
+    <item
+            android:title="hastayı sil"
+            android:id="@+id/menu_popup_hastalar_hastayi_sil"
+
+    />
+
+
+
+
+</menu>
+
+

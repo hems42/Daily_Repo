@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+    <item android:id="@+id/menu_randevu_randevu_ekle"
+          app:showAsAction="always"
+          android:icon="@drawable/add_appointment_1"
+          android:title="randevü ekle"
+    />
+
+
+    <item android:id="@+id/menu_randevu_bugunku_randevuler"
+          app:showAsAction="always"
+          android:icon="@drawable/today"
+          android:title="bugünkü randevüler"
+    />
+
+
+    <item android:id="@+id/menu_randevu_tum_randevuler"
+          app:showAsAction="always"
+          android:icon="@drawable/y"
+          android:title="tüm randevüler"
+    />
+
+    <item android:id="@+id/menu_randevu_sirala_yarinki"
+          android:title="yarınki randevüler"
+    />
+
+    <item android:id="@+id/menu_randevu_sirala_dunku"
+          android:title="dünkü randevüler"
+    />
+
+    <item android:id="@+id/menu_randevu_sirala_diger_sonraki"
+          android:title="sonraki randevüler"
+    />
+
+
+    <item android:id="@+id/menu_randevu_sirala_diger_onceki"
+          android:title="önceki randevüler"
+    />
+
+    <item android:id="@+id/menu_randevu_sirala_zaman_araligi"
+          android:title="zaman aralığı"
+    />
+
+    <item android:id="@+id/menu_randevu_temizle"
+          android:title="tüm randevüleri temizle"
+    />
+
+</menu>
