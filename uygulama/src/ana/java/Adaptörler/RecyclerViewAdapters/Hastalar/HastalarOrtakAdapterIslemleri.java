@@ -149,7 +149,7 @@ public class HastalarOrtakAdapterIslemleri {
     }
 
 
-    // yard˝mc˝ s˝n˝f iÁi metodlar
+    // yard√Ωmc√Ω s√Ωn√Ωf i√ßi metodlar
     public void add_tell_number(final Patient patient) {
         {
 
@@ -201,13 +201,13 @@ public class HastalarOrtakAdapterIslemleri {
                                         telefon.tel_no1 = tel_1;
                                     } else {
 
-                                        edtxt_add_tel_number_tel1.setError("geÁerli bir tel no girin!!");
+                                        edtxt_add_tel_number_tel1.setError("ge√ßerli bir tel no girin!!");
 
                                     }
 
 
                                 } else {
-                                    edtxt_add_tel_number_tel1.setError("bu numara daha ˆnce olu˛turulmu˛!!");
+                                    edtxt_add_tel_number_tel1.setError("bu numara daha √∂nce olu√æturulmu√æ!!");
                                 }
 
 
@@ -221,13 +221,13 @@ public class HastalarOrtakAdapterIslemleri {
                                         telefon.tel_no2 = tel_2;
                                     } else {
 
-                                        edtxt_add_tel_number_tel2.setError("geÁerli bir tel no girin!!");
+                                        edtxt_add_tel_number_tel2.setError("ge√ßerli bir tel no girin!!");
 
                                     }
 
 
                                 } else {
-                                    edtxt_add_tel_number_tel2.setError("bu numara daha ˆnce olu˛turulmu˛!!");
+                                    edtxt_add_tel_number_tel2.setError("bu numara daha √∂nce olu√æturulmu√æ!!");
                                 }
                             }
 
@@ -236,14 +236,14 @@ public class HastalarOrtakAdapterIslemleri {
                                 if (!tel_1.matches(tel_2)) {
                                     if (patientInnerManager.telefon_ekle(patient, telefon)) {
                                         dialog_adding_number.dismiss();
-                                        Toast.makeText(context, "Telefon Kayd˝ Ba˛ar˝yla Olu˛turulmu˛tur...", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context, "Telefon Kayd√Ω Ba√æar√Ωyla Olu√æturulmu√ætur...", Toast.LENGTH_SHORT).show();
 
                                         callPatient(patient);
 
                                     }
                                 } else {
-                                    edtxt_add_tel_number_tel1.setError("ayn˝ numaralar˝ kaydedemessiniz!!");
-                                    edtxt_add_tel_number_tel2.setError("ayn˝ numaralar˝ kaydedemessiniz!!");
+                                    edtxt_add_tel_number_tel1.setError("ayn√Ω numaralar√Ω kaydedemessiniz!!");
+                                    edtxt_add_tel_number_tel2.setError("ayn√Ω numaralar√Ω kaydedemessiniz!!");
                                 }
 
 
@@ -255,7 +255,7 @@ public class HastalarOrtakAdapterIslemleri {
 
 
                     } else {
-                        edtxt_add_tel_number_tel_description.setError("bu alan˝ doldurmak zorunlu!!!");
+                        edtxt_add_tel_number_tel_description.setError("bu alan√Ω doldurmak zorunlu!!!");
                     }
 
                 }
@@ -304,8 +304,8 @@ public class HastalarOrtakAdapterIslemleri {
 
         builder_list_numbers.setView(listView_newOne);
         builder_list_numbers.setIcon(R.drawable.phone);
-        builder_list_numbers.setTitle("Kay˝tl˝ Olan Numaralar!!");
-        builder_list_numbers.setPositiveButton("Tel Numaras˝ Ekle", new DialogInterface.OnClickListener() {
+        builder_list_numbers.setTitle("Kay√Ωtl√Ω Olan Numaralar!!");
+        builder_list_numbers.setPositiveButton("Tel Numaras√Ω Ekle", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -313,7 +313,7 @@ public class HastalarOrtakAdapterIslemleri {
                 add_tell_number(patient);
             }
         });
-        builder_list_numbers.setNegativeButton("VazgeÁ", new DialogInterface.OnClickListener() {
+        builder_list_numbers.setNegativeButton("Vazge√ß", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -387,16 +387,16 @@ public class HastalarOrtakAdapterIslemleri {
                         View view_hasta_pasifte = inflater.inflate(R.layout.layout_genel_uyarilar, null);
 
                         TextView txt_hasta_pasifte_mesaji = view_hasta_pasifte.findViewById(R.id.txt_lyt_general_alerts_note);
-                        txt_hasta_pasifte_mesaji.setText("Hasta dosyas˝ pasif iken randev¸ olu˛turamass˝n˝z aktife al˝ns˝n m˝?");
+                        txt_hasta_pasifte_mesaji.setText("Hasta dosyas√Ω pasif iken randev√º olu√æturamass√Ωn√Ωz aktife al√Ωns√Ωn m√Ω?");
 
-                        Button btn_hastayi_aktife_alal˝mmi_ok = view_hasta_pasifte.findViewById(R.id.btn_lyt_general_alerts_ok);
-                        Button btn_hastayi_aktife_alal˝mmi_cancel = view_hasta_pasifte.findViewById(R.id.btn_lyt_general_alerts_cancel);
+                        Button btn_hastayi_aktife_alal√Ωmmi_ok = view_hasta_pasifte.findViewById(R.id.btn_lyt_general_alerts_ok);
+                        Button btn_hastayi_aktife_alal√Ωmmi_cancel = view_hasta_pasifte.findViewById(R.id.btn_lyt_general_alerts_cancel);
 
 
                         builder_hasta_pasifte.setView(view_hasta_pasifte);
                         AlertDialog dialog_hasta_pasifte = builder_hasta_pasifte.create();
 
-                        btn_hastayi_aktife_alal˝mmi_ok.setOnClickListener(new View.OnClickListener() {
+                        btn_hastayi_aktife_alal√Ωmmi_ok.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
@@ -420,7 +420,7 @@ public class HastalarOrtakAdapterIslemleri {
                             }
                         });
 
-                        btn_hastayi_aktife_alal˝mmi_cancel.setOnClickListener(new View.OnClickListener() {
+                        btn_hastayi_aktife_alal√Ωmmi_cancel.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 dialog_hasta_pasifte.dismiss();
@@ -523,7 +523,7 @@ public class HastalarOrtakAdapterIslemleri {
                         if (patientInnerManager.randevu_ekle(patient, visitInformations))
 
                         {
-                            Toast.makeText(activity, "Randev¸ Ba˛ar˝yla Olu˛turuldu!!!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(activity, "Randev√º Ba√æar√Ωyla Olu√æturuldu!!!", Toast.LENGTH_SHORT).show();
                             dialog_randevu_olustur.dismiss();
 
                             adapter.notifyItemChanged(position);
@@ -538,7 +538,7 @@ public class HastalarOrtakAdapterIslemleri {
                         {
                             if(gelen_randevu_tarihi.matches(randevu_tarihi))
                             {
-                                Toast.makeText(activity, "Ayn˝ Tarihe Olu˛tutulmu˛ Randev¸ Bulundu!!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(activity, "Ayn√Ω Tarihe Olu√ætutulmu√æ Randev√º Bulundu!!", Toast.LENGTH_SHORT).show();
                             }
                             else
                             {
@@ -546,7 +546,7 @@ public class HastalarOrtakAdapterIslemleri {
                                 visitInformations.appointmentDate = randevu_tarihi;
 
                                 if (patientInnerManager.randevu_ekle(patient, visitInformations)) {
-                                    Toast.makeText(activity, "Randev¸ Ba˛ar˝yla Olu˛turuldu!!!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(activity, "Randev√º Ba√æar√Ωyla Olu√æturuldu!!!", Toast.LENGTH_SHORT).show();
                                     dialog_randevu_olustur.dismiss();
 
                                     adapter.notifyItemChanged(position);
@@ -562,7 +562,7 @@ public class HastalarOrtakAdapterIslemleri {
 
                 else
                     {
-                    Toast.makeText(activity, "L¸tfen Gerekli Alanlar˝ Doldurun!!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "L√ºtfen Gerekli Alanlar√Ω Doldurun!!!", Toast.LENGTH_SHORT).show();
                     }
 
             }
@@ -684,11 +684,11 @@ public class HastalarOrtakAdapterIslemleri {
 
         listView.setAdapter(adapter);
 
-        builder.setTitle("son Durumunu SeÁin!");
+        builder.setTitle("son Durumunu Se√ßin!");
         builder.setIcon(R.drawable.j);
         builder.setView(listView);
 
-        builder.setNegativeButton("VAZGE«", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("VAZGE√á", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -714,9 +714,9 @@ public class HastalarOrtakAdapterIslemleri {
                         AlertDialog.Builder builder_p_e = new AlertDialog.Builder(activity);
 
                         builder_p_e.setIcon(R.drawable.error);
-                        builder_p_e.setTitle("D›KKATT!!");
-                        builder_p_e.setMessage("Hasta Pasif ya da Ex te iken randev¸ olu˛turulumaz, t¸m randev¸ler iptal edilecek!! \n Onayl˝yor musunuz?");
-                        builder_p_e.setNegativeButton("VAZGE«", new DialogInterface.OnClickListener() {
+                        builder_p_e.setTitle("D√ùKKATT!!");
+                        builder_p_e.setMessage("Hasta Pasif ya da Ex te iken randev√º olu√æturulumaz, t√ºm randev√ºler iptal edilecek!! \n Onayl√Ωyor musunuz?");
+                        builder_p_e.setNegativeButton("VAZGE√á", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -732,11 +732,11 @@ public class HastalarOrtakAdapterIslemleri {
 
 
                                     recHastaAdapter.notifyItemChanged(position);
-                                    Toast.makeText(context, "Hastan˝n Son Durumu Ba˛ar˝yla Dei˛tirilmi˛tir..", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Hastan√Ωn Son Durumu Ba√æar√Ωyla De√∞i√ætirilmi√ætir..", Toast.LENGTH_SHORT).show();
 
 
                                 } else {
-                                    Toast.makeText(context, "Hastan˝n Durumu Dei˛tirilememi˛tir!!!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Hastan√Ωn Durumu De√∞i√ætirilememi√ætir!!!", Toast.LENGTH_SHORT).show();
                                 }
 
                             }
@@ -751,12 +751,12 @@ public class HastalarOrtakAdapterIslemleri {
 
 
                             dialog.dismiss();
-                            Toast.makeText(context, "Hastan˝n Son Durumu Ba˛ar˝yla Dei˛tirilmi˛tir..", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Hastan√Ωn Son Durumu Ba√æar√Ωyla De√∞i√ætirilmi√ætir..", Toast.LENGTH_SHORT).show();
                             recHastaAdapter.notifyItemChanged(position);
 
                         } else {
                             dialog.dismiss();
-                            Toast.makeText(context, "Hastan˝n Durumu Dei˛tirilememi˛tir!!!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Hastan√Ωn Durumu De√∞i√ætirilememi√ætir!!!", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -767,12 +767,12 @@ public class HastalarOrtakAdapterIslemleri {
 
 
                         dialog.dismiss();
-                        Toast.makeText(context, "Hastan˝n Son Durumu Ba˛ar˝yla Dei˛tirilmi˛tir..", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Hastan√Ωn Son Durumu Ba√æar√Ωyla De√∞i√ætirilmi√ætir..", Toast.LENGTH_SHORT).show();
                         recHastaAdapter.notifyItemChanged(position);
 
                     } else {
                         dialog.dismiss();
-                        Toast.makeText(context, "Hastan˝n Durumu Dei˛tirilememi˛tir!!!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Hastan√Ωn Durumu De√∞i√ætirilememi√ætir!!!", Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -805,11 +805,11 @@ public class HastalarOrtakAdapterIslemleri {
 
         listView.setAdapter(adapter);
 
-        builder.setTitle("Ba˝ml˝l˝k Durumunu SeÁin!");
+        builder.setTitle("Ba√∞√Ωml√Ωl√Ωk Durumunu Se√ßin!");
         builder.setIcon(R.drawable.i);
         builder.setView(listView);
 
-        builder.setNegativeButton("VAZGE«", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("VAZGE√á", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -826,14 +826,14 @@ public class HastalarOrtakAdapterIslemleri {
 
 
                 if (dbsqLiteOfAllPatients.updatePatientDependency(patient, listView.getItemAtPosition(position).toString())) {
-                    Toast.makeText(context, "Hastan˝n Ba˝ml˝l˝k Durumu Ba˛ar˝yla Dei˛tirilmi˛tir..", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Hastan√Ωn Ba√∞√Ωml√Ωl√Ωk Durumu Ba√æar√Ωyla De√∞i√ætirilmi√ætir..", Toast.LENGTH_SHORT).show();
 
 
                     dialog.dismiss();
 
                     recHastaAdapter.notifyItemChanged(position);
                 } else {
-                    Toast.makeText(context, "Hastan˝n Ba˝ml˝l˝k Durumu Dei˛tirilememi˛tir..", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Hastan√Ωn Ba√∞√Ωml√Ωl√Ωk Durumu De√∞i√ætirilememi√ætir..", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -888,7 +888,7 @@ public class HastalarOrtakAdapterIslemleri {
 
 
         txt_note_title.setVisibility(View.VISIBLE);
-        txt_note_title.setText(patient.name + " " + patient.surname + " isimli hastan˝n ya˛˝:");
+        txt_note_title.setText(patient.name + " " + patient.surname + " isimli hastan√Ωn ya√æ√Ω:");
         txt_note.setText("" + CustomTime.getAge(patient.birthday));
 
         dialog.show();
@@ -928,7 +928,7 @@ public class HastalarOrtakAdapterIslemleri {
 
 
         txt_note_title.setVisibility(View.VISIBLE);
-        txt_note_title.setText(patient.name + " " + patient.surname + " isimli hastan˝n doum tarihi:");
+        txt_note_title.setText(patient.name + " " + patient.surname + " isimli hastan√Ωn do√∞um tarihi:");
         txt_note.setText("" + patient.birthday);
 
         dialog.show();
@@ -1042,11 +1042,11 @@ public class HastalarOrtakAdapterIslemleri {
                     if (patientInnerManager.adres_ekle(patient, adress_eklenecek)) {
                         dialog.dismiss();
 
-                        Toast.makeText(context, "Adres ba˛ar˝yla eklenmi˛tir!!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Adres ba√æar√Ωyla eklenmi√ætir!!", Toast.LENGTH_SHORT).show();
                     }
 
                 } else {
-                    edtxt_adress_description.setError("bu alan˝ doldurun!!!");
+                    edtxt_adress_description.setError("bu alan√Ω doldurun!!!");
                 }
 
             }
@@ -1126,7 +1126,7 @@ public class HastalarOrtakAdapterIslemleri {
 
     public void getLocations(Patient patient) {
 
-        Toast.makeText(context, "hen¸z kullan˝mda deildir!!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "hen√ºz kullan√Ωmda de√∞ildir!!", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -1152,7 +1152,7 @@ public class HastalarOrtakAdapterIslemleri {
 
         if (patientInnerManager.tum_adresleri_getir(patient).size() > 0) {
 
-            builder.setTitle("Hasta ad˝na kay˝tl˝ adresler");
+            builder.setTitle("Hasta ad√Ωna kay√Ωtl√Ω adresler");
             builder.setIcon(R.drawable.add_location);
             ArrayList<String> adreslistesi = new ArrayList<>();
 
@@ -1167,7 +1167,7 @@ public class HastalarOrtakAdapterIslemleri {
             listView.setAdapter(adapter_adresler);
 
             builder.setView(listView);
-            builder.setMessage("\ndetaylar˝n˝ gˆrmek iÁin seÁiniz!! ");
+            builder.setMessage("\ndetaylar√Ωn√Ω g√∂rmek i√ßin se√ßiniz!! ");
 
 
             builder.setPositiveButton("Adres Ekle", new DialogInterface.OnClickListener() {
@@ -1180,7 +1180,7 @@ public class HastalarOrtakAdapterIslemleri {
                 }
             });
 
-            builder.setNegativeButton("VazgeÁ", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton("Vazge√ß", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
 
@@ -1231,7 +1231,7 @@ public class HastalarOrtakAdapterIslemleri {
 
 
         } else {
-            builder.setTitle("Gˆsterilecek herhangi bir adres bilgisi  bulunamad˝!!");
+            builder.setTitle("G√∂sterilecek herhangi bir adres bilgisi  bulunamad√Ω!!");
             builder.setIcon(R.drawable.add_location);
             builder.setMessage("Eklemek ister misiniz??");
 
@@ -1244,7 +1244,7 @@ public class HastalarOrtakAdapterIslemleri {
                 }
             });
 
-            builder.setNegativeButton("VazgeÁ", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton("Vazge√ß", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
 
@@ -1340,11 +1340,11 @@ public class HastalarOrtakAdapterIslemleri {
         txt_title = view.findViewById(R.id.txt_lyt_add_patient_title);
 
 
-        txt_title.setText("HASTA G‹NCELLEME");
+        txt_title.setText("HASTA G√úNCELLEME");
         edtxt_son_durum.setVisibility(View.VISIBLE);
 
         btn_kaydet = view.findViewById(R.id.btn_lyt_add_patient_ok);
-        btn_kaydet.setText("G‹NCELLE");
+        btn_kaydet.setText("G√úNCELLE");
         btn_vazgec = view.findViewById(R.id.btn_lyt_add_patient_cancel);
         btn_sayfayi_yenile = view.findViewById(R.id.btn_lyt_add_refresh_form);
 
@@ -1486,14 +1486,14 @@ public class HastalarOrtakAdapterIslemleri {
 
                             recHastaAdapter.notifyItemChanged(0);
 
-                            Toast.makeText(context, "HASTA G‹NCELLEMES› BAﬁARILI!!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "HASTA G√úNCELLEMES√ù BA√ûARILI!!", Toast.LENGTH_SHORT).show();
 
                         } else {
-                            Toast.makeText(context, "HASTA G‹NCELLEMES› BAﬁARISIZ!!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "HASTA G√úNCELLEMES√ù BA√ûARISIZ!!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 } else {
-                    Toast.makeText(context, "G¸ncellemek istediiniz alan˝ dei˛tirin!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "G√ºncellemek istedi√∞iniz alan√Ω de√∞i√ætirin!!", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -1521,11 +1521,11 @@ public class HastalarOrtakAdapterIslemleri {
     public void deletePatient(Patient patient, int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
-        builder.setTitle("D›KKAT!!");
-        builder.setMessage("Hastayla ›lgili Her˛eyi Silmek ‹zeresiniz!!");
+        builder.setTitle("D√ùKKAT!!");
+        builder.setMessage("Hastayla √ùlgili Her√æeyi Silmek √úzeresiniz!!");
         builder.setIcon(R.drawable.error);
 
-        builder.setPositiveButton("onayl˝yorum", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("onayl√Ωyorum", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -1534,7 +1534,7 @@ public class HastalarOrtakAdapterIslemleri {
                 if (sonuc) {
                     dialog.dismiss();
                     recHastaAdapter.notifyItemChanged(position);
-                    Toast.makeText(context, "Hasta Ba˛ar˝yla Silindi!!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Hasta Ba√æar√Ωyla Silindi!!!", Toast.LENGTH_SHORT).show();
 
                 } else {
                     Toast.makeText(context, "Hasta Silinemedi!!!", Toast.LENGTH_SHORT).show();
@@ -1543,7 +1543,7 @@ public class HastalarOrtakAdapterIslemleri {
         });
 
 
-        builder.setNegativeButton("vazgeÁ", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("vazge√ß", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -1599,7 +1599,7 @@ public class HastalarOrtakAdapterIslemleri {
 
                 digitalSign.getBitmap().compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
 
-                appointment.visitType = "PER›YOD›K Z›YARET";
+                appointment.visitType = "PER√ùYOD√ùK Z√ùYARET";
 
 
                 if (appointment.appointmentDate.matches(CustomTime.getTimeJustDate()))
@@ -1617,25 +1617,25 @@ public class HastalarOrtakAdapterIslemleri {
                                 if (patientInnerManager.randevu_sil(patient, appointment)) {
                                     recRandevuAdapter.notifyItemChanged(0);
                                     dialog.dismiss();
-                                    Toast.makeText(context, "Ziyaret Ba˛ar˝yla Eklenmi˛tir!!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Ziyaret Ba√æar√Ωyla Eklenmi√ætir!!", Toast.LENGTH_SHORT).show();
 
                                 }
 
 
                             }
                         } else {
-                            Toast.makeText(context, "L¸tfen imza bilgisini girin!!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "L√ºtfen imza bilgisini girin!!", Toast.LENGTH_SHORT).show();
                         }
 
 
                     } else {
-                        editText_not.setError("bu alan˝ doldurun!!");
+                        editText_not.setError("bu alan√Ω doldurun!!");
                     }
                 }
 
                 else
                     {
-                    Toast.makeText(context, "Randev¸ g¸n¸nden ˆnce ziyaret ekleyemessiniz!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Randev√º g√ºn√ºnden √∂nce ziyaret ekleyemessiniz!!", Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -1651,7 +1651,7 @@ public class HastalarOrtakAdapterIslemleri {
         String gelen = editText.getText().toString();
 
         if (gelen.matches("")) {
-            editText.setError("bu alan˝n dodurulmas˝ zorunlu!!");
+            editText.setError("bu alan√Ωn dodurulmas√Ω zorunlu!!");
 
             return null;
 
@@ -1669,7 +1669,7 @@ public class HastalarOrtakAdapterIslemleri {
             if (Validatorler.isValidTc_no(patient.tc_no)) {
 
             } else {
-                Toast.makeText(context, "GE«ERL› B›R TC NO G›R›N›Z!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "GE√áERL√ù B√ùR TC NO G√ùR√ùN√ùZ!!", Toast.LENGTH_SHORT).show();
 
                 sonuc = false;
             }
@@ -1727,11 +1727,7 @@ public class HastalarOrtakAdapterIslemleri {
 
     }
 
-    public void deneme_2 ()
-    {
-        
-    }
-
+ 
 }
 
 
