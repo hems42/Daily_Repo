@@ -126,7 +126,26 @@ public class CustomTime {
 
     public static int getAge(String dateOfBirthh) {
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        SimpleDateFormat simpleDateFormat;
+
+        System.out.println(dateOfBirthh.charAt(2));
+
+        if(dateOfBirthh.charAt(2)=='.')
+        {
+            simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        }
+        else if(dateOfBirthh.charAt(2)=='/')
+        {
+           simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        }
+
+        else
+        {
+            simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        }
+
+
+
 
         Date dateOfBirth = null;
         try {
