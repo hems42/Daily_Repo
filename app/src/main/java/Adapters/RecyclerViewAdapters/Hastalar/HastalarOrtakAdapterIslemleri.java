@@ -25,7 +25,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
-import androidx.appcompat.view.menu.MenuAdapter;
+import androidx.annotation.Nullable;
+
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -376,7 +377,9 @@ public class HastalarOrtakAdapterIslemleri {
                 @Override
                 public void onClick(View v) {
 
-                    if (patient.final_situation.matches(Patient.PASIF)) {
+                    if (patient.final_situation.matches(Patient.PASIF))
+
+                    {
                         dialog_randevu_yok.dismiss();
 
                         AlertDialog.Builder builder_hasta_pasifte = new AlertDialog.Builder(activity);
@@ -428,7 +431,11 @@ public class HastalarOrtakAdapterIslemleri {
                         dialog_hasta_pasifte.show();
 
 
-                    } else {
+                    }
+
+                    else
+
+                        {
 
                         dialog_randevu_yok.dismiss();
 
@@ -524,8 +531,6 @@ public class HastalarOrtakAdapterIslemleri {
                         }
 
 
-
-                        Toast.makeText(activity, "Seçilen Güne Oluþtutulmuþ Randevü Zaten Var!!!", Toast.LENGTH_SHORT).show();
                     }
 
                     else
@@ -589,6 +594,47 @@ public class HastalarOrtakAdapterIslemleri {
         RecyclerViewAdapterOfRandevuListesi adapter_hastanin_randevuleri = new RecyclerViewAdapterOfRandevuListesi(context, patientInnerManager.tum_randevulari_getir(patient));
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+        adapter_hastanin_randevuleri.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeChanged(int positionStart, int itemCount) {
+                super.onItemRangeChanged(positionStart, itemCount);
+
+                patientInnerManager.tum_randevulari_getir(patient);
+                adapter_hastanin_randevuleri.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onItemRangeChanged(int positionStart, int itemCount, @Nullable Object payload) {
+                super.onItemRangeChanged(positionStart, itemCount, payload);
+
+                patientInnerManager.tum_randevulari_getir(patient);
+
+            }
+
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                super.onItemRangeInserted(positionStart, itemCount);patientInnerManager.tum_randevulari_getir(patient);
+
+                patientInnerManager.tum_randevulari_getir(patient);
+
+            }
+
+            @Override
+            public void onItemRangeRemoved(int positionStart, int itemCount) {
+                super.onItemRangeRemoved(positionStart, itemCount);
+
+                patientInnerManager.tum_randevulari_getir(patient);
+            }
+
+            @Override
+            public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
+                super.onItemRangeMoved(fromPosition, toPosition, itemCount);
+
+                patientInnerManager.tum_randevulari_getir(patient);
+            }
+        });
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter_hastanin_randevuleri);
