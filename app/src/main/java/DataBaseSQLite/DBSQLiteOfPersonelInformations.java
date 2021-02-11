@@ -256,10 +256,18 @@ public  class DBSQLiteOfPersonelInformations extends SQLiteOpenHelper  {
     public boolean deletePatientTelefon(Telefon telefone) {
         SQLiteDatabase db = this.getWritableDatabase();
 
+
+        // string sorgusuyla yazýlmýþ hali
+       // String query ="DELETE FROM "+ dataBasePatient_table_name + " WHERE " + dataBasePatient_TC_NO +"='"+telefone.tc_no+ "' AND "+ dataBasePatient_tel_no_description+"='"+telefone.tel_no_description+"'";
+
+
         int i = db.delete(dataBasePatient_table_name, dataBasePatient_TC_NO + " = ?"
-                +  " AND " + dataBasePatient_adress_description + " =?" , new String[]{telefone.tc_no,telefone.tel_no_description});
+                +  " AND " + dataBasePatient_tel_no_description + " =?" , new String[]{telefone.tc_no,telefone.tel_no_description});
+
+
 
         db.close();
+
 
         if (i > 0) {
             return true;
@@ -639,7 +647,7 @@ public  class DBSQLiteOfPersonelInformations extends SQLiteOpenHelper  {
             cursor.moveToFirst();
             do {
                 {
-                    if(cursor.getString(3)!=null)
+                    if(cursor.getString(3)!=null&&!cursor.getString(3).matches(""))
                     {
                         adress=new Adress();
 
@@ -695,7 +703,7 @@ public  class DBSQLiteOfPersonelInformations extends SQLiteOpenHelper  {
             cursor.moveToFirst();
             do {
                 {
-                    if(cursor.getString(10)!=null)
+                    if(cursor.getString(10)!=null&&!cursor.getString(10).matches(""))
                     {
                         telefon=new Telefon();
 

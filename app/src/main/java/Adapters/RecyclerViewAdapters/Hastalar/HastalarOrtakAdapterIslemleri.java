@@ -25,7 +25,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
-import androidx.appcompat.view.menu.MenuAdapter;
+import androidx.annotation.Nullable;
+
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,7 +40,7 @@ public class HastalarOrtakAdapterIslemleri {
     private final Context context;
     private final Activity activity;
     private final LayoutInflater inflater;
-    PatientInnerManager patientInnerManager;
+   final PatientInnerManager  patientInnerManager;
     DBSQLiteOfAllPatients dbsqLiteOfAllPatients;
     DBSQLiteOfAppointment dbsqLiteOfAppointment;
     DBSQLiteOfVisit dbsqLiteOfVisit;
@@ -189,7 +190,7 @@ public class HastalarOrtakAdapterIslemleri {
                     if (!tel_description.matches("")) {
 
                         Telefon telefon = new Telefon();
-                        telefon.tel_no_description = tel_description;
+                        telefon.tel_no_description = tel_description.toLowerCase();
 
                         if (!tel_1.matches("") || !tel_2.matches("")) {
                             if (!tel_1.matches("")) {
@@ -197,7 +198,7 @@ public class HastalarOrtakAdapterIslemleri {
 
                                 if (!patientInnerManager.telefon_onceden_olusturulmusmu(patient, tel_1)) {
                                     if (Validatorler.isValidTelNumber(tel_1)) {
-                                        telefon.tel_no1 = tel_1;
+                                        telefon.tel_no1 =convertPhoneNumberType(tel_1);
                                     } else {
 
                                         edtxt_add_tel_number_tel1.setError("geçerli bir tel no girin!!");
@@ -217,7 +218,7 @@ public class HastalarOrtakAdapterIslemleri {
                                 if (!patientInnerManager.telefon_onceden_olusturulmusmu(patient, tel_2)) {
 
                                     if (Validatorler.isValidTelNumber(tel_2)) {
-                                        telefon.tel_no2 = tel_2;
+                                        telefon.tel_no2 = convertPhoneNumberType(tel_2);
                                     } else {
 
                                         edtxt_add_tel_number_tel2.setError("geçerli bir tel no girin!!");
@@ -279,14 +280,12 @@ public class HastalarOrtakAdapterIslemleri {
 
         for (Telefon telefon : patientInnerManager.tum_telefonlari_getir(patient)) {
             if ((telefon.tel_no1 != null) && (!telefon.tel_no1.matches(""))) {
-
-
-                gelen_no = telefon.tel_no1 + " - " + telefon.tel_no_description.toLowerCase();
+                gelen_no = telefon.tel_no1 + " - " + telefon.tel_no_description;
                 nolar.add(gelen_no);
             }
 
             if ((telefon.tel_no2 != null) && (!telefon.tel_no2.matches(""))) {
-                gelen_no = telefon.tel_no2 + " - " + telefon.tel_no_description.toLowerCase();
+                gelen_no = telefon.tel_no2 + " - " + telefon.tel_no_description;
                 nolar.add(gelen_no);
             }
 
@@ -326,29 +325,79 @@ public class HastalarOrtakAdapterIslemleri {
 
         dialog_list_numbers.show();
 
+        listView_newOne.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+            @Override
+            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                menu.add("sil").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        AdapterView.AdapterContextMenuInfo listAdapterInfo = (AdapterView.AdapterContextMenuInfo) menuInfo;
+
+                        Telefon telefon= new Telefon();
+
+
+                       String gelen_tel=numbers.getItem(listAdapterInfo.position);
+
+                       int baslangýc=0;
+
+                       for(int i=0;i<gelen_tel.length();i++)
+
+                       {
+
+                           if(Character.isAlphabetic(gelen_tel.charAt(i)))
+                           {
+                               baslangýc=i;
+                               break;
+                           }
+
+
+
+                       }
+
+
+                       telefon.tel_no_description=gelen_tel.substring(baslangýc);
+
+
+                        if(patientInnerManager.telefon_sil(patient,telefon))
+                        {
+                            dialog_list_numbers.dismiss();
+
+                            callPatient(patient);
+
+                            return true;
+
+                        }
+                        else
+                        {
+
+                            return false;
+                        }
+
+
+
+
+
+                    }
+                });
+            }
+        });
 
         listView_newOne.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 dialog_list_numbers.dismiss();
-                String tel_call=null;
 
-                String tel = numbers.getItem(position);
-                if(tel.charAt(0)=='('||tel.charAt(4)==')')
+
+                String tel = numbers.getItem(position).substring(0, 16);
+
+                if(tel.charAt(0)!='0')
                 {
-                    tel_call="0"+tel.substring(0,16);
-                }
-                else
-                {
-                    tel_call=tel;
+                    tel="0 "+numbers.getItem(position).substring(0, 16);
                 }
 
-                System.out.println("tel lolan : "+tel);
-
-
-
-                call_number(tel_call);
+                call_number(tel);
             }
         });
 
@@ -391,7 +440,9 @@ public class HastalarOrtakAdapterIslemleri {
                 @Override
                 public void onClick(View v) {
 
-                    if (patient.final_situation.matches(Patient.PASIF)) {
+                    if (patient.final_situation.matches(Patient.PASIF))
+
+                    {
                         dialog_randevu_yok.dismiss();
 
                         AlertDialog.Builder builder_hasta_pasifte = new AlertDialog.Builder(activity);
@@ -443,7 +494,11 @@ public class HastalarOrtakAdapterIslemleri {
                         dialog_hasta_pasifte.show();
 
 
-                    } else {
+                    }
+
+                    else
+
+                        {
 
                         dialog_randevu_yok.dismiss();
 
@@ -539,8 +594,6 @@ public class HastalarOrtakAdapterIslemleri {
                         }
 
 
-
-                        Toast.makeText(activity, "Seçilen Güne Oluþtutulmuþ Randevü Zaten Var!!!", Toast.LENGTH_SHORT).show();
                     }
 
                     else
@@ -604,6 +657,47 @@ public class HastalarOrtakAdapterIslemleri {
         RecyclerViewAdapterOfRandevuListesi adapter_hastanin_randevuleri = new RecyclerViewAdapterOfRandevuListesi(context, patientInnerManager.tum_randevulari_getir(patient));
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+        adapter_hastanin_randevuleri.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeChanged(int positionStart, int itemCount) {
+                super.onItemRangeChanged(positionStart, itemCount);
+
+                patientInnerManager.tum_randevulari_getir(patient);
+                adapter_hastanin_randevuleri.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onItemRangeChanged(int positionStart, int itemCount, @Nullable Object payload) {
+                super.onItemRangeChanged(positionStart, itemCount, payload);
+
+                patientInnerManager.tum_randevulari_getir(patient);
+
+            }
+
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                super.onItemRangeInserted(positionStart, itemCount);patientInnerManager.tum_randevulari_getir(patient);
+
+                patientInnerManager.tum_randevulari_getir(patient);
+
+            }
+
+            @Override
+            public void onItemRangeRemoved(int positionStart, int itemCount) {
+                super.onItemRangeRemoved(positionStart, itemCount);
+
+                patientInnerManager.tum_randevulari_getir(patient);
+            }
+
+            @Override
+            public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
+                super.onItemRangeMoved(fromPosition, toPosition, itemCount);
+
+                patientInnerManager.tum_randevulari_getir(patient);
+            }
+        });
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter_hastanin_randevuleri);
@@ -1696,9 +1790,15 @@ public class HastalarOrtakAdapterIslemleri {
 
     }
 
-    public void deneme_2 ()
+    public String convertPhoneNumberType(String phoneNumber)
     {
-        
+        String tel_no="";
+
+        tel_no=phoneNumber.charAt(0)+ " ("+phoneNumber.substring(1,4)+") "+phoneNumber.substring(4,7)+" "+phoneNumber.substring(7,11);
+
+       return tel_no;
+
+
     }
 
 }
