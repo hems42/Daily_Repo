@@ -230,6 +230,19 @@ public class RecyclerViewAdapterOfHastaListesi extends RecyclerView.Adapter<Recy
 
 
 
+
+                                case R.id.menu_popup_hastalar_hastanin_tum_randevulerini_iptal_et:
+
+
+
+                                    commonOp.cancelAllAppointmentOfPatient(patient.get(getAbsoluteAdapterPosition()),RecyclerViewAdapterOfHastaListesi.this);
+
+                                    sonuc=true;
+                                    break;
+
+
+
+
                                 case R.id.menu_popup_hastalar_hastayi_sil:
 
 

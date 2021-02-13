@@ -14,6 +14,12 @@
 
     />
 
+    <item
+            android:title="tüm randevüleri iptal et"
+            android:id="@+id/menu_popup_tum_randevuleri_iptal"
+
+    />
+
 
     <item
             android:title="hasta dosyasına git"

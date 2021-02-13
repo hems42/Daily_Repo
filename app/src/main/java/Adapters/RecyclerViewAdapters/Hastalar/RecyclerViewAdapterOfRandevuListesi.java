@@ -117,6 +117,17 @@ public class RecyclerViewAdapterOfRandevuListesi extends RecyclerView.Adapter<Re
 
                                 case R.id.menu_popup_randevu_iptal:
 
+                                    commonOp.cancelAppointment(getCurrentPatient(getBindingAdapterPosition()),
+                                            appointments.get(getBindingAdapterPosition()).appointmentDate,RecyclerViewAdapterOfRandevuListesi.this
+                                            );
+
+                                    return  true;
+
+                                case R.id.menu_popup_tum_randevuleri_iptal:
+
+                                    commonOp.cancelAllAppointmentOfPatient(getCurrentPatient(getBindingAdapterPosition()),RecyclerViewAdapterOfRandevuListesi.this
+                                    );
+
                                     return  true;
 
                                 case R.id.menu_popup_randevu_hasta_dosyasina_git:

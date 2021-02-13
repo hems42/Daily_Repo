@@ -651,6 +651,159 @@ public class HastalarOrtakAdapterIslemleri {
 
     }
 
+    public void cancelAppointment(Patient patient, String appointmentDate, RecyclerView.Adapter adapter )
+    {
+        TextView txt_title,txt_message;
+        Button btn_ok,btn_cancel;
+
+        AlertDialog.Builder builder= new AlertDialog.Builder(activity);
+
+        View view=inflater.inflate(R.layout.layout_genel_uyarilar,null);
+
+        txt_title=view.findViewById(R.id.txt_lyt_general_alerts_note_title);
+        txt_message=view.findViewById(R.id.txt_lyt_general_alerts_note);
+        txt_title.setVisibility(View.VISIBLE);
+
+
+        btn_ok=view.findViewById(R.id.btn_lyt_general_alerts_ok);
+
+        btn_cancel=view.findViewById(R.id.btn_lyt_general_alerts_cancel);
+
+
+        txt_title.setText("DÝKKAT!!");
+
+        txt_message.setText(patient.name + " "+ patient.surname + " isimli hastanýn "
+        + appointmentDate + "tarihli randevüsünü iptal etmek istediðinizden emin misiniz??"
+                );
+
+
+        builder.setView(view);
+
+
+        AlertDialog dialog=builder.create();
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                VisitInformations visitInformations= new VisitInformations();
+
+                visitInformations.appointmentDate=appointmentDate;
+
+               if(patientInnerManager.randevu_sil(patient,visitInformations))
+               {
+                   Toast.makeText(context,"Randevü Baþarýyla Kaldýrýlmýþtýr!!",Toast.LENGTH_SHORT).show();
+
+                   adapter.notifyItemChanged(0);
+
+                   dialog.dismiss();
+               }
+               else
+               {
+                   Toast.makeText(context,"Randevü Kaldýrýlamamýþtýr!!",Toast.LENGTH_SHORT).show();
+               }
+
+            }
+        });
+
+
+        dialog.show();
+
+
+    }
+
+
+    public void cancelAllAppointmentOfPatient(Patient patient, RecyclerView.Adapter adapter )
+    {
+        TextView txt_title,txt_message;
+        Button btn_ok,btn_cancel;
+
+        AlertDialog.Builder builder= new AlertDialog.Builder(activity);
+
+        View view=inflater.inflate(R.layout.layout_genel_uyarilar,null);
+
+        txt_title=view.findViewById(R.id.txt_lyt_general_alerts_note_title);
+        txt_message=view.findViewById(R.id.txt_lyt_general_alerts_note);
+        txt_title.setVisibility(View.VISIBLE);
+
+
+        btn_ok=view.findViewById(R.id.btn_lyt_general_alerts_ok);
+
+        btn_cancel=view.findViewById(R.id.btn_lyt_general_alerts_cancel);
+
+
+        txt_title.setText("DÝKKAT!!");
+
+        txt_message.setText(patient.name + " "+ patient.surname + " isimli hastanýn "
+               + " tüm randevülerini iptal etmek istediðinizden emin misiniz??"
+        );
+
+
+        builder.setView(view);
+
+
+        AlertDialog dialog=builder.create();
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+               if( patientInnerManager.tum_randevulari_getir(patient).size()>0)
+               {
+                   if(patientInnerManager.hastanin_tum_randevulerini_sil(patient))
+                   {
+                       Toast.makeText(context,"Tüm Randevüler Baþarýyla Kaldýrýlmýþtýr!!",Toast.LENGTH_SHORT).show();
+
+                       adapter.notifyItemChanged(0);
+
+                       dialog.dismiss();
+                   }
+                   else
+                   {
+                       Toast.makeText(context,"Randevü Kaldýrýlamamýþtýr!!",Toast.LENGTH_SHORT).show();
+
+                       dialog.dismiss();
+
+
+                   }
+               }
+               else
+               {
+                   Toast.makeText(context,"Hasta Adýna Oluþturulmuþ Randevü Bulunamamýþtýr!!",Toast.LENGTH_SHORT).show();
+
+                   dialog.dismiss();
+
+
+               }
+
+
+
+
+
+
+            }
+        });
+
+
+        dialog.show();
+
+
+    }
+
 
 
     public void listAllAppointments(Patient patient, RecyclerViewAdapterOfHastaListesi adapter, int position) {

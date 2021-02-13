@@ -81,6 +81,14 @@
 
 
 
+    <item
+            android:title="hastanın tüm randevülerini iptal et"
+            android:id="@+id/menu_popup_hastalar_hastanin_tum_randevulerini_iptal_et"
+
+    />
+
+
+
 
 
     <item
