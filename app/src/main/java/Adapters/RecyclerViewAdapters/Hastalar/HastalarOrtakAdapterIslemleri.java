@@ -33,7 +33,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.esh_ajanda.R;
 
 import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class HastalarOrtakAdapterIslemleri {
 
@@ -1665,7 +1668,11 @@ public class HastalarOrtakAdapterIslemleri {
                 appointment.visitType = "PERÝYODÝK ZÝYARET";
 
 
-                if (appointment.appointmentDate.matches(CustomTime.getTimeJustDate()))
+
+                Date visitDate=CustomTime.getParsedDate(appointment.appointmentDate);
+
+
+                if (!visitDate.after(CustomTime.getNowDate()))
 
                 {
                     if (gelen_messaj != null && !gelen_messaj.matches("")) {

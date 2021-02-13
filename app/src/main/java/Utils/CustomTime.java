@@ -43,6 +43,22 @@ public class CustomTime {
         return sekil.format(tarih.getTime());
     }
 
+    public static  Date getNowDate()
+    {
+        SimpleDateFormat sekil = new SimpleDateFormat("dd.MM.yyyy");
+        GregorianCalendar tarih = new GregorianCalendar();
+
+        Date dateNow=null;
+
+        try {
+            dateNow=sekil.parse(sekil.format(tarih.getTime()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return dateNow;
+    }
+
     public static String getTimeJustDate() {
         SimpleDateFormat sekil = new SimpleDateFormat("dd.MM.yyyy");
         GregorianCalendar tarih = new GregorianCalendar();
@@ -233,6 +249,20 @@ public class CustomTime {
 
     }
 
+    public static Date getParsedDate(String dateForParse)
+    {
+        SimpleDateFormat sekil = new SimpleDateFormat("dd.MM.yyyy");
+
+        Date parsedDate=null;
+
+        try {
+            parsedDate=sekil.parse(dateForParse);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return parsedDate;
+    }
 
 
 
