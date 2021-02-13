@@ -20,7 +20,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-public class RecyclerViewAdapterOfRandevuListesi extends RecyclerView.Adapter<RecyclerViewAdapterOfRandevuListesi.AppointmentHolder> {
+public class RecyclerViewAdapterOfRandevuListesi extends RecyclerView.Adapter<RecyclerViewAdapterOfRandevuListesi.AppointmentHolder>
+{
     @NonNull
 
 

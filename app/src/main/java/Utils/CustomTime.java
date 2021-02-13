@@ -1,5 +1,6 @@
 package Utils;
 
+import Patient.VisitInformations;
 import android.os.Build;
 import androidx.annotation.RequiresApi;
 
@@ -264,6 +265,77 @@ public class CustomTime {
         return parsedDate;
     }
 
+    public static String getDateWithDay(String date)
+    {
+        String date_result= null;
+
+
+
+        Calendar calendar=Calendar.getInstance();
+
+       int monday=GregorianCalendar.getInstance().getFirstDayOfWeek();
+
+       int selectedDate;
+
+       String dateName=null;
+
+       if(date.charAt(0)=='0')
+       {
+
+           selectedDate=Character.getNumericValue(date.charAt(1));
+
+       }
+
+       else
+       {
+           selectedDate=Integer.parseInt(date.substring(0,2));
+       }
+
+
+       switch (selectedDate % 7)
+       {
+           case 0:
+               dateName= VisitInformations.PAZAR;
+               break;
+
+           case 1:
+               dateName= VisitInformations.PAZARTESI;
+               break;
+
+
+           case 2:
+               dateName= VisitInformations.SALI;
+               break;
+
+
+           case 3:
+               dateName= VisitInformations.CARSAMBA;
+               break;
+
+
+           case 4:
+               dateName= VisitInformations.PERSEMBE;
+               break;
+
+
+           case 5:
+               dateName= VisitInformations.CUMA;
+               break;
+
+
+           case 6:
+               dateName= VisitInformations.CUMARTESI;
+               break;
+
+
+       }
+
+
+       date_result=date + " - " + dateName;
+
+        return date_result;
+
+    }
 
 
 }

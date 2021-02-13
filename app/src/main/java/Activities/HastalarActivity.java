@@ -3,17 +3,12 @@ package Activities;
 import Adapters.FragmentAdapters.FragmentPagerAdapterHastalar;
 import DataBaseSQLite.DataBaseSQLiteOfPatient.DBSQLiteOfAllPatients;
 import Fragments.HastaListesi.*;
-import Fragments.RandevuListesi.frg_RandevuListesi;
-import Manager.PatientInnerManager;
+import Fragments.RandevuListesi.frg_TumRandevuler;
 import Observation.RandevuListesiEkrani;
 import Observation.RecyclerRandevü;
 import Patient.*;
-import Utils.PatientUtillty;
-import Utils.PermissionConstants;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Toast;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -55,32 +50,6 @@ public class HastalarActivity extends AppCompatActivity {
 
 
 
-
-        Patient patientexample_2= new Patient();
-
-        patientexample_2.tc_no="91731527690";
-        patientexample_2.name="AHSEN";
-        patientexample_2.surname="KARLI";
-        patientexample_2.birthday ="12.07.1983";
-        patientexample_2.dependency=Patient.TAM_BAGIMLI;
-        patientexample_2.sex= Patient.KADIN;
-        patientexample_2.final_situation=Patient.AKTIF;
-
-        Adress adress= new Adress();
-        adress.adress_description="oðlunun evi";
-        adress.city="konya".toUpperCase();
-        adress.district="karapýnar";
-        adress.neighborhood="ulus mah.";
-        adress.door_number="55";
-        adress.apartmant_name="yusufçuk apt.";
-        adress.street="134102 sk.";
-
-/*
-        PatientInnerManager manager= new PatientInnerManager(context);
-        liteOfAllPatients.addPatient(patientexample_2);
-
-      manager.adres_ekle(patientexample_2,adress);
-*/
 
         toolbar=findViewById(R.id.toolbar_hastalar_activity);
 
@@ -133,7 +102,7 @@ public class HastalarActivity extends AppCompatActivity {
 
         try {
 
-            fragments.add(new frg_RandevuListesi(context));
+            fragments.add(new frg_TumRandevuler(context));
             fragments.add(new frg_HastaListesiTum(context));
             fragments.add(new frg_HastaListesiBagimli(context));
             fragments.add(new frg_HastaListesiYariBagimli(context));
