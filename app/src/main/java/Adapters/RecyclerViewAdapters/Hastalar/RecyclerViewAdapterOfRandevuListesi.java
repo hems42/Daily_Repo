@@ -109,6 +109,9 @@ public class RecyclerViewAdapterOfRandevuListesi extends RecyclerView.Adapter<Re
                             {
                                 case R.id.menu_popup_randevu_ekle:
 
+                                    commonOp.createAppointment(getCurrentPatient(getBindingAdapterPosition()),
+                                            RecyclerViewAdapterOfRandevuListesi.this,getBindingAdapterPosition());
+
                                     return  true;
 
 

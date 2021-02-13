@@ -519,7 +519,7 @@ public class HastalarOrtakAdapterIslemleri {
         }
     }
 
-    public void createAppointment(Patient patient, RecyclerViewAdapterOfHastaListesi adapter, int position) {
+    public void createAppointment(Patient patient, RecyclerView.Adapter adapter, int position) {
         AlertDialog.Builder builder_randevu_olustur = new AlertDialog.Builder(activity);
 
         View view_randevu_olusturma = inflater.inflate(R.layout.layout_randevu_olusturma, null);
@@ -592,6 +592,7 @@ public class HastalarOrtakAdapterIslemleri {
                             Toast.makeText(activity, "Randevü Baþarýyla Oluþturuldu!!!", Toast.LENGTH_SHORT).show();
                             dialog_randevu_olustur.dismiss();
 
+
                             adapter.notifyItemChanged(position);
 
                         }
@@ -649,6 +650,7 @@ public class HastalarOrtakAdapterIslemleri {
 
 
     }
+
 
 
     public void listAllAppointments(Patient patient, RecyclerViewAdapterOfHastaListesi adapter, int position) {
