@@ -696,8 +696,9 @@ public class HastalarOrtakAdapterIslemleri {
                 VisitInformations visitInformations= new VisitInformations();
 
                 visitInformations.appointmentDate=appointmentDate;
+                visitInformations.visitResult=VisitInformations.TAMAMLANMADI;
 
-               if(patientInnerManager.randevu_sil(patient,visitInformations))
+               if(patientInnerManager.randevu_sil(patient,visitInformations)&&patientInnerManager.ziyaret_ekle(patient,visitInformations))
                {
                    Toast.makeText(context,"Randevü Baþarýyla Kaldýrýlmýþtýr!!",Toast.LENGTH_SHORT).show();
 
@@ -764,6 +765,13 @@ public class HastalarOrtakAdapterIslemleri {
 
                if( patientInnerManager.tum_randevulari_getir(patient).size()>0)
                {
+                  for(VisitInformations visitInformations:patientInnerManager.hastanin_tum_randevulerini_getir(patient))
+                  {
+                      visitInformations.visitResult=VisitInformations.TAMAMLANMADI;
+
+                      patientInnerManager.ziyaret_ekle(patient,visitInformations);
+                  }
+
                    if(patientInnerManager.hastanin_tum_randevulerini_sil(patient))
                    {
                        Toast.makeText(context,"Tüm Randevüler Baþarýyla Kaldýrýlmýþtýr!!",Toast.LENGTH_SHORT).show();
