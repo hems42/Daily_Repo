@@ -4,6 +4,7 @@ import Adapters.FragmentAdapters.FragmentPagerAdapterHastalar;
 import DataBaseSQLite.DataBaseSQLiteOfPatient.DBSQLiteOfAllPatients;
 import Fragments.HastaListesi.*;
 import Fragments.RandevuListesi.frg_TumRandevuler;
+import Fragments.ZiyaretListesi.frg_ZiyaretListesiTum;
 import Observation.RandevuListesiEkrani;
 import Observation.RecyclerRandevü;
 import Patient.*;
@@ -102,6 +103,7 @@ public class HastalarActivity extends AppCompatActivity {
 
         try {
 
+            fragments.add(new frg_ZiyaretListesiTum(context));
             fragments.add(new frg_TumRandevuler(context));
             fragments.add(new frg_HastaListesiTum(context));
             fragments.add(new frg_HastaListesiBagimli(context));
@@ -119,6 +121,7 @@ public class HastalarActivity extends AppCompatActivity {
 
 
 
+        tab_isimleri.add("ziyaretler");
         tab_isimleri.add("TÜM RANDEVULER");
         tab_isimleri.add("TÜM HASTALAR");
         tab_isimleri.add("BAÐIMLI HASTALAR");

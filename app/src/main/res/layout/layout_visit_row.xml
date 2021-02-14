@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+>
+
+
+    <androidx.cardview.widget.CardView
+
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_margin="8dp"
+            app:cardBackgroundColor="@android:color/holo_orange_dark"
+            app:cardCornerRadius="20dp"
+            android:elevation="10dp"
+            android:clickable="true"
+            android:id="@+id/layout_visit_list_cardview"
+    >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:id="@+id/layout_visit_list_firs_linear_layout"
+        >
+
+
+            <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_gravity="left|center"
+                    android:background="@drawable/ripple"
+                    android:contextClickable="true"
+                    android:id="@+id/img_layout_visit_list_situation_img"
+                    android:clickable="true"
+
+            />
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/layout_visit_list_second_linearlayout"
+            >
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_margin="1dp"
+                        android:id="@+id/layout_visit_list_third_linearlayout"
+                >
+
+                    <TextView
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/txt_layout_visit_list_txtview_name_and_surname"
+                            android:textSize="19sp"
+                            android:textStyle="bold"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="1dp"
+                        android:id="@+id/layout_visit_list_appointment_linearlayout"
+                >
+
+                    <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:text="RANDEVÜ TARİHİ:"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp"
+                            android:textStyle="bold"/>
+
+                    <TextView
+                            android:layout_width="90dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:paddingRight="5dp"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/txt_layout_visit_list_txtview_appointment_date"
+                            android:textSize="15sp"
+                            android:textStyle="bold"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="1dp"
+                        android:id="@+id/layout_visit_list_visit_linearlayout"
+                >
+
+                    <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:text="ZİYARET TARİHİ:"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp"
+                            android:textStyle="bold"/>
+
+                    <TextView
+                            android:layout_width="90dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:paddingRight="5dp"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/txt_layout_visit_list_txtview_visit_date"
+                            android:textSize="15sp"
+                            android:textStyle="bold"/>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/home"
+                    android:layout_gravity="right|center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="3dp"
+                    android:id="@+id/layout_visit_list_general_icon"
+            />
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
+
+
+

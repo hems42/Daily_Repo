@@ -14,6 +14,7 @@ public class VisitInformations extends Patient {
 
     public static  String TAMAMLANDI="TAMAMLANDI";
     public static  String TAMAMLANMADI="TAMAMLANMADI";
+    public static  String TUM_ZIYARETLER="TÜM ZÝYARETLER";
 
     public static  String BUGUN= CustomTime.getDate();
     public static  String YARIN= CustomTime.getTomorrow();
