@@ -248,6 +248,7 @@ public class Base_frg_RandevuListesi extends Fragment {
 
     }
 
+    // bu güncelleme iþini anlýk tarih seçimini koruyacak þekilde düzelteceðim
     public void listeGuncelle()
     {
         ArrayList<VisitInformations> visitInformations=dbliteAppointment.getAllAppointments();
