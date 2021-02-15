@@ -103,6 +103,31 @@ public abstract class Base_frg_ZiyaretListesi extends Fragment {
     }
 
 
+    public Base_frg_ZiyaretListesi(Context context,Patient patient) {
+        this.context = context;
+
+        dbsqlPatient= new DBSQLiteOfAllPatients(context);
+        dbsqlPatient.onCreate(dbsqlPatient.getWritableDatabase());
+        dbsqLiteOfVisit=new DBSQLiteOfVisit(context);
+        dbsqLiteOfVisit.onCreate(dbsqLiteOfVisit.getWritableDatabase());
+        patientInnerManager= new PatientInnerManager(context);
+        activity= (Activity) context;
+
+
+
+            innerVisits=patientInnerManager.tum_ziyaretleri_getir(patient);
+
+            adapter= new RecyclerViewAdapterOfZiyaretListesi(context,innerVisits,null);
+
+            applyObserver();
+
+
+
+
+    }
+
+
+
 
 
     @Override

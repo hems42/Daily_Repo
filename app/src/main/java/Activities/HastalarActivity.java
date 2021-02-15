@@ -71,10 +71,6 @@ public class HastalarActivity extends AppCompatActivity {
 
 
 
-
-
-
-
     }
 
 

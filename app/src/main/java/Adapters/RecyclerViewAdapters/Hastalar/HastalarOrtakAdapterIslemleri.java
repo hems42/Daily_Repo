@@ -1,5 +1,6 @@
 package Adapters.RecyclerViewAdapters.Hastalar;
 
+import Adapters.RecyclerViewAdapters.Ziyaretler.RecyclerViewAdapterOfZiyaretListesi;
 import DataBaseSQLite.DBSQLiteOfAppointment;
 import DataBaseSQLite.DBSQLiteOfVisit;
 import DataBaseSQLite.DataBaseSQLiteOfPatient.DBSQLiteOfAllPatients;
@@ -28,6 +29,8 @@ import android.widget.*;
 import androidx.annotation.Nullable;
 
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.esh_ajanda.R;
@@ -1742,6 +1745,70 @@ public class HastalarOrtakAdapterIslemleri {
 
 
         dialog.show();
+
+
+    }
+
+
+
+    public  void showVisits(Patient patient)
+    {
+      TextView txt_ziyaret_sayisi,txt_baslik;
+      RecyclerView recyclerView;
+      RecyclerViewAdapterOfZiyaretListesi adapter;
+      ArrayList<VisitInformations> innerVisits;
+      LinearLayoutManager layoutManager;
+      ImageView img_geri_don;
+
+        innerVisits=patientInnerManager.tum_ziyaretleri_getir(patient);
+
+
+
+
+        if(innerVisits.size()>0)
+        {
+
+            layoutManager = new LinearLayoutManager(activity);
+            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+            adapter= new RecyclerViewAdapterOfZiyaretListesi(context,innerVisits,null);
+
+            View view= inflater.inflate(R.layout.layout_visit_list_dialog,null);
+
+            txt_baslik=view.findViewById(R.id.txt_layout_visit_list_baslik_yazisi);
+            txt_ziyaret_sayisi=view.findViewById(R.id.txt_layout_visit_list_listelenen_ziayret_sayisi);
+            img_geri_don=view.findViewById(R.id.img_layout_visit_list_dialog_geri_don);
+            recyclerView=view.findViewById(R.id.recyclerview_frg_ziyaretlistesi_tum);
+
+            txt_baslik.setText("KAYDEDÝLMÝÞ ZÝYARETLER");
+
+
+            txt_ziyaret_sayisi.setText(""+innerVisits.size());
+
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapter);
+
+            AlertDialog.Builder builder= new AlertDialog.Builder(activity);
+
+            builder.setView(view);
+
+
+            AlertDialog dialog=builder.create();
+
+            img_geri_don.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+        }
+        else
+        {
+            Toast.makeText(context,"Hasta Adýna Kayýtlý Ziyaret Bulunamadý!!",Toast.LENGTH_SHORT).show();
+        }
+
 
 
     }

@@ -268,6 +268,7 @@ public class RecyclerViewAdapterOfHastaListesi extends RecyclerView.Adapter<Recy
                 @Override
                 public void onClick(View v) {
 
+                    commonOp.showVisits(patient.get(getBindingAdapterPosition()));
                 }
             });
 
