@@ -11,8 +11,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.*;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -144,6 +147,108 @@ public abstract class Base_frg_ZiyaretListesi extends Fragment {
 
 
 
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+
+        inflater.inflate(R.menu.menu_frg_ziyaretler_ve_arama,menu);
+
+
+        MenuItem menuItem = menu.findItem(R.id.menu_search_ziyaretler);
+
+
+        SearchView searchView = (SearchView) menuItem.getActionView();
+
+
+        searchView.setQueryHint("ziyaretler de ara...");
+
+/*
+
+        switch (adapter.getAdapterTAG())
+        {
+            case "TÜM HASTALAR":
+                searchView.setQueryHint("tüm hastalarda ara...");
+                break;
+
+            case "TAM BAÐIMLI":
+                searchView.setQueryHint("tam baðýmlý hastalarda ara...");
+                break;
+
+
+            case "YARI BAÐIMLI":
+                searchView.setQueryHint("yarý baðýmlý hastalarda ara...");
+                break;
+
+            case "BAÐIMSIZ":
+                searchView.setQueryHint("baðýmsýz hastalarda ara...");
+                break;
+
+            case "AKTÝF":
+                searchView.setQueryHint("aktif hastalarda ara...");
+                break;
+
+            case "PASÝF":
+                searchView.setQueryHint("pasif hastalarda ara...");
+                break;
+
+            case "EX":
+                searchView.setQueryHint("ex olanlarda ara...");
+                break;
+
+
+        }
+*/
+
+
+        searchView.setElevation(20);
+
+        Animation animation = AnimationUtils.loadAnimation(context,
+                R.anim.bounce);
+        animation.setDuration(500);
+        searchView.startAnimation(animation);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+
+
+                ArrayList<VisitInformations> filtretedVisit = new ArrayList<>();
+
+                for (VisitInformations visit : innerVisits) {
+                    if (visit.name.toLowerCase().contains(newText.toLowerCase())
+                            || visit.surname.toLowerCase().contains(newText.toLowerCase())
+                            || visit.tc_no.toLowerCase().contains(newText.toLowerCase())
+
+                    ) {
+                        filtretedVisit.add(visit);
+                    }
+                }
+
+                setAdapter(filtretedVisit,filtretedVisit.size());
+
+                return true;
+            }
+        });
+
+
+
+        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                genel_guncelle();
+            }
+        });
+
+    }
 
 
 
