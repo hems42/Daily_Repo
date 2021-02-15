@@ -205,15 +205,6 @@ public abstract class Base_frg_HastaListesi extends Fragment  {
 
 
 
-
-
-
-
-
-
-
-
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);

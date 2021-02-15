@@ -13,11 +13,17 @@
           />
 
 
+    <item android:id="@+id/menu_ziyaretler_yenile"
+
+          app:showAsAction="never"
+          android:title="yenile"
+    >
+
+    </item>
 
 
 
-
-    <item android:id="@+id/menu_hastalar_"
+    <item android:id="@+id/menu_ziyaretler_"
 
           app:showAsAction="never"
           android:title="sırala"
