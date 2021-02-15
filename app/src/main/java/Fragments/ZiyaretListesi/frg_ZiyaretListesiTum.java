@@ -6,8 +6,9 @@ import android.content.Context;
 import java.util.ArrayList;
 
 public class frg_ZiyaretListesiTum extends Base_frg_ZiyaretListesi{
+
     public frg_ZiyaretListesiTum(Context context) {
-        super(context, null);
+        super(context, VisitInformations.TUM_ZIYARETLER);
     }
 
     @Override
