@@ -22,7 +22,7 @@
     <com.google.android.material.tabs.TabLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:id="@+id/tablayout"
+            android:id="@+id/tablayout_hastalar_activity"
             app:tabTextColor="@android:color/white"
             app:tabSelectedTextColor="@android:color/black"
             android:background="@android:color/holo_red_dark"
@@ -37,7 +37,7 @@
     <androidx.viewpager.widget.ViewPager
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:id="@+id/viewpager"
+            android:id="@+id/viewpager_hastalar_activity"
             android:layout_weight="1"
             android:theme="@style/AppTheme"
             ></androidx.viewpager.widget.ViewPager>

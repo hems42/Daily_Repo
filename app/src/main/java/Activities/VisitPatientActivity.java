@@ -24,9 +24,7 @@ import com.example.esh_ajanda.R;
 import com.google.android.material.tabs.TabLayout;
 
 
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class VisitPatientActivity extends AppCompatActivity {
     Context context = VisitPatientActivity.this;
@@ -40,7 +38,7 @@ public class VisitPatientActivity extends AppCompatActivity {
 
 
 
-        TabLayout tabLayout=findViewById(R.id.tablayout);
+        TabLayout tabLayout=findViewById(R.id.tablayout_hastalar_activity);
 /*
         tabLayout.addTab(new TabLayout.Tab().setText("hasta ekleme"));
         tabLayout.addTab(new TabLayout.Tab().setText("hasta dosyasý"));

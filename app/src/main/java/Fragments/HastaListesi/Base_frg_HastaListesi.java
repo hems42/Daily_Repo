@@ -3,9 +3,7 @@ package Fragments.HastaListesi;
 import Adapters.RecyclerViewAdapters.Hastalar.RecyclerViewAdapterOfHastaListesi;
 import DataBaseSQLite.DataBaseSQLiteOfPatient.DBSQLiteOfAllPatients;
 import Dialogs.AddPatient_BottomSheetDialog;
-import Observation.adapterObserverPatientList;
 import Patient.Patient;
-import Utils.PatientUtillty;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -15,16 +13,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.esh_ajanda.R;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 
 public abstract class Base_frg_HastaListesi extends Fragment  {

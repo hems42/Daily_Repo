@@ -1,12 +1,9 @@
 package Fragments.HastaListesi;
 
-import Observation.adapterObserverPatientList;
 import Patient.Patient;
 import android.content.Context;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
-import androidx.recyclerview.widget.RecyclerView;
 import com.example.esh_ajanda.R;
 
 import java.text.ParseException;

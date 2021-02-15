@@ -5,9 +5,6 @@ import DataBaseSQLite.DataBaseSQLiteOfPatient.DBSQLiteOfAllPatients;
 import Fragments.HastaListesi.*;
 import Fragments.RandevuListesi.frg_TumRandevuler;
 import Fragments.ZiyaretListesi.frg_ZiyaretListesiTum;
-import Observation.RandevuListesiEkrani;
-import Observation.RecyclerRandevü;
-import Patient.*;
 import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.Nullable;
@@ -63,21 +60,13 @@ public class HastalarActivity extends AppCompatActivity {
                 fragments,tab_isimleri);
 
 
-        tabLayout=findViewById(R.id.tablayout);
+        tabLayout=findViewById(R.id.tablayout_hastalar_activity);
 
-        viewPager=findViewById(R.id.viewpager);
+        viewPager=findViewById(R.id.viewpager_hastalar_activity);
 
         viewPager.setAdapter(adapter);
 
         tabLayout.setupWithViewPager(viewPager);
-
-
-        RecyclerRandevü recyclerRandevü =new RecyclerRandevü();
-        RandevuListesiEkrani adapter=new RandevuListesiEkrani("randevü listesi");
-
-        RandevuListesiEkrani adapter_2= new RandevuListesiEkrani("hasta listesi tüm hastalar");
-        recyclerRandevü.ekle(adapter);
-        recyclerRandevü.ekle(adapter_2);
 
 
 
