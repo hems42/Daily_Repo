@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public abstract class Base_frg_ZiyaretListesi extends Fragment {
 
-    public TextView txt_ziyaret_sayisi;
+    public TextView txt_ziyaret_sayisi,txt_baslik;
     public Context context;
     public DBSQLiteOfAllPatients dbsqlPatient;
     public DBSQLiteOfVisit dbsqLiteOfVisit;
@@ -52,6 +52,35 @@ public abstract class Base_frg_ZiyaretListesi extends Fragment {
 
         if(visitResult!=null)
         {
+
+            if(visitResult.matches(VisitInformations.TAMAMLANDI))
+            {
+                innerVisits=dbsqLiteOfVisit.getAllCompletedVisitsOfPatient();
+
+                adapter= new RecyclerViewAdapterOfZiyaretListesi(context,innerVisits,null);
+
+                applyObserver();
+            }
+
+
+          else  if(visitResult.matches(VisitInformations.TAMAMLANMADI))
+            {
+                innerVisits=dbsqLiteOfVisit.getAllUnCompletedVisitsOfPatient();
+
+                adapter= new RecyclerViewAdapterOfZiyaretListesi(context,innerVisits,null);
+
+                applyObserver();
+            }
+
+
+            else  if(visitResult.matches(VisitInformations.TUM_ZIYARETLER))
+            {
+                innerVisits=dbsqLiteOfVisit.getAllVisitsOfPatient();
+
+                adapter= new RecyclerViewAdapterOfZiyaretListesi(context,innerVisits,null);
+
+                applyObserver();
+            }
 
 
 
@@ -88,9 +117,11 @@ public abstract class Base_frg_ZiyaretListesi extends Fragment {
         setHasOptionsMenu(true);
         View view=inflater.inflate(R.layout.layout_visit_list, container, false);
 
+        txt_baslik=view.findViewById(R.id.txt_layout_visit_list_baslik_yazisi);
         txt_ziyaret_sayisi=view.findViewById(R.id.txt_layout_visit_list_listelenen_ziayret_sayisi);
         recyclerView=view.findViewById(R.id.recyclerview_frg_ziyaretlistesi_tum);
 
+        txt_baslik.setVisibility(View.GONE);
 
 
         recyclerView.setLayoutManager(layoutManager);

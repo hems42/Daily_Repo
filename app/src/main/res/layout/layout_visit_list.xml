@@ -6,7 +6,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#B33A3A"
+        android:background="#DDAEEA00"
 
 >
 
@@ -15,7 +15,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#9040E6"
+            android:backgroundTint="#C39040E6"
             android:layout_weight="1"
             app:cardCornerRadius="25dp"
             android:layout_marginLeft="5dp"
@@ -43,7 +43,7 @@
                     android:textStyle="bold"
                     android:textSize="25sp"
                     android:layout_marginTop="5dp"
-
+                    android:id="@+id/txt_layout_visit_list_baslik_yazisi"
                     android:gravity="center"
                     android:layout_gravity="center"/>
 
