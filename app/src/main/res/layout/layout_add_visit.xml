@@ -44,13 +44,34 @@
                 android:textSize="21dp"
                 />
 
-        <Utils.DigitalSign
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:id="@+id/dgtl_sign_lyt_add_visit"
 
-                android:layout_marginBottom="5dp"
-        />
+        <androidx.cardview.widget.CardView
+
+
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:backgroundTint="#D32F2F"
+
+                app:cardCornerRadius="28dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="20dp"
+                android:background="#FFCCBD"
+        >
+            <Utils.DigitalSign
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_margin="7dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/dgtl_sign_lyt_add_visit"
+                    android:background="@android:color/white"
+                    android:layout_marginBottom="5dp"
+            />
+
+        </androidx.cardview.widget.CardView>
+
+
 
         <EditText
                 android:layout_width="match_parent"

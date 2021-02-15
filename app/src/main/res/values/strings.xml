@@ -2,4 +2,26 @@
     <string name="app_name">ESH_AJANDA</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string-array name="sağlik_personeli_uygulamalari">
+        <item>- yara pansumanı</item>
+        <item>- ıv sıvı infizyonu</item>
+        <item>- hasta muayenesi</item>
+        <item>- tetkik için kan alma</item>
+        <item>- sütür alma</item>
+        <item>- ım enj</item>
+        <item>- mesane sonda uygulaması</item>
+        <item>- nazogastrik sonda uygulaması</item>
+   <!--     <item>- rehabilitasyon uygulamarı</item>
+        <item>- konsultasyon</item>
+        <item>- hastanın mekanik ventilatöre bağlanması</item>
+        <item>- nebilazatör ile ilaç uygulama</item>
+        <item>- o2 inhalasyon tedavisi</item>
+        <item>- enteral hiperalimantasyon tedavisi</item>
+-->
+
+
+    </string-array>
+
 </resources>

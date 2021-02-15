@@ -1877,6 +1877,17 @@ public class HastalarOrtakAdapterIslemleri {
 
         AlertDialog dialog = builder.create();
 
+
+
+        editText_not.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                selectTreatment(editText_not);
+
+                return true;
+            }
+        });
+
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -2036,6 +2047,90 @@ public class HastalarOrtakAdapterIslemleri {
        return tel_no;
 
 
+    }
+
+    public  void selectTreatment(EditText  editText)
+    {
+        StringBuilder  stringBuilder= new StringBuilder();
+        ArrayList<Integer> eklenenler= new ArrayList<>();
+
+
+
+        String[] uygulamalar = context.getResources().getStringArray(R.array.saðlik_personeli_uygulamalari);
+
+        ListView listView =  new ListView(activity);
+        ArrayAdapter arrayAdapter=  new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1,uygulamalar);
+
+        listView.setAdapter(arrayAdapter);
+
+        AlertDialog.Builder builder= new AlertDialog.Builder(activity);
+
+        builder.setTitle("Yapýlan uygulama-larý  seçiniz!!");
+        builder.setIcon(R.drawable.pills_1);
+        builder.setMessage("birden fazla uygulama seçmek için uzun basýn ve en sonunda da tamamlanya týklayýn!!!");
+
+        builder.setPositiveButton("Tamamlandý", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+               editText.setText(stringBuilder.toString());
+               dialog.dismiss();
+
+            }
+        });
+
+        builder.setNegativeButton("VAZGEÇ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+
+                    }
+                });
+        builder.setView(listView);
+
+        listView.setDividerHeight(30);
+        listView.setVerticalScrollBarEnabled(true);
+
+        listView.scrollBy(0,4);
+
+        AlertDialog dialog=builder.create();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                editText.setText(arrayAdapter.getItem(position).toString());
+                dialog.dismiss();
+
+            }
+        });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String gelen=arrayAdapter.getItem(position).toString();
+
+                if(!eklenenler.contains(position))
+                {
+                    eklenenler.add(position);
+                    stringBuilder.append(gelen+"\n");
+                    Toast.makeText(context,gelen+"  uygulamasý eklendi!!",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(context,"Bu uygulamayý daha önce eklemiþtiniz!!",Toast.LENGTH_SHORT).show();
+                }
+
+
+
+
+                return true;
+            }
+        });
+
+        dialog.show();
     }
 
 }
