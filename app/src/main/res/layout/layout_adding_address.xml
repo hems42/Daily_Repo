@@ -7,7 +7,8 @@
         android:layout_margin="12dp"
         app:cardCornerRadius="15dp"
         android:elevation="10dp"
-
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        android:id="@+id/bottom_sheet_lyt_add_patient"
         android:backgroundTint="@android:color/darker_gray"
 >
 

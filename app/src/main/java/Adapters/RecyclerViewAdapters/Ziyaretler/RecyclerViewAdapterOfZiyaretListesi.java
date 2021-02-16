@@ -5,6 +5,7 @@ import Adapters.RecyclerViewAdapters.Hastalar.RecyclerViewAdapterOfHastaListesi;
 import DataBaseSQLite.DBSQLiteOfPersonelInformations;
 import DataBaseSQLite.DBSQLiteOfVisit;
 import DataBaseSQLite.DataBaseSQLiteOfPatient.DBSQLiteOfAllPatients;
+import Dialogs.Dialog_Show_ResultOfVisit;
 import Fragments.frg_HastaDosyasi;
 import Manager.PatientInnerManager;
 import Patient.*;
@@ -94,7 +95,23 @@ public class RecyclerViewAdapterOfZiyaretListesi extends RecyclerView.Adapter<Re
             img_sonuc.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context,"Sonuç gösterme denemesi baþarýlý olmuþtur",Toast.LENGTH_SHORT).show();
+
+                    if(visitInformations.get(getBindingAdapterPosition()).visitResult.matches(VisitInformations.TAMAMLANDI))
+                    {
+                        Patient patient=dbsqLiteOfAllPatients.getPatient(visitInformations.get(getBindingAdapterPosition()).tc_no);
+                        Dialog_Show_ResultOfVisit dialog_show_resultOfVisit= new Dialog_Show_ResultOfVisit(context,
+                                patient,patientInnerManager,visitInformations.get(getBindingAdapterPosition())
+                        );
+
+
+                        dialog_show_resultOfVisit.show();
+                    }
+
+                    else
+                    {
+                        Toast.makeText(context,"Ziyaretle Ýlgili Herhangi Bir Veri Bulunamadý!!",Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             });
 

@@ -99,9 +99,6 @@ public class RecyclerViewAdapterOfHastaListesi extends RecyclerView.Adapter<Recy
                             getBindingAdapterPosition(),patient);
 
 
-
-
-
                 }
             });
 
@@ -252,6 +249,14 @@ public class RecyclerViewAdapterOfHastaListesi extends RecyclerView.Adapter<Recy
                                     sonuc=true;
                                     break;
 
+                                case R.id.menu_popup_hastalar_hasta_dosyasina_git:
+
+                                    commonOp.showFileOfPatient(patient.get(getBindingAdapterPosition()));
+
+                                    sonuc=true;
+                                    break;
+
+
 
                             }
 
@@ -277,7 +282,7 @@ public class RecyclerViewAdapterOfHastaListesi extends RecyclerView.Adapter<Recy
                 @Override
                 public void onClick(View v) {
 
-                    Fragments.frg_HastaDosyasi frg_hastaDosyasi= new frg_HastaDosyasi();
+                    commonOp.showFileOfPatient(patient.get(getBindingAdapterPosition()));
 
 
                 }

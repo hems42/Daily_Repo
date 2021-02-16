@@ -3,8 +3,10 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:background="#F0D300"
-             tools:context="Fragments.frg_HastaDosyasi">
+             android:background="#FF9100"
+             tools:context="Fragments.frg_HastaDosyasi"
+             android:id="@+id/bottom_sheet_lyt_file_of_patient"
+>
 
    <LinearLayout
            android:layout_width="match_parent"
@@ -15,7 +17,7 @@
        <androidx.cardview.widget.CardView
                android:layout_width="match_parent"
                android:layout_height="120dp"
-               android:backgroundTint="#5BDBEF"
+               android:backgroundTint="@android:color/darker_gray"
                app:cardCornerRadius="25dp"
                 android:elevation="10dp"
                 android:layout_marginLeft="5dp"
@@ -41,6 +43,7 @@
                    <ImageView
                            android:layout_width="50dp"
                            android:layout_height="50dp"
+                           android:id="@+id/img_hasta_dosyasi_hasta_imaji"
                            android:src="@drawable/community"/>
 
                    <LinearLayout
@@ -58,8 +61,9 @@
                                android:paddingTop="5dp"
                                android:layout_marginLeft="5dp"
                                android:textSize="18sp"
-                               android:textColor="@android:color/black"
+                               android:textColor="@android:color/white"
                                android:textStyle="bold"
+                               android:id="@+id/txt_hasta_dosyasi_ad_soyad"
                                android:textAlignment="center"
 
                        />
@@ -88,10 +92,11 @@
                                    android:layout_width="wrap_content"
                                    android:layout_height="wrap_content"
                                    android:text="15.01.2021"
+                                   android:id="@+id/txt_hasta_dosyasi_son_ziyaret_tarihi"
                                    android:paddingTop="3dp"
                                    android:layout_marginLeft="2dp"
                                    android:textSize="16sp"
-                                   android:textColor="#9040E6"
+                                   android:textColor="@android:color/white"
                                    android:textStyle="bold"
                                    android:textAlignment="center"
 
@@ -136,10 +141,11 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="48"
+                           android:id="@+id/txt_hasta_dosyasi_yas"
                            android:paddingTop="10dp"
                            android:layout_marginLeft="2dp"
                            android:textSize="16sp"
-                           android:textColor="#9040E6"
+                           android:textColor="@android:color/white"
                            android:textStyle="bold"
                            android:textAlignment="center"
 
@@ -167,7 +173,8 @@
                            android:paddingTop="10dp"
                            android:layout_marginLeft="2dp"
                            android:textSize="16sp"
-                           android:textColor="#9040E6"
+                           android:id="@+id/txt_hasta_dosyasi_cinsiyet"
+                           android:textColor="@android:color/white"
                            android:textStyle="bold"
                            android:textAlignment="center"
 
@@ -193,11 +200,11 @@
                            android:layout_height="wrap_content"
                            android:text="AKTİF"
                            android:paddingTop="10dp"
-                           android:layout_marginLeft="2dp"
-                           android:textSize="16sp"
-                           android:textColor="#9040E6"
+                           android:id="@+id/txt_hasta_dosyasi_son_durum"
+                           android:textSize="12sp"
+                           android:textColor="@android:color/white"
                            android:textStyle="bold"
-                           android:textAlignment="center"
+
 
                    />
 
@@ -209,8 +216,50 @@
 
        </androidx.cardview.widget.CardView>
 
+       <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="10dp"
+               android:background="@android:color/darker_gray"
+               android:orientation="horizontal"
+       >
+
+           <androidx.appcompat.widget.AppCompatImageView
+                   android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:src="@drawable/back"
+                   android:layout_marginLeft="15dp"
+                   android:id="@+id/img_layout_file_of_patient_geri_don"
+                   android:clickable="true"
+                   android:background="@drawable/ripple"
+           />
+
+
+
+
+
+
+           <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textAlignment="center"
+                   android:textColor="@android:color/white"
+                   android:textStyle="bold"
+                   android:textSize="15sp"
+                   android:text="GERİ DÖN"
+                   android:layout_marginLeft="5dp"
+                   android:layout_marginTop="5dp"
+                   android:paddingLeft="5dp"
+
+           />
+
+
+
+       </LinearLayout>
+
       <include
-          layout="@layout/layout_visit_list"
+
+          layout="@layout/layout_visit_list_dialog"
       />
 
    </LinearLayout>

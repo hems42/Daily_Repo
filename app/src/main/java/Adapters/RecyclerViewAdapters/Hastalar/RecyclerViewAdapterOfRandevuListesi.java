@@ -133,6 +133,8 @@ public class RecyclerViewAdapterOfRandevuListesi extends RecyclerView.Adapter<Re
 
                                 case R.id.menu_popup_randevu_hasta_dosyasina_git:
 
+                                    commonOp.showFileOfPatient(getCurrentPatient(getBindingAdapterPosition()));
+
                                     return  true;
 
 
@@ -168,6 +170,14 @@ public class RecyclerViewAdapterOfRandevuListesi extends RecyclerView.Adapter<Re
 
                 }
             });
+
+            img_cinsiyet.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    commonOp.showFileOfPatient(getCurrentPatient(getBindingAdapterPosition()));
+                }
+            });
+
             img_hastaya_git.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

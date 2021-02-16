@@ -3,10 +3,11 @@
 
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#64DD17"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        android:id="@+id/bottom_sheet_lyt_visit_result_of_patient"
 
 >
 
@@ -56,6 +57,44 @@
             android:background="@android:color/holo_red_dark"
             />
 
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+            >
+
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/back"
+                        android:layout_marginLeft="15dp"
+                        android:id="@+id/img_layout_visit_result_dialog_geri_don"
+                        android:clickable="true"
+                        android:background="@drawable/ripple"
+                />
+
+
+
+
+
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:text="GERİ DÖN"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="5dp"
+
+                />
+
+
+
+            </LinearLayout>
 
             <androidx.cardview.widget.CardView
 
