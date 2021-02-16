@@ -48,7 +48,7 @@ public class HastalarOrtakAdapterIslemleri {
     private final Context context;
     private final Activity activity;
     private final LayoutInflater inflater;
-   final PatientInnerManager  patientInnerManager;
+    final PatientInnerManager patientInnerManager;
     DBSQLiteOfAllPatients dbsqLiteOfAllPatients;
     DBSQLiteOfAppointment dbsqLiteOfAppointment;
     DBSQLiteOfVisit dbsqLiteOfVisit;
@@ -206,7 +206,7 @@ public class HastalarOrtakAdapterIslemleri {
 
                                 if (!patientInnerManager.telefon_onceden_olusturulmusmu(patient, tel_1)) {
                                     if (Validatorler.isValidTelNumber(tel_1)) {
-                                        telefon.tel_no1 =convertPhoneNumberType(tel_1);
+                                        telefon.tel_no1 = convertPhoneNumberType(tel_1);
                                     } else {
 
                                         edtxt_add_tel_number_tel1.setError("geçerli bir tel no girin!!");
@@ -342,48 +342,38 @@ public class HastalarOrtakAdapterIslemleri {
 
                         AdapterView.AdapterContextMenuInfo listAdapterInfo = (AdapterView.AdapterContextMenuInfo) menuInfo;
 
-                        Telefon telefon= new Telefon();
+                        Telefon telefon = new Telefon();
 
 
-                       String gelen_tel=numbers.getItem(listAdapterInfo.position);
+                        String gelen_tel = numbers.getItem(listAdapterInfo.position);
 
-                       int baslangýc=0;
+                        int baslangýc = 0;
 
-                       for(int i=0;i<gelen_tel.length();i++)
+                        for (int i = 0; i < gelen_tel.length(); i++) {
 
-                       {
-
-                           if(Character.isAlphabetic(gelen_tel.charAt(i)))
-                           {
-                               baslangýc=i;
-                               break;
-                           }
+                            if (Character.isAlphabetic(gelen_tel.charAt(i))) {
+                                baslangýc = i;
+                                break;
+                            }
 
 
-
-                       }
-
-
-                       telefon.tel_no_description=gelen_tel.substring(baslangýc);
+                        }
 
 
-                        if(patientInnerManager.telefon_sil(patient,telefon))
-                        {
+                        telefon.tel_no_description = gelen_tel.substring(baslangýc);
+
+
+                        if (patientInnerManager.telefon_sil(patient, telefon)) {
                             dialog_list_numbers.dismiss();
 
                             callPatient(patient);
 
                             return true;
 
-                        }
-                        else
-                        {
+                        } else {
 
                             return false;
                         }
-
-
-
 
 
                     }
@@ -400,9 +390,8 @@ public class HastalarOrtakAdapterIslemleri {
 
                 String tel = numbers.getItem(position).substring(0, 16);
 
-                if(tel.charAt(0)!='0')
-                {
-                    tel="0 "+numbers.getItem(position).substring(0, 16);
+                if (tel.charAt(0) != '0') {
+                    tel = "0 " + numbers.getItem(position).substring(0, 16);
                 }
 
                 call_number(tel);
@@ -448,9 +437,7 @@ public class HastalarOrtakAdapterIslemleri {
                 @Override
                 public void onClick(View v) {
 
-                    if (patient.final_situation.matches(Patient.PASIF))
-
-                    {
+                    if (patient.final_situation.matches(Patient.PASIF)) {
                         dialog_randevu_yok.dismiss();
 
                         AlertDialog.Builder builder_hasta_pasifte = new AlertDialog.Builder(activity);
@@ -502,11 +489,7 @@ public class HastalarOrtakAdapterIslemleri {
                         dialog_hasta_pasifte.show();
 
 
-                    }
-
-                    else
-
-                        {
+                    } else {
 
                         dialog_randevu_yok.dismiss();
 
@@ -575,25 +558,18 @@ public class HastalarOrtakAdapterIslemleri {
                 String gelen_randevu_tarihi;
 
 
-
                 if ((!ad_soyad.matches("")) &&
                         (!tc_no.matches("")) &&
-                        (!randevu_tarihi.matches("")))
-
-                {
+                        (!randevu_tarihi.matches(""))) {
 
 
-                    gelen_randevu_tarihi=patientInnerManager.randevuyu_getir(patient, randevu_tarihi).appointmentDate;
+                    gelen_randevu_tarihi = patientInnerManager.randevuyu_getir(patient, randevu_tarihi).appointmentDate;
 
-                    if (gelen_randevu_tarihi == null)
-
-                    {
+                    if (gelen_randevu_tarihi == null) {
                         VisitInformations visitInformations = new VisitInformations();
                         visitInformations.appointmentDate = randevu_tarihi;
 
-                        if (patientInnerManager.randevu_ekle(patient, visitInformations))
-
-                        {
+                        if (patientInnerManager.randevu_ekle(patient, visitInformations)) {
                             Toast.makeText(activity, "Randevü Baþarýyla Oluþturuldu!!!", Toast.LENGTH_SHORT).show();
                             dialog_randevu_olustur.dismiss();
 
@@ -603,39 +579,29 @@ public class HastalarOrtakAdapterIslemleri {
                         }
 
 
-                    }
+                    } else {
+                        if (gelen_randevu_tarihi.matches(randevu_tarihi)) {
+                            Toast.makeText(activity, "Ayný Tarihe Oluþtutulmuþ Randevü Bulundu!!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            VisitInformations visitInformations = new VisitInformations();
+                            visitInformations.appointmentDate = randevu_tarihi;
 
-                    else
+                            if (patientInnerManager.randevu_ekle(patient, visitInformations)) {
+                                Toast.makeText(activity, "Randevü Baþarýyla Oluþturuldu!!!", Toast.LENGTH_SHORT).show();
+                                dialog_randevu_olustur.dismiss();
 
-                        {
-                            if(gelen_randevu_tarihi.matches(randevu_tarihi))
-                            {
-                                Toast.makeText(activity, "Ayný Tarihe Oluþtutulmuþ Randevü Bulundu!!", Toast.LENGTH_SHORT).show();
+                                adapter.notifyItemChanged(position);
+
+
                             }
-                            else
-                            {
-                                VisitInformations visitInformations = new VisitInformations();
-                                visitInformations.appointmentDate = randevu_tarihi;
-
-                                if (patientInnerManager.randevu_ekle(patient, visitInformations)) {
-                                    Toast.makeText(activity, "Randevü Baþarýyla Oluþturuldu!!!", Toast.LENGTH_SHORT).show();
-                                    dialog_randevu_olustur.dismiss();
-
-                                    adapter.notifyItemChanged(position);
-
-
-                                }
-                            }
+                        }
 
 
                     }
 
-                }
-
-                else
-                    {
+                } else {
                     Toast.makeText(activity, "Lütfen Gerekli Alanlarý Doldurun!!!", Toast.LENGTH_SHORT).show();
-                    }
+                }
 
             }
         });
@@ -656,106 +622,35 @@ public class HastalarOrtakAdapterIslemleri {
 
     }
 
-    public void cancelAppointment(Patient patient, String appointmentDate, RecyclerView.Adapter adapter )
-    {
-        TextView txt_title,txt_message;
-        Button btn_ok,btn_cancel;
+    public void cancelAppointment(Patient patient, String appointmentDate, RecyclerView.Adapter adapter) {
+        TextView txt_title, txt_message;
+        Button btn_ok, btn_cancel;
 
-        AlertDialog.Builder builder= new AlertDialog.Builder(activity);
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
-        View view=inflater.inflate(R.layout.layout_genel_uyarilar,null);
+        View view = inflater.inflate(R.layout.layout_genel_uyarilar, null);
 
-        txt_title=view.findViewById(R.id.txt_lyt_general_alerts_note_title);
-        txt_message=view.findViewById(R.id.txt_lyt_general_alerts_note);
+        txt_title = view.findViewById(R.id.txt_lyt_general_alerts_note_title);
+        txt_message = view.findViewById(R.id.txt_lyt_general_alerts_note);
         txt_title.setVisibility(View.VISIBLE);
 
 
-        btn_ok=view.findViewById(R.id.btn_lyt_general_alerts_ok);
+        btn_ok = view.findViewById(R.id.btn_lyt_general_alerts_ok);
 
-        btn_cancel=view.findViewById(R.id.btn_lyt_general_alerts_cancel);
+        btn_cancel = view.findViewById(R.id.btn_lyt_general_alerts_cancel);
 
 
         txt_title.setText("DÝKKAT!!");
 
-        txt_message.setText(patient.name + " "+ patient.surname + " isimli hastanýn "
-        + appointmentDate + "tarihli randevüsünü iptal etmek istediðinizden emin misiniz??"
-                );
-
-
-        builder.setView(view);
-
-
-        AlertDialog dialog=builder.create();
-
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-        btn_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                VisitInformations visitInformations= new VisitInformations();
-
-                visitInformations.appointmentDate=appointmentDate;
-                visitInformations.visitResult=VisitInformations.TAMAMLANMADI;
-
-               if(patientInnerManager.randevu_sil(patient,visitInformations)&&patientInnerManager.ziyaret_ekle(patient,visitInformations))
-               {
-                   Toast.makeText(context,"Randevü Baþarýyla Kaldýrýlmýþtýr!!",Toast.LENGTH_SHORT).show();
-
-                   adapter.notifyItemChanged(0);
-
-                   dialog.dismiss();
-               }
-               else
-               {
-                   Toast.makeText(context,"Randevü Kaldýrýlamamýþtýr!!",Toast.LENGTH_SHORT).show();
-               }
-
-            }
-        });
-
-
-        dialog.show();
-
-
-    }
-
-
-    public void cancelAllAppointmentOfPatient(Patient patient, RecyclerView.Adapter adapter )
-    {
-        TextView txt_title,txt_message;
-        Button btn_ok,btn_cancel;
-
-        AlertDialog.Builder builder= new AlertDialog.Builder(activity);
-
-        View view=inflater.inflate(R.layout.layout_genel_uyarilar,null);
-
-        txt_title=view.findViewById(R.id.txt_lyt_general_alerts_note_title);
-        txt_message=view.findViewById(R.id.txt_lyt_general_alerts_note);
-        txt_title.setVisibility(View.VISIBLE);
-
-
-        btn_ok=view.findViewById(R.id.btn_lyt_general_alerts_ok);
-
-        btn_cancel=view.findViewById(R.id.btn_lyt_general_alerts_cancel);
-
-
-        txt_title.setText("DÝKKAT!!");
-
-        txt_message.setText(patient.name + " "+ patient.surname + " isimli hastanýn "
-               + " tüm randevülerini iptal etmek istediðinizden emin misiniz??"
+        txt_message.setText(patient.name + " " + patient.surname + " isimli hastanýn "
+                + appointmentDate + "tarihli randevüsünü iptal etmek istediðinizden emin misiniz??"
         );
 
 
         builder.setView(view);
 
 
-        AlertDialog dialog=builder.create();
+        AlertDialog dialog = builder.create();
 
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -768,45 +663,20 @@ public class HastalarOrtakAdapterIslemleri {
             @Override
             public void onClick(View v) {
 
-               if( patientInnerManager.tum_randevulari_getir(patient).size()>0)
-               {
-                  for(VisitInformations visitInformations:patientInnerManager.hastanin_tum_randevulerini_getir(patient))
-                  {
-                      visitInformations.visitResult=VisitInformations.TAMAMLANMADI;
+                VisitInformations visitInformations = new VisitInformations();
 
-                      patientInnerManager.ziyaret_ekle(patient,visitInformations);
-                  }
+                visitInformations.appointmentDate = appointmentDate;
+                visitInformations.visitResult = VisitInformations.TAMAMLANMADI;
 
-                   if(patientInnerManager.hastanin_tum_randevulerini_sil(patient))
-                   {
-                       Toast.makeText(context,"Tüm Randevüler Baþarýyla Kaldýrýlmýþtýr!!",Toast.LENGTH_SHORT).show();
+                if (patientInnerManager.randevu_sil(patient, visitInformations) && patientInnerManager.ziyaret_ekle(patient, visitInformations)) {
+                    Toast.makeText(context, "Randevü Baþarýyla Kaldýrýlmýþtýr!!", Toast.LENGTH_SHORT).show();
 
-                       adapter.notifyItemChanged(0);
+                    adapter.notifyItemChanged(0);
 
-                       dialog.dismiss();
-                   }
-                   else
-                   {
-                       Toast.makeText(context,"Randevü Kaldýrýlamamýþtýr!!",Toast.LENGTH_SHORT).show();
-
-                       dialog.dismiss();
-
-
-                   }
-               }
-               else
-               {
-                   Toast.makeText(context,"Hasta Adýna Oluþturulmuþ Randevü Bulunamamýþtýr!!",Toast.LENGTH_SHORT).show();
-
-                   dialog.dismiss();
-
-
-               }
-
-
-
-
-
+                    dialog.dismiss();
+                } else {
+                    Toast.makeText(context, "Randevü Kaldýrýlamamýþtýr!!", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -817,6 +687,85 @@ public class HastalarOrtakAdapterIslemleri {
 
     }
 
+
+    public void cancelAllAppointmentOfPatient(Patient patient, RecyclerView.Adapter adapter) {
+        TextView txt_title, txt_message;
+        Button btn_ok, btn_cancel;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+        View view = inflater.inflate(R.layout.layout_genel_uyarilar, null);
+
+        txt_title = view.findViewById(R.id.txt_lyt_general_alerts_note_title);
+        txt_message = view.findViewById(R.id.txt_lyt_general_alerts_note);
+        txt_title.setVisibility(View.VISIBLE);
+
+
+        btn_ok = view.findViewById(R.id.btn_lyt_general_alerts_ok);
+
+        btn_cancel = view.findViewById(R.id.btn_lyt_general_alerts_cancel);
+
+
+        txt_title.setText("DÝKKAT!!");
+
+        txt_message.setText(patient.name + " " + patient.surname + " isimli hastanýn "
+                + " tüm randevülerini iptal etmek istediðinizden emin misiniz??"
+        );
+
+
+        builder.setView(view);
+
+
+        AlertDialog dialog = builder.create();
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (patientInnerManager.tum_randevulari_getir(patient).size() > 0) {
+                    for (VisitInformations visitInformations : patientInnerManager.hastanin_tum_randevulerini_getir(patient)) {
+                        visitInformations.visitResult = VisitInformations.TAMAMLANMADI;
+
+                        patientInnerManager.ziyaret_ekle(patient, visitInformations);
+                    }
+
+                    if (patientInnerManager.hastanin_tum_randevulerini_sil(patient)) {
+                        Toast.makeText(context, "Tüm Randevüler Baþarýyla Kaldýrýlmýþtýr!!", Toast.LENGTH_SHORT).show();
+
+                        adapter.notifyItemChanged(0);
+
+                        dialog.dismiss();
+                    } else {
+                        Toast.makeText(context, "Randevü Kaldýrýlamamýþtýr!!", Toast.LENGTH_SHORT).show();
+
+                        dialog.dismiss();
+
+
+                    }
+                } else {
+                    Toast.makeText(context, "Hasta Adýna Oluþturulmuþ Randevü Bulunamamýþtýr!!", Toast.LENGTH_SHORT).show();
+
+                    dialog.dismiss();
+
+
+                }
+
+
+            }
+        });
+
+
+        dialog.show();
+
+
+    }
 
 
     public void listAllAppointments(Patient patient, RecyclerViewAdapterOfHastaListesi adapter, int position) {
@@ -849,7 +798,8 @@ public class HastalarOrtakAdapterIslemleri {
 
             @Override
             public void onItemRangeInserted(int positionStart, int itemCount) {
-                super.onItemRangeInserted(positionStart, itemCount);patientInnerManager.tum_randevulari_getir(patient);
+                super.onItemRangeInserted(positionStart, itemCount);
+                patientInnerManager.tum_randevulari_getir(patient);
 
                 patientInnerManager.tum_randevulari_getir(patient);
 
@@ -1752,50 +1702,45 @@ public class HastalarOrtakAdapterIslemleri {
     }
 
 
+    public void showVisits(Patient patient) {
+        TextView txt_ziyaret_sayisi, txt_baslik;
+        RecyclerView recyclerView;
+        RecyclerViewAdapterOfZiyaretListesi adapter;
+        ArrayList<VisitInformations> innerVisits;
+        LinearLayoutManager layoutManager;
+        ImageView img_geri_don;
 
-    public  void showVisits(Patient patient)
-    {
-      TextView txt_ziyaret_sayisi,txt_baslik;
-      RecyclerView recyclerView;
-      RecyclerViewAdapterOfZiyaretListesi adapter;
-      ArrayList<VisitInformations> innerVisits;
-      LinearLayoutManager layoutManager;
-      ImageView img_geri_don;
-
-        innerVisits=patientInnerManager.tum_ziyaretleri_getir(patient);
+        innerVisits = patientInnerManager.tum_ziyaretleri_getir(patient);
 
 
-
-
-        if(innerVisits.size()>0)
-        {
+        if (innerVisits.size() > 0) {
 
             layoutManager = new LinearLayoutManager(activity);
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
-            adapter= new RecyclerViewAdapterOfZiyaretListesi(context,innerVisits,null);
+            adapter = new RecyclerViewAdapterOfZiyaretListesi(context, innerVisits, null);
 
-            View view= inflater.inflate(R.layout.layout_visit_list_dialog,null);
+            View view = inflater.inflate(R.layout.layout_visit_list_dialog, null);
 
-            txt_baslik=view.findViewById(R.id.txt_layout_visit_list_baslik_yazisi);
-            txt_ziyaret_sayisi=view.findViewById(R.id.txt_layout_visit_list_listelenen_ziayret_sayisi);
-            img_geri_don=view.findViewById(R.id.img_layout_visit_list_dialog_geri_don);
-            recyclerView=view.findViewById(R.id.recyclerview_frg_ziyaretlistesi_tum);
+            txt_baslik = view.findViewById(R.id.txt_layout_visit_list_baslik_yazisi);
+            txt_ziyaret_sayisi = view.findViewById(R.id.txt_layout_visit_list_listelenen_ziayret_sayisi);
+            img_geri_don = view.findViewById(R.id.img_layout_visit_list_dialog_geri_don);
+            recyclerView = view.findViewById(R.id.recyclerview_frg_ziyaretlistesi_tum);
 
             txt_baslik.setText("KAYDEDÝLMÝÞ ZÝYARETLER");
 
 
-            txt_ziyaret_sayisi.setText(""+innerVisits.size());
+            txt_ziyaret_sayisi.setText("" + innerVisits.size());
 
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setAdapter(adapter);
 
-            AlertDialog.Builder builder= new AlertDialog.Builder(activity);
+            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
             builder.setView(view);
 
 
-            AlertDialog dialog=builder.create();
+            AlertDialog dialog = builder.create();
 
             img_geri_don.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -1805,12 +1750,9 @@ public class HastalarOrtakAdapterIslemleri {
             });
 
             dialog.show();
+        } else {
+            Toast.makeText(context, "Hasta Adýna Kayýtlý Ziyaret Bulunamadý!!", Toast.LENGTH_SHORT).show();
         }
-        else
-        {
-            Toast.makeText(context,"Hasta Adýna Kayýtlý Ziyaret Bulunamadý!!",Toast.LENGTH_SHORT).show();
-        }
-
 
 
     }
@@ -1862,7 +1804,7 @@ public class HastalarOrtakAdapterIslemleri {
 
         EditText editText_not;
 
-        TextView txt_note_refresh,txt_sign_refresh;
+        TextView txt_note_refresh, txt_sign_refresh;
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
@@ -1875,12 +1817,11 @@ public class HastalarOrtakAdapterIslemleri {
 
         digitalSign = view.findViewById(R.id.dgtl_sign_lyt_add_visit);
 
-        txt_note_refresh=view.findViewById(R.id.txt_lyt_add_visit_note_refresh);
-        txt_sign_refresh=view.findViewById(R.id.txt_lyt_add_visit_sing_refresh);
+        txt_note_refresh = view.findViewById(R.id.txt_lyt_add_visit_note_refresh);
+        txt_sign_refresh = view.findViewById(R.id.txt_lyt_add_visit_sing_refresh);
 
-        Animation animation= AnimationUtils.loadAnimation(context,R.anim.bounce);
-        Animation animation1= AnimationUtils.loadAnimation(context,R.anim.fade_in);
-
+        Animation animation = AnimationUtils.loadAnimation(context, R.anim.bounce);
+        Animation animation1 = AnimationUtils.loadAnimation(context, R.anim.fade_in);
 
 
         builder.setView(view);
@@ -1888,21 +1829,21 @@ public class HastalarOrtakAdapterIslemleri {
 
         AlertDialog dialog = builder.create();
 
-       txt_sign_refresh.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               txt_sign_refresh.startAnimation(animation);
-               digitalSign.clear();
-           }
-       });
+        txt_sign_refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txt_sign_refresh.startAnimation(animation);
+                digitalSign.clear();
+            }
+        });
 
-       txt_note_refresh.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               txt_note_refresh.startAnimation(animation1);
-               editText_not.setText("");
-           }
-       });
+        txt_note_refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txt_note_refresh.startAnimation(animation1);
+                editText_not.setText("");
+            }
+        });
 
         editText_not.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -1934,14 +1875,10 @@ public class HastalarOrtakAdapterIslemleri {
                 appointment.visitType = "PERÝYODÝK ZÝYARET";
 
 
+                Date visitDate = CustomTime.getParsedDate(appointment.appointmentDate);
 
 
-                Date visitDate=CustomTime.getParsedDate(appointment.appointmentDate);
-
-
-                if (!visitDate.after(CustomTime.getNowDate()))
-
-                {
+                if (!visitDate.after(CustomTime.getNowDate())) {
                     if (gelen_messaj != null && !gelen_messaj.matches("")) {
                         appointment.notes = gelen_messaj;
 
@@ -1968,12 +1905,9 @@ public class HastalarOrtakAdapterIslemleri {
                     } else {
                         editText_not.setError("bu alaný doldurun!!");
                     }
-                }
-
-                else
-                    {
+                } else {
                     Toast.makeText(context, "Randevü gününden önce ziyaret ekleyemessiniz!!", Toast.LENGTH_SHORT).show();
-                    }
+                }
 
 
             }
@@ -2065,63 +1999,41 @@ public class HastalarOrtakAdapterIslemleri {
 
     }
 
-    public String convertPhoneNumberType(String phoneNumber)
-    {
-        String tel_no="";
+    public String convertPhoneNumberType(String phoneNumber) {
+        String tel_no = "";
 
-        tel_no=phoneNumber.charAt(0)+ " ("+phoneNumber.substring(1,4)+") "+phoneNumber.substring(4,7)+" "+phoneNumber.substring(7,11);
+        tel_no = phoneNumber.charAt(0) + " (" + phoneNumber.substring(1, 4) + ") " + phoneNumber.substring(4, 7) + " " + phoneNumber.substring(7, 11);
 
-       return tel_no;
+        return tel_no;
 
 
     }
 
-    public  void selectTreatment(EditText  editText)
-    {
-        StringBuilder  stringBuilder= new StringBuilder();
-        ArrayList<Integer> eklenenler= new ArrayList<>();
+    public void selectTreatment(EditText editText) {
+        StringBuilder stringBuilder = new StringBuilder();
+        ArrayList<Integer> eklenenler = new ArrayList<>();
+
 
 
 
         String[] uygulamalar = context.getResources().getStringArray(R.array.saðlik_personeli_uygulamalari);
 
-        ListView listView =  new ListView(activity);
-        ArrayAdapter arrayAdapter=  new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1,uygulamalar);
+        ListView listView = new ListView(activity);
+        ArrayAdapter arrayAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, uygulamalar);
 
         listView.setAdapter(arrayAdapter);
 
-        AlertDialog.Builder builder= new AlertDialog.Builder(activity);
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         builder.setTitle("Yapýlan uygulama-larý  seçiniz!!");
         builder.setIcon(R.drawable.pills_1);
-        builder.setMessage("birden fazla uygulama seçmek için uzun basýn ve en sonunda da tamamlanya týklayýn!!!");
-
-        builder.setPositiveButton("Tamamlandý", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-               editText.setText(stringBuilder.toString());
-               dialog.dismiss();
-
-            }
-        });
-
-        builder.setNegativeButton("VAZGEÇ", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        dialog.dismiss();
-
-                    }
-                });
+        builder.setMessage("birden fazla uygulama seçmek için uzun basýn ve seçiminizi yapýn!!!");
         builder.setView(listView);
-
         listView.setDividerHeight(20);
         listView.setVerticalScrollBarEnabled(true);
 
 
-
-        AlertDialog dialog=builder.create();
+        AlertDialog dialog = builder.create();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -2167,63 +2079,103 @@ public class HastalarOrtakAdapterIslemleri {
             @Override
             public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 
+                MenuItem menuItem_ekle, menuItem_kaldir, menuItem_ekle_ve_tamamla,menuItem_tamamla;
+
+
                 AdapterView.AdapterContextMenuInfo listAdapterInfo = (AdapterView.AdapterContextMenuInfo) menuInfo;
 
-                String gelen=arrayAdapter.getItem(listAdapterInfo.position).toString();
-
-                if(!eklenenler.contains(listAdapterInfo.position))
-                {
-                    eklenenler.add(listAdapterInfo.position);
-
-                }
-                else
-                {
-                    Toast.makeText(context,"Bu uygulamayý daha önce eklemiþtiniz!!",Toast.LENGTH_SHORT).show();
-                }
+                String gelen = arrayAdapter.getItem(listAdapterInfo.position).toString();
+              int  current_position =listAdapterInfo.position;
 
 
-
-               menu.add("ekle").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                menuItem_ekle = menu.add("ekle").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
 
-                        stringBuilder.append(gelen+"\n");
-                        Toast.makeText(context,gelen+"  uygulamasý eklendi!!",Toast.LENGTH_SHORT).show();
+                        stringBuilder.append(gelen + "\n");
+                        eklenenler.add(current_position);
+                        Toast.makeText(context, gelen + "  uygulamasý eklendi!!", Toast.LENGTH_SHORT).show();
 
-                        return false;
-                    }
-                });
-               menu.add("kaldýr").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-
-                        stringBuilder.append(gelen+"\n");
-                        Toast.makeText(context,gelen+"  uygulamasý kaldýrýldý!!",Toast.LENGTH_SHORT).show();
-
-                        return false;
+                        return true;
                     }
                 });
 
-
-               menu.add("tamamlandý").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                menuItem_kaldir = menu.add("kaldýr").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
+
+                        stringBuilder.delete(stringBuilder.indexOf(gelen),gelen.length()+1);
+                        eklenenler.remove(eklenenler.indexOf(current_position));
+
+                        Toast.makeText(context, gelen+ "  uygulamasý kaldýrýldý!!", Toast.LENGTH_SHORT).show();
+
+                        return true;
+                    }
+                });
+
+                menuItem_ekle_ve_tamamla = menu.add("ekle ve tamamla").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        if (!eklenenler.contains(current_position)) {
+                            stringBuilder.append(gelen);
+                            eklenenler.add(current_position);
+                        }
+                        else
+                        {
+                            stringBuilder.deleteCharAt(stringBuilder.length()-1);
+                        }
+
+
 
                         editText.setText(stringBuilder.toString());
                         dialog.dismiss();
 
 
-                        return false;
+                        return true;
                     }
                 });
 
+                menuItem_tamamla = menu.add("tamamla").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        stringBuilder.append(gelen);
+                        editText.setText(stringBuilder.toString());
+                        dialog.dismiss();
+
+
+                        return true;
+                    }
+                });
+
+                menu.add("çýk").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        dialog.dismiss();
+
+                        return true;
+                    }
+                });
+
+                menuItem_ekle.setEnabled(false);
+
+
+
+
+                if (!eklenenler.contains(current_position)) {
+                  menuItem_ekle.setEnabled(true);
+                  menuItem_kaldir.setEnabled(false);
+                }
+
+                else {
+                    menuItem_ekle.setEnabled(false);
+                    menuItem_kaldir.setEnabled(true);
+                }
 
 
             }
         });
-
-
-
 
 
         dialog.show();
