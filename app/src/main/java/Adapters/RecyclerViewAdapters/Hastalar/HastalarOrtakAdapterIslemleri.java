@@ -15,17 +15,16 @@ import Utils.Validatorler;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.view.ContextMenu;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
+import android.view.*;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.*;
@@ -2184,7 +2183,7 @@ public class HastalarOrtakAdapterIslemleri {
 
 
 
-              ContextMenu menu_ekle= (ContextMenu) menu.add("ekle").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+               menu.add("ekle").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
 
@@ -2194,7 +2193,7 @@ public class HastalarOrtakAdapterIslemleri {
                         return false;
                     }
                 });
-                ContextMenu menu_kaldir= (ContextMenu) menu.add("kaldýr").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+               menu.add("kaldýr").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
 
@@ -2206,11 +2205,12 @@ public class HastalarOrtakAdapterIslemleri {
                 });
 
 
-                ContextMenu menu_tamamlandi= (ContextMenu) menu.add("tamamlandý").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+               menu.add("tamamlandý").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
 
-                        stringBuilder.append(gelen+"\n");
+                        editText.setText(stringBuilder.toString());
+                        dialog.dismiss();
 
 
                         return false;
