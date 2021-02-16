@@ -20,11 +20,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.*;
 import androidx.annotation.Nullable;
 
@@ -1860,6 +1863,8 @@ public class HastalarOrtakAdapterIslemleri {
 
         EditText editText_not;
 
+        TextView txt_note_refresh,txt_sign_refresh;
+
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         View view = inflater.inflate(R.layout.layout_add_visit, null);
@@ -1871,13 +1876,34 @@ public class HastalarOrtakAdapterIslemleri {
 
         digitalSign = view.findViewById(R.id.dgtl_sign_lyt_add_visit);
 
+        txt_note_refresh=view.findViewById(R.id.txt_lyt_add_visit_note_refresh);
+        txt_sign_refresh=view.findViewById(R.id.txt_lyt_add_visit_sing_refresh);
+
+        Animation animation= AnimationUtils.loadAnimation(context,R.anim.bounce);
+        Animation animation1= AnimationUtils.loadAnimation(context,R.anim.fade_in);
+
+
 
         builder.setView(view);
 
 
         AlertDialog dialog = builder.create();
 
+       txt_sign_refresh.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               txt_sign_refresh.startAnimation(animation);
+               digitalSign.clear();
+           }
+       });
 
+       txt_note_refresh.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               txt_note_refresh.startAnimation(animation1);
+               editText_not.setText("");
+           }
+       });
 
         editText_not.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -1907,6 +1933,7 @@ public class HastalarOrtakAdapterIslemleri {
                 digitalSign.getBitmap().compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
 
                 appointment.visitType = "PERÝYODÝK ZÝYARET";
+
 
 
 
@@ -1952,6 +1979,7 @@ public class HastalarOrtakAdapterIslemleri {
 
             }
         });
+
 
         dialog.show();
 
@@ -2089,10 +2117,10 @@ public class HastalarOrtakAdapterIslemleri {
                 });
         builder.setView(listView);
 
-        listView.setDividerHeight(30);
+        listView.setDividerHeight(20);
         listView.setVerticalScrollBarEnabled(true);
 
-        listView.scrollBy(0,4);
+
 
         AlertDialog dialog=builder.create();
 
@@ -2105,6 +2133,11 @@ public class HastalarOrtakAdapterIslemleri {
 
             }
         });
+
+
+
+
+/*
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -2129,6 +2162,69 @@ public class HastalarOrtakAdapterIslemleri {
                 return true;
             }
         });
+*/
+
+        listView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+            @Override
+            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
+                AdapterView.AdapterContextMenuInfo listAdapterInfo = (AdapterView.AdapterContextMenuInfo) menuInfo;
+
+                String gelen=arrayAdapter.getItem(listAdapterInfo.position).toString();
+
+                if(!eklenenler.contains(listAdapterInfo.position))
+                {
+                    eklenenler.add(listAdapterInfo.position);
+
+                }
+                else
+                {
+                    Toast.makeText(context,"Bu uygulamayý daha önce eklemiþtiniz!!",Toast.LENGTH_SHORT).show();
+                }
+
+
+
+              ContextMenu menu_ekle= (ContextMenu) menu.add("ekle").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        stringBuilder.append(gelen+"\n");
+                        Toast.makeText(context,gelen+"  uygulamasý eklendi!!",Toast.LENGTH_SHORT).show();
+
+                        return false;
+                    }
+                });
+                ContextMenu menu_kaldir= (ContextMenu) menu.add("kaldýr").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        stringBuilder.append(gelen+"\n");
+                        Toast.makeText(context,gelen+"  uygulamasý kaldýrýldý!!",Toast.LENGTH_SHORT).show();
+
+                        return false;
+                    }
+                });
+
+
+                ContextMenu menu_tamamlandi= (ContextMenu) menu.add("tamamlandý").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        stringBuilder.append(gelen+"\n");
+
+
+                        return false;
+                    }
+                });
+
+
+
+            }
+        });
+
+
+
+
 
         dialog.show();
     }
