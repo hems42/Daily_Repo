@@ -164,6 +164,7 @@ public class RecyclerViewAdapterOfRandevuListesi extends RecyclerView.Adapter<Re
                 @Override
                 public void onClick(View v) {
 
+                    commonOp.showVisits(getCurrentPatient(getBindingAdapterPosition()));
 
                 }
             });
