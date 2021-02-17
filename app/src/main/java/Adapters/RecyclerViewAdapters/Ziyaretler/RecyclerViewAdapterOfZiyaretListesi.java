@@ -96,7 +96,8 @@ public class RecyclerViewAdapterOfZiyaretListesi extends RecyclerView.Adapter<Re
                 @Override
                 public void onClick(View v) {
 
-                    if(visitInformations.get(getBindingAdapterPosition()).visitResult.matches(VisitInformations.TAMAMLANDI))
+                    String ziyaret_sonucu=visitInformations.get(getBindingAdapterPosition()).visitResult;
+                    if(ziyaret_sonucu!=null&&ziyaret_sonucu.matches(VisitInformations.TAMAMLANDI))
                     {
                         Patient patient=dbsqLiteOfAllPatients.getPatient(visitInformations.get(getBindingAdapterPosition()).tc_no);
                         Dialog_Show_ResultOfVisit dialog_show_resultOfVisit= new Dialog_Show_ResultOfVisit(context,
