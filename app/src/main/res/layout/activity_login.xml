@@ -82,4 +82,17 @@
     />
 
 
+
+    <ImageView
+            android:layout_width="45dp"
+            android:background="@android:color/darker_gray"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:src="@drawable/finger_print"
+            android:layout_marginTop="60dp"
+            android:clickable="true"
+            android:id="@+id/img_login_finger_print"
+    />
+
+
 </LinearLayout>

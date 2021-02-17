@@ -2,17 +2,20 @@ package Activities;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.hardware.biometrics.BiometricManager;
-import android.hardware.biometrics.BiometricPrompt;
-import android.hardware.biometrics.*;
-import android.os.CancellationSignal;
+import android.content.Intent;
+import android.os.*;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 
+import androidx.biometric.BiometricPrompt;
 import com.example.esh_ajanda.R;
 
 import java.util.concurrent.Executor;
@@ -21,69 +24,19 @@ import java.util.concurrent.Executors;
 public class LoginActivity extends AppCompatActivity {
 
     Context context=LoginActivity.this;
+    ImageView img_finger;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-/*
+        img_finger=findViewById(R.id.img_login_finger_print);
+
         Executor newExecutor = Executors.newSingleThreadExecutor();
-        BiometricPrompt.Builder builder= new BiometricPrompt.Builder(context);
+        Executor newExecutor_2 = Executors.newSingleThreadExecutor();
 
 
-
-     BiometricPrompt biometricPrompt= builder
-                .setDescription("Giriþ Yapmak Ýçin Parmak Ýzinizi Kullanýn!!")
-                .setNegativeButton("VAZGEÇ", newExecutor, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        dialog.dismiss();
-                    }
-                })
-                .setTitle("PARMAK ÝZÝ ÝLE GÝRÝÞ")
-                .setConfirmationRequired(true)
-                .build();
-
-        CancellationSignal cancellationSignal= new CancellationSignal();
-
-        cancellationSignal.setOnCancelListener(new CancellationSignal.OnCancelListener() {
-            @Override
-            public void onCancel() {
-                Toast.makeText(context,"Parmak izi iptal edildi",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-        BiometricPrompt.AuthenticationCallback authenticationCallback= new BiometricPrompt.AuthenticationCallback() {
-            @Override
-            public void onAuthenticationError(int errorCode, CharSequence errString) {
-                super.onAuthenticationError(errorCode, errString);
-                Toast.makeText(context,"PARMAK ÝZÝ HATA VERDÝ",Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
-                super.onAuthenticationSucceeded(result);
-
-                Toast.makeText(context,"PARMAK ÝZÝ TANIMA BAÞARILI",Toast.LENGTH_SHORT).show();
-            }
-        };
-
-
-        Button button=findViewById(R.id.btn_login_ok);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                biometricPrompt.authenticate(cancellationSignal,newExecutor,authenticationCallback);
-            }
-        });
-*/
-
-        /*
         //Parmaðý sensöre dokundurduðunuz anda, telefonda kayýtlý iz ile
         //karsýlastýrma için BiometricPrompt sýnýfýnýn içindeki iþlem durumu metodlarý oluþturulur
         final BiometricPrompt myBiometricPrompt =new BiometricPrompt(this, newExecutor, new BiometricPrompt.AuthenticationCallback() {
@@ -93,41 +46,109 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAuthenticationError(int errorCode,CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
-                if (errorCode == BiometricPrompt.BIOMETRIC_ERROR_CANCELED) {
+                if (errorCode == BiometricPrompt.ERROR_USER_CANCELED) {
                 } else {
-                    Log.d("MainActivity", "bir hata oluþtu");
+
                 }
             }
             //Bu metod, parmak izi cihazda kayýtlý parmak izlerinden biriyle baþarýlý bir þekilde eþleþtiðinde çaðrýlýr.
             @Override
             public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
-                Log.d("MainActivity", "Parmak izi baþarýyla tanýndý");
+
+
+
+
+
+
+
+                Intent intent= new Intent(LoginActivity.this,HastalarActivity.class);
+                startActivity(intent);
+                finish();
             }
             //Bu metodda parmak izi tanýma iþlemi baþarýlý olmadýðýnda, yapýlacak iþlemler yazýlmalý
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
-                Log.d("MainActivity", "Parmak izi tanýnmadý");
+
             }
 
         });
         //kimlik doðrulama iletiþim kutusunda görünmesi gereken metni tanýmlamanýz ve kimlik doðrulamasýný iptal etmesini saðlayan metoda isim atama
         final BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
-                .setTitle("Baþlýk yazýlacak alan")
-                .setSubtitle("Altbaþlýk yazýlacak alan")
-                .setDescription("Açýklama yazýlacak alan")
-                .setNegativeButtonText("Ýptal")
+                .setTitle("Parmak Ýzi ile Giriþ!!")
+                .setSubtitle("Giriþ yapmak için parmak izinizi kullanýnýz!!")
+
+                .setNegativeButtonText("VAZGEÇ")
                 .build();
 
-        findViewById(R.id.btn_login_ok).setOnClickListener(new View.OnClickListener() {
+
+
+        EditText editText=findViewById(R.id.edtxt_login_pasword);
+
+        final String[] gelen_parola = {null};
+
+
+
+        Button button=findViewById(R.id.btn_login_ok);
+
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                gelen_parola[0] =editText.getText().toString();
+              if(gelen_parola[0] !=null&&!gelen_parola[0].matches(""))
+              {
+                  if(gelen_parola[0].matches("1234"))
+                  {
+                      Toast.makeText(context,"Giriþ Baþarýlý!!!",Toast.LENGTH_SHORT).show();
+                      Intent intent= new Intent(LoginActivity.this,HastalarActivity.class);
+                      editText.setText("");
+                      startActivity(intent);
+                      finish();
+                  }
+                  else
+                  {
+                      Toast.makeText(context,"Hatalý Parola...!!",Toast.LENGTH_SHORT).show();
+                  }
+              }
+              else
+              {
+                  editText.setError("bu alaný doldurun!!");
+              }
+            }
+        });
+
+        Animation animation= AnimationUtils.loadAnimation(context,R.anim.fade_out);
+
+        img_finger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                img_finger.startAnimation(animation);
                 myBiometricPrompt.authenticate(promptInfo);
             }
-        });*/
+        });
+
+        editText.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+
+                return true;
+            }
+        });
 
     }
 
+    @Override
+    protected void onDestroy() {
 
+         Toast.makeText(LoginActivity.this,"Giriþ Baþarýlý!!!",Toast.LENGTH_SHORT).show();
+
+         super.onDestroy();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 }
