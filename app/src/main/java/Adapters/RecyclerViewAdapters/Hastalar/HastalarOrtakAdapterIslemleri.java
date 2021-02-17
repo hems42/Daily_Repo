@@ -2181,6 +2181,30 @@ public class HastalarOrtakAdapterIslemleri {
         dialog.show();
     }
 
+
+    public void showVisitResult(Patient patient, VisitInformations  visitInformations)
+    {
+        Dialog_Show_ResultOfVisit dialog_show_resultOfVisit= new Dialog_Show_ResultOfVisit(context,patient,patientInnerManager,visitInformations);
+
+
+        dialog_show_resultOfVisit.show();
+    }
+
+
+    public void showFileOfPatient(Patient patient)
+    {
+        Dialog_Hasta_Dosyasý dialog_hasta_dosyasi= new Dialog_Hasta_Dosyasý(context,patient);
+
+        dialog_hasta_dosyasi.show();
+    }
+
+
+
+
+
+
+
+
 }
 
 
