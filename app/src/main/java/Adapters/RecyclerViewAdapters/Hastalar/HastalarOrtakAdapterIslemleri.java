@@ -2048,7 +2048,32 @@ public class HastalarOrtakAdapterIslemleri {
 
 
 
+/*
 
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String gelen=arrayAdapter.getItem(position).toString();
+
+                if(!eklenenler.contains(position))
+                {
+                    eklenenler.add(position);
+                    stringBuilder.append(gelen+"\n");
+                    Toast.makeText(context,gelen+"  uygulamasý eklendi!!",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(context,"Bu uygulamayý daha önce eklemiþtiniz!!",Toast.LENGTH_SHORT).show();
+                }
+
+
+
+
+                return true;
+            }
+        });
+*/
 
         listView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             @Override
@@ -2154,22 +2179,6 @@ public class HastalarOrtakAdapterIslemleri {
 
 
         dialog.show();
-    }
-
-    public void showVisitResult(Patient patient, VisitInformations  visitInformations)
-    {
-        Dialog_Show_ResultOfVisit dialog_show_resultOfVisit= new Dialog_Show_ResultOfVisit(context,patient,patientInnerManager,visitInformations);
-
-
-        dialog_show_resultOfVisit.show();
-    }
-
-
-    public void showFileOfPatient(Patient patient)
-    {
-        Dialog_Hasta_Dosyasý dialog_hasta_dosyasý= new Dialog_Hasta_Dosyasý(context,patient);
-
-        dialog_hasta_dosyasý.show();
     }
 
 }
