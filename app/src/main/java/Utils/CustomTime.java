@@ -1,6 +1,8 @@
 package Utils;
 
 import Patient.VisitInformations;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import androidx.annotation.RequiresApi;
 
@@ -14,6 +16,11 @@ public class CustomTime {
     private final SimpleDateFormat sekil = new SimpleDateFormat("dd.MM.yyyy - h:m:s");
     private final GregorianCalendar tarih = new GregorianCalendar();
 
+
+    public static  String LOGIN_CONTROL_STARTMINUTE="LoginStartMinute";
+    public static  String LOGIN_CONTROL_HOWMANY_MINUTE="LoginHowManyTime";
+    public static  String LOGIN_CONTROL_GET_MINUTE="kaç_dakka_geçmiþ";
+    public static  String LOGIN_CONTROL_GET_HOWMANY_LOGIN="kaç_kere_login_olmuþ";
 
 
 
@@ -42,6 +49,15 @@ public class CustomTime {
 
 
         return sekil.format(tarih.getTime());
+    }
+
+    public static int getCurrentMinute()
+    {
+        SimpleDateFormat sekil = new SimpleDateFormat("m");
+        GregorianCalendar tarih = new GregorianCalendar();
+
+
+        return Integer.parseInt(sekil.format(tarih.getTime()));
     }
 
     public static  Date getNowDate()
@@ -337,5 +353,48 @@ public class CustomTime {
 
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static  void startApp(Context  context)
+    {
+        SharedPreferences sharedPref =context.getSharedPreferences(CustomTime.LOGIN_CONTROL_STARTMINUTE, Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor  editor=sharedPref.edit();
+
+     editor.putInt(CustomTime.LOGIN_CONTROL_STARTMINUTE,CustomTime.getCurrentMinute());
+
+     editor.commit();
+
+    }
+
+
+
+    public static int  getHowManyMinute(Context context)
+    {
+        SharedPreferences sharedPref =context.getSharedPreferences(CustomTime.LOGIN_CONTROL_STARTMINUTE, Context.MODE_PRIVATE);
+        int baslangic_dakikasi=sharedPref.getInt(CustomTime.LOGIN_CONTROL_GET_MINUTE,555);
+
+        if(baslangic_dakikasi!=555)
+        {
+            return Math.abs(getCurrentMinute()-baslangic_dakikasi);
+
+        }
+
+        else
+        {
+            return 555;
+        }
+    }
 
 }

@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        android:background="@android:color/darker_gray"
+        android:background="@drawable/bg_7"
         tools:context="Activities.LoginActivity"
 >
 
@@ -39,7 +39,7 @@
 
             android:layout_height="wrap_content"
             android:hint="parola ya da parmakizi gerekli.."
-            android:textColorHint="@android:color/white"
+            android:textColorHint="@android:color/black"
             android:textAlignment="center"
             android:textSize="16sp"
             android:inputType="numberPassword"
@@ -74,7 +74,7 @@
             android:textAlignment="textStart"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_marginRight="13dp"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
 
             android:textSize="14sp"
             app:cornerRadius="25dp"
@@ -84,15 +84,14 @@
 
 
     <ImageView
-            android:layout_width="45dp"
-            android:background="@android:color/darker_gray"
-            android:layout_height="45dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:layout_gravity="center"
             android:src="@drawable/finger_print"
             android:layout_marginTop="60dp"
             android:clickable="true"
             android:id="@+id/img_login_finger_print"
-    />
+            app:tint="@android:color/white"/>
 
 
 </LinearLayout>

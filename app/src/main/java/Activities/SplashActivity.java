@@ -1,5 +1,6 @@
 package Activities;
 
+import Utils.CustomTime;
 import android.content.Intent;
 import android.os.Handler;
 import android.view.animation.Animation;
@@ -18,6 +19,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+
         Animation animation= AnimationUtils.loadAnimation(SplashActivity.this,R.anim.rotate);
         TextView textView=findViewById(R.id.txt_splahs_screeen_title);
 
@@ -25,6 +27,7 @@ public class SplashActivity extends AppCompatActivity {
 
         textView.setAnimation(animation);
 
+        CustomTime.startApp(this); // uygulama baþlangýç dakikasýný aldýk.
 
 
         lottieAnimationView.setSpeed(0.5f);

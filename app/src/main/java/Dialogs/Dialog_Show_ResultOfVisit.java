@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import com.example.esh_ajanda.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -64,9 +65,18 @@ public class Dialog_Show_ResultOfVisit extends BottomSheetDialog {
         if(visitInformations.visitResult.matches(VisitInformations.TAMAMLANDI))
         {
            current_visit=patientInnerManager.ziyareti_getir(patient,visitInformations.visitDate);
-           bitmap_sign= BitmapFactory.decodeByteArray(current_visit.sign,0,current_visit.sign.length);
 
-           img_sign.setImageBitmap(bitmap_sign);
+           if(current_visit.sign!=null)
+           {
+               bitmap_sign= BitmapFactory.decodeByteArray(current_visit.sign,0,current_visit.sign.length);
+
+               img_sign.setImageBitmap(bitmap_sign);
+           }
+           else
+           {
+               Toast.makeText(context,"Ýmza Bilgisine Ulaþýlamadý!!",Toast.LENGTH_SHORT).show();
+           }
+
 
            txt_treatments.setText(current_visit.notes);
         }
