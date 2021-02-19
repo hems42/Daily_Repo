@@ -13,8 +13,8 @@ public class PassWordManager {
         sharedPassword=context.getSharedPreferences(PAROLA_KULLANICI,Context.MODE_PRIVATE);
         editorPassword=sharedPassword.edit();
 
-        editorPassword.putInt(PAROLA_GECERLI_KULLANICI,1234);
-        editorPassword.commit();
+//        editorPassword.putInt(PAROLA_GECERLI_KULLANICI,1234);
+//        editorPassword.commit();
 
 
     }

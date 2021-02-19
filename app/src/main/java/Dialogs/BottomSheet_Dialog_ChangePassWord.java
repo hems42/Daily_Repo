@@ -11,11 +11,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 
-import androidx.appcompat.app.AlertDialog;
 import com.example.esh_ajanda.R;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 
-public class ChangePassWord extends AlertDialog {
+public class BottomSheet_Dialog_ChangePassWord extends BottomSheetDialog {
 
     PassWordManager passWordManager;
 
@@ -26,8 +26,8 @@ public class ChangePassWord extends AlertDialog {
     private Activity  activity;
 
 
-    public ChangePassWord(@NonNull Context context) {
-        super(context);
+    public BottomSheet_Dialog_ChangePassWord(@NonNull Context context) {
+        super(context,R.style.CustomBottomSheetDialogTheme);
 
         passWordManager= new PassWordManager(context);
         this.context=context;
@@ -77,15 +77,25 @@ public class ChangePassWord extends AlertDialog {
                 psw_new=getInt(edtxt_new_password.getText().toString());
                 psw_new_again=getInt(edtxt_new_password_again.getText().toString());
 
-                System.out.println("güncel parola :"+passWordManager.getCurrentUserPassWord());
+                int kayitli_psw=0;
+                if(passWordManager.getCurrentUserPassWord()==PassWordManager.GECERLI_PAROLA_YOK||passWordManager.getCurrentUserPassWord()==-1)
+                {
+                    kayitli_psw=1234;
+                }
+                else
+                {
+                    kayitli_psw=passWordManager.getCurrentUserPassWord();
+                }
+
+
                 if(psw_current!=-1)
                 {
 
-                    if(psw_current==passWordManager.getCurrentUserPassWord())
+                    if(psw_current==kayitli_psw)
                     {
-                        if(psw_new!=1&&psw_new_again!=-1)
+                        if((psw_new!=1)&&(psw_new_again!=-1))
                         {
-                            if(psw_new_again==psw_new_again)
+                            if(psw_new==psw_new_again)
                             {
                                 if(passWordManager.changePassord(psw_new))
                                 {

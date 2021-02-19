@@ -1,16 +1,10 @@
 package Activities;
 
-import Dialogs.ChangePassWord;
-import Utils.CustomTime;
-import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.TaskInfo;
+import Dialogs.BottomSheet_Dialog_ChangePassWord;
+import Utils.PassWordManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.*;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -18,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.biometric.BiometricPrompt;
@@ -101,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 gelen_parola[0] = editText.getText().toString();
                 if (gelen_parola[0] != null && !gelen_parola[0].matches("")) {
-                    if (gelen_parola[0].matches("1234")) {
+                    if (gelen_parola[0].matches(String.valueOf(new PassWordManager(context).getCurrentUserPassWord()))) {
                         Toast.makeText(context, "Giriþ Baþarýlý!!!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, HastalarActivity.class);
                         editText.setText("");
@@ -143,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_change_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new ChangePassWord(context).show();
+                new BottomSheet_Dialog_ChangePassWord(context).show();
             }
         });
 
