@@ -27,8 +27,18 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
 
-
-
+//
+//        ExcelManager excelManager= new ExcelManager();
+//
+//        String path="/sdcard/hastalar.xls";
+//
+//        DBSQLiteOfAllPatients dbsqLiteOfAllPatients= new DBSQLiteOfAllPatients(SplashActivity.this);
+//        dbsqLiteOfAllPatients.onCreate(dbsqLiteOfAllPatients.getWritableDatabase());
+//
+//        for(Patient patient:excelManager.getPatientFromExcel(path))
+//        {
+//           dbsqLiteOfAllPatients.addPatient(patient);
+//        }
 
 
         Animation animation= AnimationUtils.loadAnimation(SplashActivity.this,R.anim.rotate);

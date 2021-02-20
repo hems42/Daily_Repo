@@ -31,13 +31,6 @@ public class frg_HastaListesiPasif extends Base_frg_HastaListesi {
 
         switch (item.getItemId())
         {
-            case R.id.menu_hastalar_:
-                Toast.makeText(context,"deneme baþarýlý pasif hastalar",Toast.LENGTH_SHORT).show();
-
-                sonuc=true;
-
-
-                break;
 
         }
         return sonuc;

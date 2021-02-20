@@ -1,6 +1,7 @@
 package Activities;
 
 import Adapters.FragmentAdapters.FragmentPagerAdapterHastalar;
+import BroadCasts.BackUpBroadCast;
 import DataBaseSQLite.DataBaseSQLiteOfPatient.DBSQLiteOfAllPatients;
 import Fragments.HastaListesi.*;
 import Fragments.RandevuListesi.frg_TumRandevuler;
@@ -40,6 +41,14 @@ public class HastalarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hastalar);
+
+
+
+        Intent intent= new Intent(HastalarActivity.this, BackUpBroadCast.class);
+
+        sendBroadcast(intent);
+
+
 
 
 

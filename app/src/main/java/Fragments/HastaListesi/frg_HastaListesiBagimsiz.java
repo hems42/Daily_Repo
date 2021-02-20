@@ -24,13 +24,6 @@ public class frg_HastaListesiBagimsiz extends Base_frg_HastaListesi {
 
         switch (item.getItemId())
         {
-            case R.id.menu_hastalar_:
-                Toast.makeText(context,"deneme baþarýlý baðýmsýz hastalar",Toast.LENGTH_SHORT).show();
-
-                sonuc=true;
-
-
-                break;
 
         }
         return sonuc;

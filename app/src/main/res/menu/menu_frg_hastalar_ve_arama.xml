@@ -22,7 +22,7 @@
 
 
 
-    <item android:id="@+id/menu_hastalar_"
+    <item
 
           app:showAsAction="never"
           android:title="sırala"
@@ -34,6 +34,29 @@
 
         </menu>
     </item>
+
+
+    <item
+
+          app:showAsAction="never"
+          android:title="yedekleme"
+    >
+        <menu
+        >
+            <item
+                  android:id="@+id/menu_hastalar_yedek_al"
+                  android:title="yedek al"
+            />
+
+            <item
+                    android:title="yedek yükle"
+                  android:id="@+id/menu_hastalar_yedek_yukle"
+
+            />
+
+        </menu>
+    </item>
+
 
 
 

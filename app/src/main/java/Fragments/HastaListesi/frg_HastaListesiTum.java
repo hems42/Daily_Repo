@@ -1,5 +1,6 @@
 package Fragments.HastaListesi;
 
+import BackUp.BackUpManager;
 import Utils.PatientUtillty;
 import android.content.Context;
 import android.view.*;
@@ -57,12 +58,37 @@ public class frg_HastaListesiTum extends Base_frg_HastaListesi {
 
         switch (item.getItemId())
         {
-            case R.id.menu_hastalar_:
+            case R.id.menu_hastalar_yedek_al:
+
+                if(new BackUpManager().getBackUpDataBase())
+                {
+                    Toast.makeText(context,"VeriTabaný Yedeklemesi Baþarýlý!!",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(context,"VeriTabaný Yedeklemesi Baþarýsýz Oldu!!",Toast.LENGTH_SHORT).show();
+                }
 
                 sonuc=true;
 
                 break;
 
+            case R.id.menu_hastalar_yedek_yukle:
+
+                sonuc=true;
+
+                if(new BackUpManager().LoadBackUpDataBase())
+                {
+                    Toast.makeText(context,"VeriTabaný Yedeklemesi Baþarýyla Yüklendi!!",Toast.LENGTH_SHORT).show();
+
+                    adapter.notifyItemChanged(0);
+                }
+                else
+                {
+                    Toast.makeText(context,"VeriTabaný Yedeklemesi Yüklenemedi!!",Toast.LENGTH_SHORT).show();
+                }
+
+                break;
 
             case R.id.menu_hastalar_hasta_ekle:
 

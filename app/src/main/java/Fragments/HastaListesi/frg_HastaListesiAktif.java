@@ -28,13 +28,7 @@ public class frg_HastaListesiAktif extends Base_frg_HastaListesi {
 
         switch (item.getItemId())
         {
-            case R.id.menu_hastalar_:
-                Toast.makeText(context,"deneme baþarýlý aktif hastalar",Toast.LENGTH_SHORT).show();
 
-                sonuc=true;
-
-
-                break;
 
         }
         return sonuc;
