@@ -44,10 +44,6 @@ public class HastalarActivity extends AppCompatActivity {
 
 
 
-        Intent intent= new Intent(HastalarActivity.this, BackUpBroadCast.class);
-
-        sendBroadcast(intent);
-
 
 
 
