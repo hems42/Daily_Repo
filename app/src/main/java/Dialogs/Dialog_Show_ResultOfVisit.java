@@ -35,7 +35,7 @@ public class Dialog_Show_ResultOfVisit extends BottomSheetDialog {
     public Dialog_Show_ResultOfVisit(Context context,Patient patient,
                                      PatientInnerManager  patientInnerManager,
                                      VisitInformations  visitInformations) {
-        super(context);
+        super(context,R.style.CustomBottomSheetDialogTheme);
 
         this.context=context;
         activity= (Activity) context;

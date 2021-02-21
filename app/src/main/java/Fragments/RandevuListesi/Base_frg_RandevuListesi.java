@@ -2,6 +2,8 @@ package Fragments.RandevuListesi;
 
 import Adapters.RecyclerViewAdapters.Hastalar.RecyclerViewAdapterOfRandevuListesi;
 import DataBaseSQLite.DBSQLiteOfAppointment;
+import Fragments.frg_HastaBulma;
+import Observation.ObserverRandevuLer;
 import Patient.VisitInformations;
 import Utils.CustomTime;
 import android.content.Context;
@@ -46,6 +48,7 @@ public class Base_frg_RandevuListesi extends Fragment {
         {
             filteredVisit=dbliteAppointment.getAllAppointments(CustomTime.getTimeJustDate());
         }
+
 
 
 
@@ -104,6 +107,7 @@ public class Base_frg_RandevuListesi extends Fragment {
 
             case R.id.menu_randevu_randevu_ekle:
 
+                new frg_HastaBulma(context).show();
 
                 sonuc=true;
 

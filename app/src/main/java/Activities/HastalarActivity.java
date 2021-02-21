@@ -47,7 +47,7 @@ public class HastalarActivity extends AppCompatActivity {
 
 
 
-        new frg_HastaBulma(context).show();
+
 
 
 

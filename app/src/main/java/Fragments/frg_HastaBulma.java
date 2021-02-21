@@ -2,10 +2,14 @@ package Fragments;
 
 import Adapters.RecyclerViewAdapters.Hastalar.RecyclerViewAdapterOfHastaListesi;
 import DataBaseSQLite.DataBaseSQLiteOfPatient.DBSQLiteOfAllPatients;
+import Observation.ObserverRandevuLer;
+import Patient.Patient;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.*;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,18 +19,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.esh_ajanda.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.util.ArrayList;
+
 public class frg_HastaBulma extends BottomSheetDialog {
 
     private Context context;
     private Activity activity;
     private View view;
-    private RecyclerViewAdapterOfHastaListesi recHasta;
+    private RecyclerViewAdapterOfHastaListesi recAdapter;
     RecyclerView recyclerView;
     Button btn_ok;
     DBSQLiteOfAllPatients dbsqLiteOfAllPatients;
     LinearLayoutManager layoutManager;
     TextView txt_baslik,txt_hasta_sayisi;
     EditText edtxt_hasta_bul;
+    ArrayList<Patient> innerPatients;
 
     public frg_HastaBulma(Context context) {
 
@@ -40,6 +47,8 @@ public class frg_HastaBulma extends BottomSheetDialog {
 
         layoutManager= new LinearLayoutManager(activity);
 
+        innerPatients=dbsqLiteOfAllPatients.getAllPatient();
+
 
     }
 
@@ -48,7 +57,7 @@ public class frg_HastaBulma extends BottomSheetDialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        view=getLayoutInflater().inflate(R.layout.layout_hasta_bul,null);
+        view=getLayoutInflater().inflate(R.layout.layout_hasta_bul,activity.findViewById(R.id.lyt_hasta_bulma));
 
         txt_baslik=view.findViewById(R.id.txt_frg_hasta_listesi_tum_listelenen_hasta_sayisi_baslik);
         txt_hasta_sayisi=view.findViewById(R.id.txt_frg_hasta_listesi_tum_listelenen_hasta_sayisi);
@@ -57,28 +66,40 @@ public class frg_HastaBulma extends BottomSheetDialog {
         btn_ok=view.findViewById(R.id.btn_lyt_hasta_bulma_ok);
 
         txt_hasta_sayisi.setTextSize(16);
-        txt_hasta_sayisi.setText(""+55);
+
         txt_baslik.setTextSize(16);
 
         txt_hasta_sayisi.setTextColor(Color.WHITE);
         txt_baslik.setTextColor(Color.WHITE);
 
 
+        sayi_guncelle(innerPatients.size());
 
-        recHasta= new RecyclerViewAdapterOfHastaListesi(context,dbsqLiteOfAllPatients.getAllPatient(),"kljlkj");
+        recAdapter = new RecyclerViewAdapterOfHastaListesi(context,innerPatients,"kljlkj");
 
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
 
 
+
         recyclerView.setLayoutManager(layoutManager);
 
-        recyclerView.setAdapter(recHasta);
+        recyclerView.setAdapter(recAdapter);
 
+        recAdapter.registerAdapterDataObserver(new ObserverRandevuLer());
 
+        edtxt_hasta_bul.addTextChangedListener(textWatcher);
 
+        edtxt_hasta_bul.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
 
+                edtxt_hasta_bul.setText("");
 
+                return true;
+
+            }
+        });
 
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,16 +108,56 @@ public class frg_HastaBulma extends BottomSheetDialog {
             }
         });
 
+
+
         setContentView(view);
 
 
     }
 
+    TextWatcher textWatcher= new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-/*    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        }
 
-        inflater.inflate(R.menu.searhmenu,menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }*/
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            String aranan=s.toString();
+
+            ArrayList<Patient> filtretedPatients = new ArrayList<>();
+
+            for (Patient patient : innerPatients)
+            {
+                if (patient.name.toLowerCase().contains(aranan.toLowerCase())
+                        || patient.surname.toLowerCase().contains(aranan.toLowerCase())
+                        || patient.tc_no.toLowerCase().contains(aranan.toLowerCase())
+
+                ) {
+                    filtretedPatients.add(patient);
+                }
+            }
+
+            liste_guncelle(filtretedPatients);
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
+
+    private void liste_guncelle(ArrayList<Patient> patients)
+    {
+        recAdapter.setPatient(patients);
+        sayi_guncelle(patients.size());
+    }
+
+    private   void sayi_guncelle(int sayi)
+    {
+        txt_hasta_sayisi.setText(""+sayi);
+    }
+
 }

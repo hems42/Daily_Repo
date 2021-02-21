@@ -1,6 +1,7 @@
 package BroadCasts;
 
-import BackUp.BackUpManager;
+
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +14,6 @@ public class DenemeBroadCast extends BroadcastReceiver {
 
         Toast.makeText(context,"BroadCast Denem Çalýþtý!!   "+intent.getAction()+ "   "+intent.getDataString(),Toast.LENGTH_SHORT).show();
 
-        System.out.println("action adý: "+intent.getAction());
+
     }
 }

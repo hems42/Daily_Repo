@@ -4,12 +4,13 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
+        android:layout_margin="3dp"
         app:cardCornerRadius="25dp"
+        android:layout_weight="1"
         android:elevation="10dp"
-
         android:backgroundTint="@android:color/holo_blue_dark"
         android:id="@+id/lyt_hasta_bulma"
+        app:layout_behavior="@string/bottom_sheet_behavior"
 >
 
     <LinearLayout
@@ -32,7 +33,7 @@
                 android:textStyle="bold"/>
 
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -47,7 +48,8 @@
 
         <include
                 android:layout_height="300dp"
-                android:layout_width="match_parent"
+                android:layout_width="324dp"
+                android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:id="@+id/include_hasta_bulma_frg_hasta_listesi"
                 layout="@layout/layout_frg_hasta_listesi"
