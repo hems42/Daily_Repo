@@ -8,12 +8,10 @@ import Utils.CustomTime;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -63,7 +61,7 @@ public class Dialog_Hasta_Dosyasý extends AlertDialog {
 
         linearLayout.setVisibility(View.GONE);
 
-        recyclerView=view.findViewById(R.id.recyclerview_frg_ziyaretlistesi_tum);
+        recyclerView=view.findViewById(R.id.recyclerview_dialog_ziyaretlistesi_tum);
 
         img_geri_don=view.findViewById(R.id.img_layout_file_of_patient_geri_don);
         img_hasta_imaji=view.findViewById(R.id.img_hasta_dosyasi_hasta_imaji);

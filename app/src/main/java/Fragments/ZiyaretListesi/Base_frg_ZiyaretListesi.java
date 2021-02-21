@@ -1,10 +1,8 @@
 package Fragments.ZiyaretListesi;
 
-import Adapters.RecyclerViewAdapters.Hastalar.RecyclerViewAdapterOfHastaListesi;
 import Adapters.RecyclerViewAdapters.Ziyaretler.RecyclerViewAdapterOfZiyaretListesi;
 import DataBaseSQLite.DBSQLiteOfVisit;
 import DataBaseSQLite.DataBaseSQLiteOfPatient.DBSQLiteOfAllPatients;
-import Dialogs.AddPatient_BottomSheetDialog;
 import Manager.PatientInnerManager;
 import Patient.*;
 import android.app.Activity;
@@ -147,7 +145,7 @@ public abstract class Base_frg_ZiyaretListesi extends Fragment {
 
         txt_baslik=view.findViewById(R.id.txt_layout_visit_list_baslik_yazisi);
         txt_ziyaret_sayisi=view.findViewById(R.id.txt_layout_visit_list_listelenen_ziayret_sayisi);
-        recyclerView=view.findViewById(R.id.recyclerview_frg_ziyaretlistesi_tum);
+        recyclerView=view.findViewById(R.id.recyclerview_dialog_ziyaretlistesi_tum);
 
         txt_baslik.setVisibility(View.GONE);
 

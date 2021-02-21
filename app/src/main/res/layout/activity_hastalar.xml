@@ -7,6 +7,7 @@
         android:layout_height="match_parent"
         tools:context="Activities.HastalarActivity"
         android:orientation="vertical"
+        android:id="@+id/layout_activity_hastalar"
 >
 
     <androidx.appcompat.widget.Toolbar

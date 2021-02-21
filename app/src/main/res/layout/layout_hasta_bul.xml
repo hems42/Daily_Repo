@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="25dp"
+        android:elevation="10dp"
+
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:id="@+id/lyt_hasta_bulma"
+>
+
+    <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="475dp"
+            android:orientation="vertical"
+    >
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:paddingBottom="7dp"
+                android:text="Hasta Bulma"
+                android:textAlignment="center"
+                android:paddingTop="3dp"
+                android:textColor="@android:color/white"
+                android:textSize="22dp"
+                android:textStyle="bold"/>
+
+
+        <EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtxt_lyt_hasta_bulma"
+                android:hint="aramak için buraya yazınız.."
+                android:textAlignment="center"
+                android:textColorHint="@android:color/white"
+                android:layout_margin="3dp"
+        />
+
+
+
+        <include
+                android:layout_height="300dp"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:id="@+id/include_hasta_bulma_frg_hasta_listesi"
+                layout="@layout/layout_frg_hasta_listesi"
+
+        />
+        <com.google.android.material.button.MaterialButton
+                app:cornerRadius="15dp"
+                style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="2dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_height="wrap_content"
+                android:text="TAMAM"
+                android:textColor="@android:color/white"
+                android:id="@+id/btn_lyt_hasta_bulma_ok"
+
+        />
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

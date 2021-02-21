@@ -15,14 +15,11 @@ import Utils.Validatorler;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.view.*;
 import android.view.animation.Animation;
@@ -31,16 +28,12 @@ import android.widget.*;
 import androidx.annotation.Nullable;
 
 import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.esh_ajanda.R;
 
 import java.io.ByteArrayOutputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 public class HastalarOrtakAdapterIslemleri {
@@ -1725,7 +1718,7 @@ public class HastalarOrtakAdapterIslemleri {
             txt_baslik = view.findViewById(R.id.txt_layout_visit_list_baslik_yazisi);
             txt_ziyaret_sayisi = view.findViewById(R.id.txt_layout_visit_list_listelenen_ziayret_sayisi);
             img_geri_don = view.findViewById(R.id.img_layout_visit_list_dialog_geri_don);
-            recyclerView = view.findViewById(R.id.recyclerview_frg_ziyaretlistesi_tum);
+            recyclerView = view.findViewById(R.id.recyclerview_dialog_ziyaretlistesi_tum);
 
             txt_baslik.setText("KAYDEDÝLMÝÞ ZÝYARETLER");
 
