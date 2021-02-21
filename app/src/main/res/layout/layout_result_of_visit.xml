@@ -124,7 +124,13 @@
                             android:paddingLeft="20dp"
                             android:textColor="@android:color/black"
                             android:textStyle="bold"
+                            android:scrollbars="vertical"
+                            android:scrollIndicators="right"
                             android:textSize="23sp"
+                            android:maxLines="10"
+                            android:nestedScrollingEnabled="true"
+                            android:scrollbarStyle="outsideOverlay"
+                            android:verticalScrollbarPosition="right"
                             android:id="@+id/txt_result_of_visit"
                             android:layout_marginTop="5dp"
                     />

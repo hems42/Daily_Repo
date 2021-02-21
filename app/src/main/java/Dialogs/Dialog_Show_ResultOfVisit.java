@@ -10,8 +10,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Binder;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Scroller;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -57,6 +59,14 @@ public class Dialog_Show_ResultOfVisit extends BottomSheetDialog {
         view=getLayoutInflater().inflate(R.layout.layout_result_of_visit,activity.findViewById(R.id.bottom_sheet_lyt_visit_result_of_patient));
 
         txt_treatments=view.findViewById(R.id.txt_result_of_visit);
+        txt_treatments.setMovementMethod(new ScrollingMovementMethod());
+        txt_treatments.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                txt_treatments.setScrollX(0);
+                return true;
+            }
+        });
 
         img_sign=view.findViewById(R.id.img_result_of_visit);
         img_geri_don=view.findViewById(R.id.img_layout_visit_result_dialog_geri_don);
