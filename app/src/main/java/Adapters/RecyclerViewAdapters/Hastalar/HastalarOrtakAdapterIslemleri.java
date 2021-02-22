@@ -58,7 +58,9 @@ public class HastalarOrtakAdapterIslemleri {
             RecyclerViewAdapterOfRandevuListesi recRandevuAdapter
 
 
-    ) {
+    )
+
+    {
         this.context = context;
         activity = (Activity) context;
         inflater = LayoutInflater.from(context);
