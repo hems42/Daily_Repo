@@ -46,7 +46,6 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:id="@+id/txt_frg_hasta_listesi_tum_listelenen_hasta_sayisi"
                         android:paddingTop="5dp"
                         android:textColor="#293241"
@@ -64,6 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+
                     android:id="@+id/recyclerview_frg_hasta_listesi_tum"
 
             />

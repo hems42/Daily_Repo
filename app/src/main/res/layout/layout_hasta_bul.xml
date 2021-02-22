@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="475dp"
             android:orientation="vertical"
+            android:gravity="center"
     >
 
         <TextView
@@ -33,10 +34,10 @@
                 android:textStyle="bold"/>
 
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
 
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:id="@+id/edtxt_lyt_hasta_bulma"
                 android:hint="aramak için buraya yazınız.."
                 android:textAlignment="center"
@@ -47,22 +48,23 @@
 
 
         <include
-                android:layout_height="300dp"
-                android:layout_width="324dp"
+                android:layout_height="0dp"
+                android:layout_width="325dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
                 android:id="@+id/include_hasta_bulma_frg_hasta_listesi"
                 layout="@layout/layout_frg_hasta_listesi"
+                android:layout_marginEnd="5dp"
 
         />
         <com.google.android.material.button.MaterialButton
                 app:cornerRadius="15dp"
-                style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
                 android:backgroundTint="@android:color/holo_red_dark"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="2dp"
-                android:layout_marginRight="7dp"
-                android:layout_marginLeft="7dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"
                 android:layout_height="wrap_content"
                 android:text="TAMAM"
                 android:textColor="@android:color/white"

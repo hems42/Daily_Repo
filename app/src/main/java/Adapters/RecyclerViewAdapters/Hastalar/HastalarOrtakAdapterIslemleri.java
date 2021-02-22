@@ -1713,7 +1713,7 @@ public class HastalarOrtakAdapterIslemleri {
 
             adapter = new RecyclerViewAdapterOfZiyaretListesi(context, innerVisits, null);
 
-            View view = inflater.inflate(R.layout.layout_visit_list_dialog, null);
+            View view = inflater.inflate(R.layout.layout_visit_list_dialog,null);
 
             txt_baslik = view.findViewById(R.id.txt_layout_visit_list_baslik_yazisi);
             txt_ziyaret_sayisi = view.findViewById(R.id.txt_layout_visit_list_listelenen_ziayret_sayisi);
@@ -1731,6 +1731,7 @@ public class HastalarOrtakAdapterIslemleri {
             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
             builder.setView(view);
+
 
 
             AlertDialog dialog = builder.create();
