@@ -1,4 +1,4 @@
-package Fragments;
+package Dialogs;
 
 import Adapters.RecyclerViewAdapters.Hastalar.RecyclerViewAdapterOfHastaListesi;
 import DataBaseSQLite.DataBaseSQLiteOfPatient.DBSQLiteOfAllPatients;
@@ -10,7 +10,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.*;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,12 +21,13 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 
-public class frg_HastaBulma extends BottomSheetDialog {
+public class Dialog_HastaBulma extends BottomSheetDialog {
 
     private Context context;
     private Activity activity;
     private View view;
     private RecyclerViewAdapterOfHastaListesi recAdapter;
+    private RecyclerView.Adapter adapter_2;
     RecyclerView recyclerView;
     Button btn_ok;
     DBSQLiteOfAllPatients dbsqLiteOfAllPatients;
@@ -35,7 +36,7 @@ public class frg_HastaBulma extends BottomSheetDialog {
     EditText edtxt_hasta_bul;
     ArrayList<Patient> innerPatients;
 
-    public frg_HastaBulma(Context context) {
+    public Dialog_HastaBulma(Context context,RecyclerView.Adapter  adapter) {
 
         super(context,R.style.CustomBottomSheetDialogTheme);
 
@@ -48,6 +49,8 @@ public class frg_HastaBulma extends BottomSheetDialog {
         layoutManager= new LinearLayoutManager(activity);
 
         innerPatients=dbsqLiteOfAllPatients.getAllPatient();
+
+       this.adapter_2=adapter;
 
 
     }
@@ -73,8 +76,6 @@ public class frg_HastaBulma extends BottomSheetDialog {
         txt_baslik.setTextColor(Color.WHITE);
 
 
-
-
         sayi_guncelle(innerPatients.size());
 
         recAdapter = new RecyclerViewAdapterOfHastaListesi(context,innerPatients,"kljlkj");
@@ -88,6 +89,7 @@ public class frg_HastaBulma extends BottomSheetDialog {
 
         recyclerView.setAdapter(recAdapter);
 
+        recAdapter.registerAdapterDataObserver(new ObserverRandevuLer());
 
         edtxt_hasta_bul.addTextChangedListener(textWatcher);
 

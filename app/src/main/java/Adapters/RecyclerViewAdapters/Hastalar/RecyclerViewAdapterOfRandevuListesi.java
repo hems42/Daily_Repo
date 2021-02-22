@@ -277,6 +277,10 @@ public class RecyclerViewAdapterOfRandevuListesi extends RecyclerView.Adapter<Re
 
 
 
+    public void tum_Randevuleri_Sil()
+    {
+        commonOp.cancelAllAppointment(this);
+    }
 
 
     public RecyclerViewAdapterOfRandevuListesi(Context context,ArrayList<VisitInformations> appointments) {
@@ -288,9 +292,6 @@ public class RecyclerViewAdapterOfRandevuListesi extends RecyclerView.Adapter<Re
 
 
 
-        patientInnerManager= new PatientInnerManager(context);
-        commonOp= new HastalarOrtakAdapterIslemleri(context,patientInnerManager,dbsqLiteOfAllPatients,null,this);
-
         dbLitePersonelInformation = new DBSQLiteOfPersonelInformations(context);
         dbLitePersonelInformation.onCreate(dbLitePersonelInformation.getWritableDatabase());
 
@@ -299,6 +300,10 @@ public class RecyclerViewAdapterOfRandevuListesi extends RecyclerView.Adapter<Re
 
         dbsqLiteOfAllPatients= new DBSQLiteOfAllPatients(context);
         dbsqLiteOfAllPatients.onCreate(dbsqLiteOfAllPatients.getWritableDatabase());
+
+
+        patientInnerManager= new PatientInnerManager(context);
+        commonOp= new HastalarOrtakAdapterIslemleri(context,patientInnerManager,dbsqLiteOfAllPatients,null,this);
 
     }
 

@@ -760,6 +760,85 @@ public class HastalarOrtakAdapterIslemleri {
 
     }
 
+    public void cancelAllAppointment(RecyclerView.Adapter adapter) {
+        TextView txt_title, txt_message;
+        Button btn_ok, btn_cancel;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+        View view = inflater.inflate(R.layout.layout_genel_uyarilar, null);
+
+        txt_title = view.findViewById(R.id.txt_lyt_general_alerts_note_title);
+        txt_message = view.findViewById(R.id.txt_lyt_general_alerts_note);
+        txt_title.setVisibility(View.VISIBLE);
+
+
+        btn_ok = view.findViewById(R.id.btn_lyt_general_alerts_ok);
+
+        btn_cancel = view.findViewById(R.id.btn_lyt_general_alerts_cancel);
+
+
+        txt_title.setText("DÝKKAT!!");
+
+        txt_message.setText(" Tüm Randevüleri Ýptal Etmek Ýstediðinizden Emin isiniz??"
+        );
+
+
+        builder.setView(view);
+
+
+        AlertDialog dialog = builder.create();
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<VisitInformations> visits= dbsqLiteOfAppointment.getAllAppointments();
+
+                if (visits.size() > 0) {
+                    for (VisitInformations visitInformations : visits) {
+                        visitInformations.visitResult = VisitInformations.TAMAMLANMADI;
+
+                        patientInnerManager.ziyaret_ekle(dbsqLiteOfAllPatients.getPatient(visitInformations.tc_no), visitInformations);
+                    }
+
+                    if (patientInnerManager.tum_randevulari_sil()) {
+                        Toast.makeText(context, "Tüm Randevüler Baþarýyla Kaldýrýlmýþtýr!!", Toast.LENGTH_SHORT).show();
+
+                        adapter.notifyItemChanged(0);
+
+                        dialog.dismiss();
+                    } else {
+                        Toast.makeText(context, "Randevü Kaldýrýlamamýþtýr!!", Toast.LENGTH_SHORT).show();
+
+                        dialog.dismiss();
+
+
+                    }
+                } else {
+                    Toast.makeText(context, "Hasta Adýna Oluþturulmuþ Randevü Bulunamamýþtýr!!", Toast.LENGTH_SHORT).show();
+
+                    dialog.dismiss();
+
+
+                }
+
+
+            }
+        });
+
+
+        dialog.show();
+
+
+    }
+
 
     public void listAllAppointments(Patient patient, RecyclerViewAdapterOfHastaListesi adapter, int position) {
         View view_randevuler_listesi = inflater.inflate(R.layout.layout_bottomsheet_hastanin_randevulari_listesi, null);
@@ -1696,7 +1775,7 @@ public class HastalarOrtakAdapterIslemleri {
 
 
     public void showVisits(Patient patient) {
-        TextView txt_ziyaret_sayisi, txt_baslik;
+      /*  TextView txt_ziyaret_sayisi, txt_baslik;
         RecyclerView recyclerView;
         RecyclerViewAdapterOfZiyaretListesi adapter;
         ArrayList<VisitInformations> innerVisits;
@@ -1746,7 +1825,20 @@ public class HastalarOrtakAdapterIslemleri {
             dialog.show();
         } else {
             Toast.makeText(context, "Hasta Adýna Kayýtlý Ziyaret Bulunamadý!!", Toast.LENGTH_SHORT).show();
+        }*/
+
+        if(patientInnerManager.tum_ziyaretleri_getir(patient).size()>0)
+        {
+            new Dialog_ShowVisits(context,patient).show();
         }
+        else
+
+        {
+
+            Toast.makeText(context, "Hasta Adýna Kayýtlý Ziyaret Bulunamadý!!", Toast.LENGTH_SHORT).show();
+        }
+
+
 
 
     }

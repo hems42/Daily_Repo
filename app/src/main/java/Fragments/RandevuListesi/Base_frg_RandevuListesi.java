@@ -1,7 +1,9 @@
 package Fragments.RandevuListesi;
 
+import Adapters.RecyclerViewAdapters.Hastalar.HastalarOrtakAdapterIslemleri;
 import Adapters.RecyclerViewAdapters.Hastalar.RecyclerViewAdapterOfRandevuListesi;
 import DataBaseSQLite.DBSQLiteOfAppointment;
+import Dialogs.Dialog_HastaBulma;
 import Fragments.frg_HastaBulma;
 import Observation.ObserverRandevuLer;
 import Patient.VisitInformations;
@@ -30,6 +32,7 @@ public class Base_frg_RandevuListesi extends Fragment {
     private LinearLayoutManager layoutManager;
     private DBSQLiteOfAppointment dbliteAppointment;
     ArrayList<VisitInformations> filteredVisit;
+
 
 
     public Base_frg_RandevuListesi(Context context, String RandevuTipi) {
@@ -107,7 +110,9 @@ public class Base_frg_RandevuListesi extends Fragment {
 
             case R.id.menu_randevu_randevu_ekle:
 
-                new frg_HastaBulma(context).show();
+
+
+                new Dialog_HastaBulma(context,adapter).show();
 
                 sonuc=true;
 
@@ -209,7 +214,11 @@ public class Base_frg_RandevuListesi extends Fragment {
 
             case R.id.menu_randevu_temizle:
 
-                dbliteAppointment.deleteAllAppointment();
+
+
+
+
+                adapter.tum_Randevuleri_Sil();
 
                 visitInformations=dbliteAppointment.getAllAppointments();
 
