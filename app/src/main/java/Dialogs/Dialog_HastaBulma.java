@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.esh_ajanda.R;
@@ -35,6 +36,7 @@ public class Dialog_HastaBulma extends BottomSheetDialog {
     TextView txt_baslik,txt_hasta_sayisi;
     EditText edtxt_hasta_bul;
     ArrayList<Patient> innerPatients;
+    Fragment fragment;
 
     public Dialog_HastaBulma(Context context,RecyclerView.Adapter  adapter) {
 
@@ -107,6 +109,9 @@ public class Dialog_HastaBulma extends BottomSheetDialog {
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                adapter_2.notifyItemChanged(0);
                 dismiss();
             }
         });

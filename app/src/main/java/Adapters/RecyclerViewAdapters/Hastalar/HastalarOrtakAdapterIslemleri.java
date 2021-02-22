@@ -617,6 +617,126 @@ public class HastalarOrtakAdapterIslemleri {
 
     }
 
+    public void createAppointment(Patient patient, RecyclerView.Adapter adapter,RecyclerView.Adapter adapter_2, int position) {
+        AlertDialog.Builder builder_randevu_olustur = new AlertDialog.Builder(activity);
+
+        View view_randevu_olusturma = inflater.inflate(R.layout.layout_randevu_olusturma, null);
+
+        builder_randevu_olustur.setView(view_randevu_olusturma);
+
+        AlertDialog dialog_randevu_olustur = builder_randevu_olustur.create();
+
+        EditText edtxt_hasta_adi_soyadi, edtxt_tc_no, edtxt_randevu_gunu;
+        Button btn_randevu_kaydet, btn_randevuden_vazgec;
+
+        edtxt_hasta_adi_soyadi = view_randevu_olusturma.findViewById(R.id.edtxt_lyt_add_appointment_patient_name_surname);
+        edtxt_tc_no = view_randevu_olusturma.findViewById(R.id.edtxt_lyt_add_appointment_patient_tc_no);
+        edtxt_randevu_gunu = view_randevu_olusturma.findViewById(R.id.edtxt_lyt_add_appointment_select_appointment_day);
+
+        edtxt_hasta_adi_soyadi.setText(patient.name + " " + patient.surname);
+
+        edtxt_tc_no.setText(patient.tc_no);
+
+        edtxt_randevu_gunu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new SelectDate(context).tarih_sec_liste_takvimli(edtxt_randevu_gunu);
+            }
+        });
+
+        edtxt_randevu_gunu.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                new SelectDate(context).tarih_sec_liste_takvimli(edtxt_randevu_gunu);
+            }
+        });
+
+        btn_randevu_kaydet = view_randevu_olusturma.findViewById(R.id.btn_lyt_add_appointment_ok);
+        btn_randevuden_vazgec = view_randevu_olusturma.findViewById(R.id.btn_lyt_add_appointment_cancel);
+
+
+        btn_randevu_kaydet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String ad_soyad, tc_no, randevu_tarihi;
+
+                ad_soyad = edtxt_hasta_adi_soyadi.getText().toString();
+                tc_no = edtxt_tc_no.getText().toString();
+                randevu_tarihi = edtxt_randevu_gunu.getText().toString();
+
+                String gelen_randevu_tarihi;
+
+
+                if ((!ad_soyad.matches("")) &&
+                        (!tc_no.matches("")) &&
+                        (!randevu_tarihi.matches(""))) {
+
+
+                    gelen_randevu_tarihi = patientInnerManager.randevuyu_getir(patient, randevu_tarihi).appointmentDate;
+
+                    if (gelen_randevu_tarihi == null) {
+                        VisitInformations visitInformations = new VisitInformations();
+                        visitInformations.appointmentDate = randevu_tarihi;
+
+                        if (patientInnerManager.randevu_ekle(patient, visitInformations)) {
+                            Toast.makeText(activity, "Randevü Baþarýyla Oluþturuldu!!!", Toast.LENGTH_SHORT).show();
+                            dialog_randevu_olustur.dismiss();
+
+
+                            adapter.notifyItemChanged(position);
+
+                            if(adapter_2!=null)
+                            {
+                                adapter_2.notifyItemChanged(0);
+                            }
+
+                        }
+
+
+                    } else {
+                        if (gelen_randevu_tarihi.matches(randevu_tarihi)) {
+                            Toast.makeText(activity, "Ayný Tarihe Oluþtutulmuþ Randevü Bulundu!!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            VisitInformations visitInformations = new VisitInformations();
+                            visitInformations.appointmentDate = randevu_tarihi;
+
+                            if (patientInnerManager.randevu_ekle(patient, visitInformations)) {
+                                Toast.makeText(activity, "Randevü Baþarýyla Oluþturuldu!!!", Toast.LENGTH_SHORT).show();
+                                dialog_randevu_olustur.dismiss();
+
+                                adapter.notifyItemChanged(position);
+
+
+                            }
+                        }
+
+
+                    }
+
+                } else {
+                    Toast.makeText(activity, "Lütfen Gerekli Alanlarý Doldurun!!!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+        btn_randevuden_vazgec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog_randevu_olustur.dismiss();
+
+            }
+        });
+
+
+        dialog_randevu_olustur.show();
+
+
+    }
+
     public void cancelAppointment(Patient patient, String appointmentDate, RecyclerView.Adapter adapter) {
         TextView txt_title, txt_message;
         Button btn_ok, btn_cancel;
