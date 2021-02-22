@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,7 +32,8 @@ public class Base_frg_RandevuListesi extends Fragment {
     private RecyclerViewAdapterOfRandevuListesi adapter;
     private LinearLayoutManager layoutManager;
     private DBSQLiteOfAppointment dbliteAppointment;
-    ArrayList<VisitInformations> filteredVisit;
+   ArrayList<VisitInformations> filteredVisit;
+
 
 
 
@@ -41,6 +43,8 @@ public class Base_frg_RandevuListesi extends Fragment {
         dbliteAppointment.onCreate(dbliteAppointment.getWritableDatabase());
 
         filteredVisit = new ArrayList<>();
+
+
 
 
         if(RandevuTipi.matches(VisitInformations.RANDEVU_TUM))
@@ -95,6 +99,8 @@ public class Base_frg_RandevuListesi extends Fragment {
 
         inflater.inflate(R.menu.menu_frg_randevu,menu);
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -293,26 +299,25 @@ public class Base_frg_RandevuListesi extends Fragment {
     }
 
 
-    public void appyObserver()
-    {
+    public void appyObserver() {
         adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
-
             @Override
             public void onItemRangeChanged(int positionStart, int itemCount) {
+                super.onItemRangeChanged(positionStart, itemCount);
+                listeGuncelle();
+            }
+
+            @Override
+            public void onItemRangeChanged(int positionStart, int itemCount, @Nullable Object payload) {
+                super.onItemRangeChanged(positionStart, itemCount, payload);
                 listeGuncelle();
             }
 
             @Override
             public void onItemRangeInserted(int positionStart, int itemCount) {
-                listeGuncelle();
-            }
-
-            @Override
-            public void onItemRangeRemoved(int positionStart, int itemCount) {
+                super.onItemRangeInserted(positionStart, itemCount);
                 listeGuncelle();
             }
         });
     }
-
-
 }

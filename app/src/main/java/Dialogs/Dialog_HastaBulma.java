@@ -36,7 +36,6 @@ public class Dialog_HastaBulma extends BottomSheetDialog {
     TextView txt_baslik,txt_hasta_sayisi;
     EditText edtxt_hasta_bul;
     ArrayList<Patient> innerPatients;
-    Fragment fragment;
 
     public Dialog_HastaBulma(Context context,RecyclerView.Adapter  adapter) {
 
@@ -53,6 +52,8 @@ public class Dialog_HastaBulma extends BottomSheetDialog {
         innerPatients=dbsqLiteOfAllPatients.getAllPatient();
 
        this.adapter_2=adapter;
+
+
 
 
     }
@@ -87,11 +88,13 @@ public class Dialog_HastaBulma extends BottomSheetDialog {
 
 
 
+
+
         recyclerView.setLayoutManager(layoutManager);
 
         recyclerView.setAdapter(recAdapter);
 
-        recAdapter.registerAdapterDataObserver(new ObserverRandevuLer());
+
 
         edtxt_hasta_bul.addTextChangedListener(textWatcher);
 
