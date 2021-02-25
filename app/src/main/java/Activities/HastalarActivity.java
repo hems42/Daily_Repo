@@ -2,22 +2,31 @@ package Activities;
 
 import Adapters.FragmentAdapters.FragmentPagerAdapterHastalar;
 import BroadCasts.BackUpBroadCast;
+import DataBaseSQLite.DBSQLiteOfPersonelInformations;
 import DataBaseSQLite.DataBaseSQLiteOfPatient.DBSQLiteOfAllPatients;
+import Excel.ExcelManager;
 import Fragments.HastaListesi.*;
 import Fragments.RandevuListesi.frg_TumRandevuler;
 import Fragments.ZiyaretListesi.frg_ZiyaretListesiTum;
 import Fragments.frg_HastaBulma;
+import Manager.PatientInnerManager;
+import Patient.Patient;
+import Patient.Telefon;
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import com.example.esh_ajanda.R;
 import com.google.android.material.tabs.TabLayout;
+import org.apache.poi.ss.formula.functions.T;
+
 import java.text.ParseException;
 import java.util.ArrayList;
 
@@ -44,8 +53,7 @@ public class HastalarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hastalar);
 
-
-
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE},0);
 
 
 

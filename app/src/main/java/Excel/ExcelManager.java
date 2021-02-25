@@ -1,6 +1,6 @@
 package Excel;
 
-import Patient.Patient;
+import Patient.*;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -16,9 +16,11 @@ public class ExcelManager {
 
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
     Patient patient;
+    Telefon telefon;
 
 
-    public ArrayList<Patient> getPatientFromExcel(String excelPath) {
+    public ArrayList<Patient> getPatientFromExcel(String excelPath)
+    {
 
         ArrayList<Patient> allPatients = new ArrayList<>();
 
@@ -193,15 +195,134 @@ public class ExcelManager {
         return allPatients;
     }
 
-    public void getPersonalInformationFromExcel(String excelPath)
+
+    public void getAdressFromExcel(String excelPath)
     {
 
     }
+
+
+
+    public ArrayList<Telefon> getTelefonFromExcel(String excelPath)
+    {
+
+        ArrayList<Telefon> allTelefons = new ArrayList<>();
+
+
+        FileInputStream file = null;
+        HSSFWorkbook workbook = null;
+        HSSFSheet sheet = null;
+
+
+        try {
+
+
+            file = new FileInputStream(excelPath);
+
+            workbook = new HSSFWorkbook(file);
+
+            sheet = workbook.getSheetAt(0);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        Iterator<Row> rowIterator = sheet.iterator();
+
+
+        while (rowIterator.hasNext()) {
+
+            Row row = rowIterator.next();
+
+            Iterator<Cell> cellIterator = row.cellIterator();
+
+            telefon= new Telefon();
+
+            while (cellIterator.hasNext()) {
+
+
+                Cell cell = cellIterator.next();
+
+
+                switch (cell.getColumnIndex()) {
+
+                    case 0:
+                        cell.setCellType(Cell.CELL_TYPE_STRING);
+
+                        telefon.tc_no =cell.getStringCellValue();
+
+
+                        break;
+
+                    case 1: // tc no
+
+                        cell.setCellType(Cell.CELL_TYPE_STRING);
+
+                        telefon.name = cell.getStringCellValue();
+
+                        break;
+
+                    case 2: // ad
+
+                        cell.setCellType(Cell.CELL_TYPE_STRING);
+
+                        telefon.surname = cell.getStringCellValue();
+
+
+                        break;
+
+                    case 3: // soyad
+
+                        cell.setCellType(Cell.CELL_TYPE_STRING);
+
+                       telefon.tel_no_description = cell.getStringCellValue();
+
+                        break;
+
+
+                    case 4:  // doðum tarihi
+
+
+                        cell.setCellType(Cell.CELL_TYPE_STRING);
+
+                        telefon.tel_no1 = cell.getStringCellValue();
+
+                        break;
+
+                    case 5: // cinsiyet
+
+                        cell.setCellType(Cell.CELL_TYPE_STRING);
+
+                        telefon.tel_no2 = cell.getStringCellValue();
+
+                        break;
+
+
+
+                }
+
+
+
+
+            }
+
+
+            allTelefons.add(telefon);
+        }
+
+
+        return allTelefons;
+    }
+
 
     public void getPatientStuffFromExcel(String excelPath)
     {
 
     }
+
+
 
     public void getPatientdiseasFromExcel()
     {
@@ -212,6 +333,9 @@ public class ExcelManager {
     public void geVisitInformationFromExcel() {
 
     }
+
+
+
 
     public void createExcelFileFromPatient(ExcelBundle bundle)
     {
