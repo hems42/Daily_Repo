@@ -4,6 +4,7 @@ import Adapters.FragmentAdapters.FragmentPagerAdapterHastalar;
 import BroadCasts.BackUpBroadCast;
 import DataBaseSQLite.DBSQLiteOfPersonelInformations;
 import DataBaseSQLite.DataBaseSQLiteOfPatient.DBSQLiteOfAllPatients;
+import Dialogs.Dialog_ExitApp;
 import Excel.ExcelManager;
 import Fragments.HastaListesi.*;
 import Fragments.RandevuListesi.frg_TumRandevuler;
@@ -157,6 +158,10 @@ public class HastalarActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
 
+        new Dialog_ExitApp(context).show();
 
+    }
 }
