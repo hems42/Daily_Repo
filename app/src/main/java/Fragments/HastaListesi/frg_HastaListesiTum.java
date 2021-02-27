@@ -2,7 +2,9 @@ package Fragments.HastaListesi;
 
 import BackUp.BackUpManager;
 import Utils.PatientUtillty;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.*;
 import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,6 +45,7 @@ public class frg_HastaListesiTum extends Base_frg_HastaListesi {
         });
 
 
+        activity= (Activity) context;
 
 
     }
@@ -94,6 +97,21 @@ public class frg_HastaListesiTum extends Base_frg_HastaListesi {
 
 
                 addPatient();
+
+                sonuc=true;
+
+                break;
+
+
+            case R.id.menu_hastalar_galeriye_git:
+
+
+                Intent intent= new Intent(Intent.ACTION_GET_CONTENT);
+
+                intent.setType("*/*");
+
+                getActivity().startActivityForResult(intent,125);
+
 
                 sonuc=true;
 
