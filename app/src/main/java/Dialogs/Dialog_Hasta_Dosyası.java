@@ -26,7 +26,7 @@ public class Dialog_Hasta_Dosyasý extends AlertDialog {
 
     private Activity activity;
     private Context context;
-    TextView txt_ad_soyad,txt_son_ziyaret_tarihi,txt_yas,txt_cinsiyet,txt_son_durum;
+    TextView txt_ad_soyad,txt_son_ziyaret_tarihi,txt_yas,txt_cinsiyet,txt_son_durum,txt_ziyaret_sayisi;
     ImageView img_hasta_imaji,img_geri_don;
 
     PatientInnerManager patientInnerManager;
@@ -39,7 +39,7 @@ public class Dialog_Hasta_Dosyasý extends AlertDialog {
 
 
     public Dialog_Hasta_Dosyasý(Context context,Patient patient) {
-        super(context);
+        super(context,R.style.AlertCustomDialog);
 
         this.context=context;
         activity= (Activity) context;
@@ -70,6 +70,7 @@ public class Dialog_Hasta_Dosyasý extends AlertDialog {
         txt_yas=view.findViewById(R.id.txt_hasta_dosyasi_yas);
         txt_cinsiyet=view.findViewById(R.id.txt_hasta_dosyasi_cinsiyet);
         txt_son_durum=view.findViewById(R.id.txt_hasta_dosyasi_son_durum);
+        txt_ziyaret_sayisi=view.findViewById(R.id.txt_layout_visit_list_listelenen_ziayret_sayisi);
 
         if(patient.sex.matches(Patient.ERKEK))
         {
@@ -91,6 +92,16 @@ public class Dialog_Hasta_Dosyasý extends AlertDialog {
 
 
         visitInformations=patientInnerManager.tum_ziyaretleri_getir(patient);
+
+        if(visitInformations.size()>=1)
+        {
+            txt_ziyaret_sayisi.setText(""+visitInformations.size());
+        }
+
+        else
+        {
+            txt_ziyaret_sayisi.setText(""+0);
+        }
 
         recyclerViewAdapterOfZiyaretListesi=new RecyclerViewAdapterOfZiyaretListesi(context,visitInformations,"ffff");
 
