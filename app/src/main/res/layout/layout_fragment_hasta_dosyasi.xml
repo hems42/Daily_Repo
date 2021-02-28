@@ -4,7 +4,7 @@
              android:layout_height="match_parent"
              android:background="@android:color/transparent"
              xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:backgroundTint="#CD2962FF"
+             android:backgroundTint="#43A047"
              app:cardCornerRadius="15dp"
              android:layout_margin="5dp"
              tools:context="Fragments.frg_HastaDosyasi"
