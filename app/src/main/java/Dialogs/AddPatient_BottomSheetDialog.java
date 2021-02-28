@@ -304,7 +304,11 @@ public class AddPatient_BottomSheetDialog extends BottomSheetDialog {
                     {
                         dismiss();
 
-                        adapter.notifyItemInserted(0);
+                        if(adapter!=null)
+                        {
+                            adapter.notifyItemInserted(0);
+                        }
+
 
                         Toast.makeText(context,"HASTA KAYDI BAÞARILI!!",Toast.LENGTH_SHORT).show();
 
