@@ -1,9 +1,12 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
+             android:background="@android:color/transparent"
              xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:background="#FF9100"
+             android:backgroundTint="#43A047"
+             app:cardCornerRadius="15dp"
+             android:layout_margin="5dp"
              tools:context="Fragments.frg_HastaDosyasi"
              android:id="@+id/bottom_sheet_lyt_file_of_patient"
 >
@@ -13,6 +16,24 @@
            android:layout_height="wrap_content"
            android:orientation="vertical"
            >
+
+       <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="HASTA DOSYASI"
+               android:textSize="17sp"
+               android:textAlignment="center"
+               android:textColor="@android:color/white"
+               android:layout_marginTop="5dp"
+               android:textStyle="bold"
+               android:layout_marginBottom="5dp"
+               />
+
+       <View
+               android:layout_width="match_parent"
+               android:layout_height="5dp"
+               android:background="#D50000"
+               />
 
        <androidx.cardview.widget.CardView
                android:layout_width="match_parent"
@@ -216,46 +237,52 @@
 
        </androidx.cardview.widget.CardView>
 
-       <LinearLayout
+       <androidx.cardview.widget.CardView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               app:cardCornerRadius="15dp"
+               android:backgroundTint="@android:color/darker_gray"
                android:layout_marginLeft="10dp"
-               android:background="@android:color/darker_gray"
-               android:orientation="horizontal"
        >
-
-           <androidx.appcompat.widget.AppCompatImageView
-                   android:layout_width="30dp"
-                   android:layout_height="30dp"
-                   android:src="@drawable/back"
-                   android:layout_marginLeft="15dp"
-                   android:id="@+id/img_layout_file_of_patient_geri_don"
-                   android:clickable="true"
-                   android:background="@drawable/ripple"
-           />
-
-
-
-
-
-
-           <TextView
+           <LinearLayout
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:textAlignment="center"
-                   android:textColor="@android:color/white"
-                   android:textStyle="bold"
-                   android:textSize="15sp"
-                   android:text="GERİ DÖN"
-                   android:layout_marginLeft="5dp"
-                   android:layout_marginTop="5dp"
-                   android:paddingLeft="5dp"
-
-           />
 
 
+                   android:orientation="horizontal"
+           >
 
-       </LinearLayout>
+               <androidx.appcompat.widget.AppCompatImageView
+                       android:layout_width="30dp"
+                       android:layout_height="30dp"
+                       android:src="@drawable/back"
+                       android:layout_marginLeft="15dp"
+                       android:id="@+id/img_layout_file_of_patient_geri_don"
+                       android:clickable="true"
+                       android:background="@drawable/ripple"
+               />
+
+
+               <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:textAlignment="center"
+                       android:textColor="@android:color/white"
+                       android:textStyle="bold"
+                       android:textSize="15sp"
+                       android:text="GERİ DÖN"
+                       android:layout_marginLeft="5dp"
+                       android:layout_marginTop="5dp"
+                       android:paddingLeft="5dp"
+                       android:paddingRight="5dp"
+
+               />
+
+
+           </LinearLayout>
+       </androidx.cardview.widget.CardView>
+
+
 
       <include
 
@@ -267,4 +294,4 @@
 
 
 
-</FrameLayout>
+</androidx.cardview.widget.CardView>

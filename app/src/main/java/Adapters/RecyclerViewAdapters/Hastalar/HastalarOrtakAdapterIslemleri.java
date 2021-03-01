@@ -31,6 +31,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.esh_ajanda.R;
+import org.apache.poi.ss.formula.functions.T;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -2056,7 +2057,7 @@ public class HastalarOrtakAdapterIslemleri {
         editText_not.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                selectTreatment(editText_not);
+                selectTreatmentCheckBox(editText_not);
 
                 return true;
             }
@@ -2389,6 +2390,62 @@ public class HastalarOrtakAdapterIslemleri {
         dialog.show();
     }
 
+    public void selectTreatmentCheckBox(EditText editText) {
+
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+
+
+        CharSequence[] uygulamalar = context.getResources().getStringArray(R.array.saðlik_personeli_uygulamalari);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+        builder.setTitle("Yapýlan uygulamalarý  seçiniz!!");
+        builder.setIcon(R.drawable.pills_1);
+
+
+        builder.setMultiChoiceItems(uygulamalar,null, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+               String  secilen=uygulamalar[which].toString();
+
+                if(isChecked)
+                {
+                   stringBuilder.append(secilen+"\n");
+                   Toast.makeText(context,secilen+"  ugulamasý seçildi",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    stringBuilder.delete(stringBuilder.indexOf(secilen),secilen.length()+1);
+                    Toast.makeText(context,secilen+"  ugulamasý kaldýrýldý",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        builder.setPositiveButton("tamam", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                editText.setText(stringBuilder.toString());
+
+            }
+        });
+
+        builder.setNegativeButton("çýk", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+
+        AlertDialog dialog=builder.create();
+
+        dialog.show();
+    }
 
     public void showVisitResult(Patient patient, VisitInformations  visitInformations)
     {

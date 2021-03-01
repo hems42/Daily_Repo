@@ -9,6 +9,7 @@ import Observation.ObserverRandevuLer;
 import Patient.VisitInformations;
 import Utils.CustomTime;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.TextView;
@@ -115,6 +116,7 @@ public class Base_frg_RandevuListesi extends Fragment {
         {
 
             case R.id.menu_randevu_randevu_ekle:
+
 
 
 

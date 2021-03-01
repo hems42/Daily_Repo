@@ -32,14 +32,15 @@
                 android:name="Activities.HastalarActivity"
                 android:windowSoftInputMode="stateAlwaysHidden">
 
+
+
+        </activity>
+        <activity android:name="Activities.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
-        </activity>
-        <activity android:name="Activities.HomeActivity">
         </activity>
 
 

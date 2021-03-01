@@ -4,6 +4,7 @@ import Adapters.FragmentAdapters.FragmentPagerAdapterHastalar;
 import BroadCasts.BackUpBroadCast;
 import DataBaseSQLite.DBSQLiteOfPersonelInformations;
 import DataBaseSQLite.DataBaseSQLiteOfPatient.DBSQLiteOfAllPatients;
+import Dialogs.Dialog_ExitApp;
 import Excel.ExcelManager;
 import Fragments.HastaListesi.*;
 import Fragments.RandevuListesi.frg_TumRandevuler;
@@ -13,8 +14,11 @@ import Manager.PatientInnerManager;
 import Patient.Patient;
 import Patient.Telefon;
 import android.Manifest;
+import android.app.Activity;
+import android.app.Instrumentation;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -97,6 +101,24 @@ public class HastalarActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
 
+        Uri  uri;
+
+        if(requestCode== Activity.RESULT_OK&&resultCode==125)
+        {
+            System.out.println("kodu doðru buldu");
+
+            if(data!=null)
+            {
+                System.out.println("intente girdi");
+
+                uri=data.getData();
+
+                System.out.println("uri path : "+uri.getPath());
+
+            }
+        }
+
+
     }
 
     public  void sayfalariEkle()
@@ -136,10 +158,10 @@ public class HastalarActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
 
+        new Dialog_ExitApp(context).show();
 
-
-
-
-
+    }
 }

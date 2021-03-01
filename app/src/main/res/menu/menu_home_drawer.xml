@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+        xmlns:android="http://schemas.android.com/apk/res/android"
+
+        xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
+
+        tools:showIn="navigation_view"
+
+>
+
+
+    <group android:checkableBehavior="single">
+
+        <item
+              android:icon="@drawable/ic_import"
+              android:title="içe veri aktar"
+        />
+
+        <item
+                android:icon="@drawable/ic_export"
+                android:title="dışa veri aktar"
+        />
+
+
+        <item
+                android:icon="@drawable/ic_fingerprint"
+                android:title="parmak izi"
+        />
+
+
+        <item
+                android:icon="@drawable/ic_done"
+                android:title="istatistik"
+        />
+
+
+        <item
+                android:icon="@drawable/ic_backup"
+                android:title="yedeklemeler"
+        />
+
+
+        <item
+                android:icon="@drawable/ic_security"
+                android:title="guvenlik"
+        />
+
+
+        <item android:id="@+id/menu_drawer_ayar"
+              android:icon="@drawable/ic_baseline_settings_24"
+              android:title="ayarlar"
+              />
+
+
+
+    </group>
+
+
+
+    <item android:title="iletişim"
+
+
+          >
+        <menu>
+
+            <item android:title="eflatun126@gmail.com"
+                  android:icon="@drawable/ic_email"
+                  />
+
+        </menu>
+
+    </item>
+
+    <item android:title="Hakkında"
+    >
+        <menu>
+
+            <item android:title="Uygulama Hakkında"
+                  android:icon="@drawable/ic_baseline_info_24"
+            />
+
+
+
+
+        </menu>
+
+    </item>
+
+
+
+</menu>
