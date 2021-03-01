@@ -1,11 +1,13 @@
 package Fragments.HastaListesi;
 
+import Activities.HomeActivity;
 import Adapters.RecyclerViewAdapters.Hastalar.RecyclerViewAdapterOfHastaListesi;
 import DataBaseSQLite.DataBaseSQLiteOfPatient.DBSQLiteOfAllPatients;
 import Dialogs.AddPatient_BottomSheetDialog;
 import Patient.Patient;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.*;
 import android.view.animation.Animation;
@@ -313,6 +315,19 @@ public abstract class Base_frg_HastaListesi extends Fragment  {
 
 
                 addPatient();
+
+                sonuc=true;
+
+                break;
+
+            case R.id.menu_hastalar_anasayfaya_git:
+
+
+                Intent intent= new Intent(context, HomeActivity.class);
+
+                activity.startActivity(intent);
+
+                activity.finish();
 
                 sonuc=true;
 

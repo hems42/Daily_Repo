@@ -1,7 +1,9 @@
 package Fragments.ZiyaretListesi;
 
+import Activities.HomeActivity;
 import Patient.VisitInformations;
 import android.content.Context;
+import android.content.Intent;
 import android.view.MenuItem;
 import com.example.esh_ajanda.R;
 
@@ -50,6 +52,17 @@ public class frg_ZiyaretListesiBasarisiz extends Base_frg_ZiyaretListesi {
 
                 sonuc=true;
 
+                break;
+
+            case R.id.menu_ziyaretler_ana_sayfaya_git:
+
+
+                Intent intent= new Intent(activity, HomeActivity.class);
+                activity.startActivity(intent);
+
+                activity.finish();
+
+                sonuc=true;
                 break;
 
         }

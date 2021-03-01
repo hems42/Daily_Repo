@@ -26,7 +26,7 @@
         </activity>
         <activity android:name="Activities.IstatistikActivity">
         </activity>
-        <activity android:name="Activities.VisitPatientActivity">
+        <activity android:name="Activities.RandevulerActivity">
         </activity>
         <activity
                 android:name="Activities.HastalarActivity"

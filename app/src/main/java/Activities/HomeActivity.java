@@ -5,14 +5,10 @@ import Dialogs.Dialog_ExitApp;
 import Fragments.HastaListesi.frg_HastaListesiTum;
 import android.content.Context;
 import android.content.Intent;
-import android.view.Gravity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Toast;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -33,13 +29,13 @@ public class HomeActivity extends AppCompatActivity {
     Context context= HomeActivity.this;
     FloatingActionButton fb_button;
     BottomAppBar  bottomAppBar;
-    CardView crdview_hastalar;
+    CardView crdview_hastalar,crdview_randevuler,crdview_ziyaretler;
     Fragment fragment,fragment_2;
     FragmentTransaction  transaction;
     NavigationView view;
     DrawerLayout drawerLayout;
 
-    Animation animation;
+    Animation animation_bounce,animation_fade,animation_rotate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +44,9 @@ public class HomeActivity extends AppCompatActivity {
 
         fragment=new frg_TumRandevuler(context);
         fragment_2=new frg_HastaListesiTum(context);
-        animation=AnimationUtils.loadAnimation(context,R.anim.bounce);
+        animation_bounce =AnimationUtils.loadAnimation(context,R.anim.bounce);
+        animation_fade =AnimationUtils.loadAnimation(context,R.anim.fade_in);
+        animation_rotate =AnimationUtils.loadAnimation(context,R.anim.rotate);
 
         view=findViewById(R.id.navi_view);
 
@@ -59,14 +57,20 @@ public class HomeActivity extends AppCompatActivity {
         bottomAppBar=findViewById(R.id.bottomAppBar_home);
         drawerLayout=findViewById(R.id.layout_drawer_home_activty);
         crdview_hastalar=findViewById(R.id.crdview_home_activty_hastalar);
+        crdview_ziyaretler=findViewById(R.id.crdview_home_activty_ziyaretler);
+        crdview_randevuler=findViewById(R.id.crdview_home_activty_randevuler);
+
+
 
         crdview_hastalar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                crdview_hastalar.startAnimation(animation);
+                animation_bounce.setDuration(200);
 
-                animation.setAnimationListener(new Animation.AnimationListener() {
+                crdview_hastalar.startAnimation(animation_bounce);
+
+                animation_bounce.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
 
@@ -91,7 +95,66 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        crdview_ziyaretler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                crdview_ziyaretler.startAnimation(animation_bounce);
+
+                animation_bounce.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+
+                        Intent intent= new Intent(HomeActivity.this,ZiyaretlerActivity.class);
+
+                        startActivity(intent);
+
+                        finish();
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
+            }
+        });
+
+        crdview_randevuler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                crdview_randevuler.startAnimation(animation_bounce);
+
+                animation_bounce.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+
+                        Intent intent= new Intent(HomeActivity.this,RandevulerActivity.class);
+
+                        startActivity(intent);
+
+                        finish();
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+            }
+        });
 
         bottomAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +173,9 @@ public class HomeActivity extends AppCompatActivity {
 
                 searchView.setQueryHint("hastalarda ara..");
 
+
+
+
                 switch (item.getItemId())
                 {
                     case R.id.menu_app_bar_search_hastalar:
@@ -124,13 +190,15 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-
         fb_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fb_button.startAnimation(animation);
 
-                animation.setAnimationListener(new Animation.AnimationListener() {
+                animation_fade.setDuration(200);
+
+                fb_button.startAnimation(animation_fade);
+
+                animation_fade.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
 

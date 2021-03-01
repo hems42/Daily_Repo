@@ -1,5 +1,6 @@
 package Fragments.HastaListesi;
 
+import Activities.HomeActivity;
 import BackUp.BackUpManager;
 import Utils.PatientUtillty;
 import android.app.Activity;
@@ -117,7 +118,18 @@ public class frg_HastaListesiTum extends Base_frg_HastaListesi {
 
                 break;
 
+            case R.id.menu_hastalar_anasayfaya_git:
 
+
+                Intent intent_home= new Intent(context, HomeActivity.class);
+
+                activity.startActivity(intent_home);
+
+                activity.finish();
+
+                sonuc=true;
+
+                break;
 
 
         }

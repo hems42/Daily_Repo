@@ -1,6 +1,8 @@
 package Fragments.HastaListesi;
 
+import Activities.HomeActivity;
 import Patient.Patient;
+import android.content.Intent;
 import android.view.*;
 import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,7 +30,18 @@ public class frg_HastaListesiAktif extends Base_frg_HastaListesi {
 
         switch (item.getItemId())
         {
+            case R.id.menu_hastalar_anasayfaya_git:
 
+
+                Intent intent= new Intent(context, HomeActivity.class);
+
+                activity.startActivity(intent);
+
+                activity.finish();
+
+                sonuc=true;
+
+                break;
 
         }
         return sonuc;

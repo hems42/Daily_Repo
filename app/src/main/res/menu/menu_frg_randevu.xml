@@ -49,4 +49,10 @@
           android:title="tüm randevüleri temizle"
     />
 
+
+    <item android:id="@+id/menu_randevu_ana_sayfaya_git"
+          android:title="ana sayfaya git"
+    />
+
+
 </menu>

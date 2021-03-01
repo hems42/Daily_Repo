@@ -1,5 +1,6 @@
 package Fragments.ZiyaretListesi;
 
+import Activities.HomeActivity;
 import Adapters.RecyclerViewAdapters.Ziyaretler.RecyclerViewAdapterOfZiyaretListesi;
 import DataBaseSQLite.DBSQLiteOfVisit;
 import DataBaseSQLite.DataBaseSQLiteOfPatient.DBSQLiteOfAllPatients;
@@ -7,6 +8,7 @@ import Manager.PatientInnerManager;
 import Patient.*;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.*;
 import android.view.animation.Animation;
@@ -274,6 +276,27 @@ public abstract class Base_frg_ZiyaretListesi extends Fragment {
     }
 
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        boolean sonuc=false;
+
+        switch (item.getItemId())
+        {
+            case R.id.menu_ziyaretler_ana_sayfaya_git:
+
+
+                Intent intent= new Intent(activity, HomeActivity.class);
+                activity.startActivity(intent);
+
+                activity.finish();
+
+                sonuc=true;
+                break;
+        }
+
+        return sonuc;
+    }
 
     @Override
     public void onAttach(@NonNull Context context) {

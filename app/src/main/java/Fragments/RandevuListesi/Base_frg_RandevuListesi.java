@@ -1,5 +1,6 @@
 package Fragments.RandevuListesi;
 
+import Activities.HomeActivity;
 import Adapters.RecyclerViewAdapters.Hastalar.HastalarOrtakAdapterIslemleri;
 import Adapters.RecyclerViewAdapters.Hastalar.RecyclerViewAdapterOfRandevuListesi;
 import DataBaseSQLite.DBSQLiteOfAppointment;
@@ -8,6 +9,7 @@ import Fragments.frg_HastaBulma;
 import Observation.ObserverRandevuLer;
 import Patient.VisitInformations;
 import Utils.CustomTime;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,6 +31,7 @@ public class Base_frg_RandevuListesi extends Fragment {
 
     private TextView txt_randevu_sayisi, txt_randevu_tarihi;
     private Context context;
+    private Activity activity;
     private RecyclerView recyclerView;
     private RecyclerViewAdapterOfRandevuListesi adapter;
     private LinearLayoutManager layoutManager;
@@ -40,6 +43,7 @@ public class Base_frg_RandevuListesi extends Fragment {
 
     public Base_frg_RandevuListesi(Context context, String RandevuTipi) {
         this.context = context;
+        activity= (Activity) context;
         dbliteAppointment= new DBSQLiteOfAppointment(context);
         dbliteAppointment.onCreate(dbliteAppointment.getWritableDatabase());
 
@@ -54,7 +58,21 @@ public class Base_frg_RandevuListesi extends Fragment {
         }
         else if(RandevuTipi.matches(VisitInformations.RANDEVU_BUGUN))
         {
-            filteredVisit=dbliteAppointment.getAllAppointments(CustomTime.getTimeJustDate());
+            filteredVisit=dbliteAppointment.getAllAppointments(VisitInformations.BUGUN);
+
+
+        }
+
+        else if(RandevuTipi.matches(VisitInformations.DIGER_SONRA))
+        {
+            filteredVisit=dbliteAppointment.getAllAppointments(VisitInformations.DIGER_SONRA);
+
+        }
+
+        else if(RandevuTipi.matches(VisitInformations.DIGER_ONCE))
+        {
+            filteredVisit=dbliteAppointment.getAllAppointments(VisitInformations.DIGER_ONCE);
+
         }
 
 
@@ -222,10 +240,6 @@ public class Base_frg_RandevuListesi extends Fragment {
 
             case R.id.menu_randevu_temizle:
 
-
-
-
-
                 adapter.tum_Randevuleri_Sil();
 
                 visitInformations=dbliteAppointment.getAllAppointments();
@@ -239,6 +253,23 @@ public class Base_frg_RandevuListesi extends Fragment {
                 sonuc=true;
 
                 break;
+
+
+
+            case R.id.menu_randevu_ana_sayfaya_git:
+
+                Intent intent= new Intent(context, HomeActivity.class);
+
+                activity.startActivity(intent);
+
+                activity.finish();
+
+                sonuc=true;
+
+                break;
+
+
+
 
         }
         return sonuc;

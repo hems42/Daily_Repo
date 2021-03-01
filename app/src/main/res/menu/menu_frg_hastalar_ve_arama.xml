@@ -67,6 +67,11 @@
     />
 
 
+    <item android:id="@+id/menu_hastalar_anasayfaya_git"
+
+          app:showAsAction="never"
+          android:title="ana sayfaya git"
+    />
 
 
 </menu>

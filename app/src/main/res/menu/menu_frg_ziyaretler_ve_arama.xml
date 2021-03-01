@@ -36,6 +36,13 @@
         </menu>
     </item>
 
+    <item android:id="@+id/menu_ziyaretler_ana_sayfaya_git"
+
+          app:showAsAction="never"
+          android:title="ana sayfaya git"
+    >
+
+    </item>
 
 
 </menu>
