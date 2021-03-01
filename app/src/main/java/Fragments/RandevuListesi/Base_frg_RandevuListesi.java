@@ -38,6 +38,8 @@ public class Base_frg_RandevuListesi extends Fragment {
     private DBSQLiteOfAppointment dbliteAppointment;
    ArrayList<VisitInformations> filteredVisit;
 
+   public  String tag_Randevu=null;
+
 
 
 
@@ -50,17 +52,15 @@ public class Base_frg_RandevuListesi extends Fragment {
         filteredVisit = new ArrayList<>();
 
 
-
-
-        if(RandevuTipi.matches(VisitInformations.RANDEVU_TUM))
+        if(RandevuTipi.matches(VisitInformations.RANDEVU_BUGUN))
         {
-            filteredVisit=dbliteAppointment.getAllAppointments();
-        }
-        else if(RandevuTipi.matches(VisitInformations.RANDEVU_BUGUN))
-        {
+
             filteredVisit=dbliteAppointment.getAllAppointments(VisitInformations.BUGUN);
 
-
+        }
+        else if(RandevuTipi.matches(VisitInformations.RANDEVU_TUM))
+        {
+            filteredVisit=dbliteAppointment.getAllAppointments();
         }
 
         else if(RandevuTipi.matches(VisitInformations.DIGER_SONRA))
@@ -100,7 +100,36 @@ public class Base_frg_RandevuListesi extends Fragment {
 
         txt_randevu_sayisi.setText(""+dbliteAppointment.getAllAppointments().size());
 
-        txt_randevu_tarihi.setText("TÜM GÜNLER");
+
+        if(tag_Randevu!=null)
+        {
+            if(tag_Randevu.matches(VisitInformations.TAG_RANDEVU_BUGUN))
+            {
+                tarih_guncelle(CustomTime.getDateWithDay(VisitInformations.BUGUN));
+            }
+
+            else if(tag_Randevu.matches(VisitInformations.TAG_RANDEVU_TUM))
+            {
+                txt_randevu_tarihi.setText("TÜM GÜNLER");
+                txt_randevu_sayisi.setText(""+dbliteAppointment.getAllAppointments().size());
+            }
+
+            else if(tag_Randevu.matches(VisitInformations.TAG_RANDEVU_YAKIN))
+            {
+                tarih_guncelle("YAKIN RANDEVÜLER");
+            }
+
+            else if(tag_Randevu.matches(VisitInformations.TAG_RANDEVU_UZAK))
+            {
+                tarih_guncelle("UZAK RANDEVÜLER");
+            }
+        }
+
+        else {
+            txt_randevu_tarihi.setText("TÜM GÜNLER");
+        }
+
+
 
 
         recyclerView=view.findViewById(R.id.recyclerview_frg_randevu_listesi_tum);

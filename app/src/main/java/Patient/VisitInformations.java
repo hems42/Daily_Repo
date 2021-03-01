@@ -36,6 +36,11 @@ public class VisitInformations extends Patient {
 
 
 
+    public static  String TAG_RANDEVU_BUGUN="BUGÜNKÜ RANDEVÜLER";
+    public static  String TAG_RANDEVU_TUM="TÜM RANDEVÜLER";
+    public static  String TAG_RANDEVU_UZAK="UZAK RANDEVÜLER";
+    public static  String TAG_RANDEVU_YAKIN="YAKIN RANDEVÜLER";
+
     public VisitInformations() {
     }
 

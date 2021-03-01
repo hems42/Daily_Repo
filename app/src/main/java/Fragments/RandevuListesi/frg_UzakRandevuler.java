@@ -6,6 +6,7 @@ import android.content.Context;
 public class frg_UzakRandevuler extends  Base_frg_RandevuListesi{
     public frg_UzakRandevuler(Context context) {
         super(context, VisitInformations.DIGER_SONRA);
+        tag_Randevu=VisitInformations.TAG_RANDEVU_UZAK;
 
 
     }

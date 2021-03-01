@@ -93,7 +93,7 @@ public class RandevulerActivity extends AppCompatActivity {
         fragments.add(new frg_YakinRandevuler(context));
 
 
-        tab_isimleri.add("BUGÜN KÜ RANDEVÜLER");
+        tab_isimleri.add("BUGÜNKÜ RANDEVÜLER");
         tab_isimleri.add("TÜM RANDEVÜLER");
         tab_isimleri.add("UZAK RANDEVÜLER");
         tab_isimleri.add("YAKIN RANDEVÜLER");

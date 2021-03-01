@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
     NavigationView view;
     DrawerLayout drawerLayout;
 
-    Animation animation_bounce,animation_fade,animation_rotate;
+    Animation animation_slide,animation_fade,animation_rotate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
 
         fragment=new frg_TumRandevuler(context);
         fragment_2=new frg_HastaListesiTum(context);
-        animation_bounce =AnimationUtils.loadAnimation(context,R.anim.bounce);
+        animation_slide =AnimationUtils.loadAnimation(context,R.anim.flip);
         animation_fade =AnimationUtils.loadAnimation(context,R.anim.fade_in);
         animation_rotate =AnimationUtils.loadAnimation(context,R.anim.rotate);
 
@@ -66,11 +66,11 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                animation_bounce.setDuration(200);
+                animation_slide.setDuration(200);
 
-                crdview_hastalar.startAnimation(animation_bounce);
+                crdview_hastalar.startAnimation(animation_slide);
 
-                animation_bounce.setAnimationListener(new Animation.AnimationListener() {
+                animation_slide.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
 
@@ -99,9 +99,9 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                crdview_ziyaretler.startAnimation(animation_bounce);
+                crdview_ziyaretler.startAnimation(animation_slide);
 
-                animation_bounce.setAnimationListener(new Animation.AnimationListener() {
+                animation_slide.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
 
@@ -130,9 +130,9 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                crdview_randevuler.startAnimation(animation_bounce);
+                crdview_randevuler.startAnimation(animation_slide);
 
-                animation_bounce.setAnimationListener(new Animation.AnimationListener() {
+                animation_slide.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
 
@@ -194,26 +194,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                animation_fade.setDuration(200);
 
-                fb_button.startAnimation(animation_fade);
 
-                animation_fade.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
 
-                    }
+                new AddPatient_BottomSheetDialog(context,null).show();
 
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        new AddPatient_BottomSheetDialog(context,null).show();
-                    }
 
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
 
-                    }
-                });
 
             }
         });
