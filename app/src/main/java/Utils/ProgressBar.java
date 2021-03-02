@@ -29,7 +29,7 @@ public class ProgressBar extends AlertDialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        view=getLayoutInflater().inflate(R.layout.lyt_util_progres,activity.findViewById(R.id.layout_progressbar_alertdialog));
+        view=getLayoutInflater().inflate(R.layout.lyt_util_progres,activity.findViewById(R.id.layout_progressbar_alertdialog),false);
         progressBar=view.findViewById(R.id.progress_bar_custom);
 
 

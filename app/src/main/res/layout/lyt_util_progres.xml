@@ -39,7 +39,7 @@
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
                 android:textSize="25sp"
-                android:text="lütfen bekeyin..."
+                android:text="lütfen bekleyin..."
         />
     </LinearLayout>
 

@@ -14,6 +14,7 @@
             android:layout_height="wrap_content"
             app:title="ZİYARETLER"
             app:navigationIcon="@drawable/ic_arrow"
+
             android:id="@+id/toolbar_ziyaretler_activity"
             app:titleTextColor="@android:color/white"
             android:background="@android:color/holo_red_dark"

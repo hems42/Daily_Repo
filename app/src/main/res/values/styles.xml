@@ -24,6 +24,7 @@
         <item name="android:layout_width">match_parent</item>
 
 
+        <item name="background">@android:color/transparent</item>
         <item name="backgroundTint">@android:color/transparent</item>
 
     </style>
