@@ -3,8 +3,10 @@ package Activities;
 import Dialogs.AddPatient_BottomSheetDialog;
 import Dialogs.Dialog_ExitApp;
 import Fragments.HastaListesi.frg_HastaListesiTum;
+import Utils.ProgressBar;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
@@ -29,13 +31,15 @@ public class HomeActivity extends AppCompatActivity {
     Context context= HomeActivity.this;
     FloatingActionButton fb_button;
     BottomAppBar  bottomAppBar;
-    CardView crdview_hastalar,crdview_randevuler,crdview_ziyaretler;
+    CardView crdview_hastalar,crdview_randevuler,crdview_ziyaretler,crdview_istatistikler,crdview_veri_yonetimi,crdview_gun_ozeti;
     Fragment fragment,fragment_2;
     FragmentTransaction  transaction;
     NavigationView view;
     DrawerLayout drawerLayout;
 
     Animation animation_slide,animation_fade,animation_rotate;
+
+    ProgressBar  progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +48,10 @@ public class HomeActivity extends AppCompatActivity {
 
         fragment=new frg_TumRandevuler(context);
         fragment_2=new frg_HastaListesiTum(context);
-        animation_slide =AnimationUtils.loadAnimation(context,R.anim.flip);
+        animation_slide =AnimationUtils.loadAnimation(context,R.anim.sequential);
         animation_fade =AnimationUtils.loadAnimation(context,R.anim.fade_in);
         animation_rotate =AnimationUtils.loadAnimation(context,R.anim.rotate);
+        progressBar=new ProgressBar(context);
 
         view=findViewById(R.id.navi_view);
 
@@ -59,6 +64,9 @@ public class HomeActivity extends AppCompatActivity {
         crdview_hastalar=findViewById(R.id.crdview_home_activty_hastalar);
         crdview_ziyaretler=findViewById(R.id.crdview_home_activty_ziyaretler);
         crdview_randevuler=findViewById(R.id.crdview_home_activty_randevuler);
+        crdview_istatistikler=findViewById(R.id.crdview_home_activty_istatistikler);
+        crdview_veri_yonetimi=findViewById(R.id.crdview_home_activty_veri_yonetimi);
+        crdview_gun_ozeti=findViewById(R.id.crdview_home_activty_gun_ozeti);
 
 
 
@@ -66,31 +74,18 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                animation_slide.setDuration(200);
 
-                crdview_hastalar.startAnimation(animation_slide);
+                startProgress();
 
-                animation_slide.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
 
-                    }
+                Intent intent= new Intent(HomeActivity.this,HastalarActivity.class);
 
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
+                startActivity(intent);
 
-                        Intent intent= new Intent(HomeActivity.this,HastalarActivity.class);
 
-                        startActivity(intent);
 
-                        finish();
-                    }
+                finish();
 
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-
-                    }
-                });
 
             }
         });
@@ -99,29 +94,15 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                crdview_ziyaretler.startAnimation(animation_slide);
 
-                animation_slide.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
+                       startProgress();
 
                         Intent intent= new Intent(HomeActivity.this,ZiyaretlerActivity.class);
 
                         startActivity(intent);
 
                         finish();
-                    }
 
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-
-                    }
-                });
 
             }
         });
@@ -130,29 +111,35 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                crdview_randevuler.startAnimation(animation_slide);
-
-                animation_slide.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
+                       startProgress();
 
                         Intent intent= new Intent(HomeActivity.this,RandevulerActivity.class);
 
                         startActivity(intent);
 
                         finish();
-                    }
 
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
+            }
+        });
 
-                    }
-                });
+        crdview_istatistikler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startProgress();
+            }
+        });
+
+        crdview_veri_yonetimi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startProgress();
+            }
+        });
+
+        crdview_gun_ozeti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startProgress();
             }
         });
 
@@ -215,5 +202,23 @@ public class HomeActivity extends AppCompatActivity {
 
         new Dialog_ExitApp(context).show();
 
+    }
+
+
+    private void startProgress()
+    {
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                progressBar.show();
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        progressBar.dismiss();
     }
 }

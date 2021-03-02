@@ -10,6 +10,7 @@ import Fragments.ZiyaretListesi.frg_ZiyaretListesiBasarisiz;
 import Fragments.ZiyaretListesi.frg_ZiyaretListesiTum;
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -74,6 +75,14 @@ public class ZiyaretlerActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(ZiyaretlerActivity.this,HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
 

@@ -16,6 +16,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             tools:context="Activities.HomeActivity"
             android:id="@+id/activity_home"
 
@@ -28,8 +29,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="60dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginRight="35dp"
+                android:layout_marginLeft="12dp"
                 android:background="@drawable/shape_rect"
                 >
             <TextView
@@ -47,253 +48,263 @@
         </LinearLayout>
 
 
-
-
-        <GridLayout
+        <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="7dp"
-                android:layout_marginLeft="7dp"
-                android:layout_marginTop="235dp"
-                android:layout_marginBottom="60dp"
+                android:layout_height="301dp"
+                app:cardCornerRadius="18dp"
                 android:layout_gravity="center"
-                android:rowCount="3"
-                android:columnCount="3"
-                android:elevation="10dp"
+                android:layout_margin="9dp"
+                android:backgroundTint="#00B0FF"
+        >
 
-                android:orientation="vertical"
 
-                >
-
-            <androidx.cardview.widget.CardView
-            android:layout_height="110dp"
-            android:layout_width="110dp"
-            android:layout_row="0"
-            android:clickable="true"
-            android:id="@+id/crdview_home_activty_hastalar"
-            android:layout_margin="6dp"
-            android:layout_column="0"
-            app:cardCornerRadius="12dp"
-            android:backgroundTint="#6200EA"
+            <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center"
+                    android:rowCount="3"
+                    android:columnCount="3"
+                    android:elevation="10dp"
+                    android:orientation="vertical"
             >
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        >
 
-                    <ImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:src="@drawable/icon_patient"
-                            />
-
-                    <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="HASTALAR"
-                            android:textColor="@android:color/white"
-                            android:textAlignment="center"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
-                            />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                    android:layout_height="110dp"
-                    android:layout_width="110dp"
-                    android:layout_row="0"
-                    android:clickable="true"
-                    android:id="@+id/crdview_home_activty_ziyaretler"
-                    android:layout_margin="6dp"
-                    android:layout_column="1"
-                    app:cardCornerRadius="12dp"
-                    android:backgroundTint="#304FFE"
-            >
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center"
+                <androidx.cardview.widget.CardView
+                        android:layout_height="110dp"
+                        android:layout_width="110dp"
+                        android:layout_row="0"
+                        android:clickable="true"
+                        android:background="@drawable/ripple"
+                        android:id="@+id/crdview_home_activty_hastalar"
+                        android:layout_margin="6dp"
+                        android:layout_column="0"
+                        app:cardCornerRadius="12dp"
+                        android:backgroundTint="#6200EA"
                 >
-
-                    <ImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:src="@drawable/icon_visit"
-                    />
-
-                    <TextView
+                    <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="ZİYARETLER"
-                            android:textColor="@android:color/white"
-                            android:textAlignment="center"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
-                    />
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                    >
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/community"
+                        />
 
-            <androidx.cardview.widget.CardView
-                    android:layout_height="110dp"
-                    android:layout_width="110dp"
-                    android:layout_row="0"
-                    android:clickable="true"
-                    android:id="@+id/crdview_home_activty_randevuler"
-                    android:layout_margin="6dp"
-                    android:layout_column="2"
-                    app:cardCornerRadius="12dp"
-                    android:backgroundTint="#FFD600"
-            >
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center"
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="HASTALAR"
+                                android:textColor="@android:color/white"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:textSize="15sp"
+                        />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                        android:layout_height="110dp"
+                        android:layout_width="110dp"
+                        android:layout_row="0"
+                        android:clickable="true"
+                        android:id="@+id/crdview_home_activty_ziyaretler"
+                        android:layout_margin="6dp"
+                        android:background="@drawable/ripple"
+                        android:layout_column="1"
+                        app:cardCornerRadius="12dp"
+                        android:backgroundTint="#304FFE"
                 >
-
-                    <ImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:src="@drawable/icon_appointment"
-                    />
-
-                    <TextView
+                    <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="RANDEVÜLER"
-                            android:textColor="@android:color/white"
-                            android:textAlignment="center"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
-                    />
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                    >
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/home2"
+                        />
 
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="ZİYARETLER"
+                                android:textColor="@android:color/white"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:textSize="15sp"
+                        />
 
-            <androidx.cardview.widget.CardView
-                    android:layout_height="110dp"
-                    android:layout_width="110dp"
-                    android:layout_row="1"
-                    android:clickable="true"
-                    android:layout_margin="6dp"
-                    android:layout_column="0"
-                    app:cardCornerRadius="12dp"
-                    android:backgroundTint="#FF6D00"
-            >
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center"
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                        android:layout_height="110dp"
+                        android:layout_width="110dp"
+                        android:layout_row="0"
+                        android:background="@drawable/ripple"
+                        android:clickable="true"
+                        android:id="@+id/crdview_home_activty_randevuler"
+                        android:layout_margin="6dp"
+                        android:layout_column="2"
+                        app:cardCornerRadius="12dp"
+                        android:backgroundTint="#129E4C"
                 >
-
-                    <ImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:src="@drawable/icon_istatistic"
-                    />
-
-                    <TextView
+                    <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="İSTATİSTİKLER"
-                            android:textColor="@android:color/white"
-                            android:textAlignment="center"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
-                    />
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                    >
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        <ImageView
+                                android:layout_width="90dp"
+                                android:layout_height="80dp"
+                                android:src="@drawable/icon_4"
+                        />
 
-            <androidx.cardview.widget.CardView
-                    android:layout_height="110dp"
-                    android:layout_width="110dp"
-                    android:layout_row="1"
-                    android:clickable="true"
-                    android:layout_margin="6dp"
-                    android:layout_column="1"
-                    app:cardCornerRadius="12dp"
-                    android:backgroundTint="#C51162"
-            >
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center"
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="RANDEVÜLER"
+                                android:textColor="@android:color/white"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:textSize="15sp"
+                        />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                        android:layout_height="110dp"
+                        android:layout_width="110dp"
+                        android:layout_row="1"
+                        android:id="@+id/crdview_home_activty_istatistikler"
+                        android:background="@drawable/ripple"
+                        android:clickable="true"
+                        android:layout_margin="6dp"
+                        android:layout_column="0"
+                        app:cardCornerRadius="12dp"
+                        android:backgroundTint="#FFAB00"
                 >
-
-                    <ImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:src="@drawable/database"
-                    />
-
-                    <TextView
+                    <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="VERİ YÖNETİMİ"
-                            android:textColor="@android:color/white"
-                            android:textAlignment="center"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
-                    />
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                    >
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/grafik"
+                        />
 
-            <androidx.cardview.widget.CardView
-                    android:layout_height="110dp"
-                    android:layout_width="110dp"
-                    android:layout_row="1"
-                    android:clickable="true"
-                    android:layout_margin="6dp"
-                    android:layout_column="2"
-                    app:cardCornerRadius="12dp"
-                    android:backgroundTint="@android:color/darker_gray"
-            >
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center"
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="İSTATİSTİKLER"
+                                android:textColor="@android:color/white"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:textSize="15sp"
+                        />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                        android:layout_height="110dp"
+                        android:layout_width="110dp"
+                        android:layout_row="1"
+                        android:id="@+id/crdview_home_activty_veri_yonetimi"
+                        android:clickable="true"
+                        android:background="@drawable/ripple"
+                        android:layout_margin="6dp"
+                        android:layout_column="1"
+                        app:cardCornerRadius="12dp"
+                        android:backgroundTint="#C51162"
                 >
-
-                    <ImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:src="@drawable/today_2"
-                    />
-
-                    <TextView
+                    <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="GÜNÜN ÖZETİ"
-                            android:textColor="@android:color/white"
-                            android:textAlignment="center"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
-                    />
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                    >
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/database"
+                        />
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="VERİ YÖNETİMİ"
+                                android:textColor="@android:color/white"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:textSize="15sp"
+                        />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                        android:layout_height="110dp"
+                        android:layout_width="110dp"
+                        android:layout_row="1"
+                        android:clickable="true"
+                        android:id="@+id/crdview_home_activty_gun_ozeti"
+                        android:background="@drawable/ripple"
+                        android:layout_margin="6dp"
+                        android:layout_column="2"
+                        app:cardCornerRadius="12dp"
+                        android:backgroundTint="@android:color/darker_gray"
+                >
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                    >
+
+                        <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/today_2"
+                        />
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="GÜNÜN ÖZETİ"
+                                android:textColor="@android:color/white"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:textSize="15sp"
+                        />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
 
-
-        </GridLayout>
-
+            </GridLayout>
 
 
-
-
-
+        </androidx.cardview.widget.CardView>
         <com.google.android.material.bottomappbar.BottomAppBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

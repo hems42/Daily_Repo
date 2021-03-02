@@ -10,9 +10,11 @@ import Fragments.ZiyaretListesi.frg_ZiyaretListesiBasarisiz;
 import Fragments.ZiyaretListesi.frg_ZiyaretListesiTum;
 import android.content.Context;
 
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -79,6 +81,15 @@ public class RandevulerActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
         tabLayout.setupWithViewPager(viewPager);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(RandevulerActivity.this,HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
     }

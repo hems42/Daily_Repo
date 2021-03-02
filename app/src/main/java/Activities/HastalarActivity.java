@@ -19,6 +19,7 @@ import android.app.Instrumentation;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -88,6 +89,14 @@ public class HastalarActivity extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(HastalarActivity.this,HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
 
@@ -105,15 +114,14 @@ public class HastalarActivity extends AppCompatActivity {
 
         if(requestCode== Activity.RESULT_OK&&resultCode==125)
         {
-            System.out.println("kodu doðru buldu");
 
             if(data!=null)
             {
-                System.out.println("intente girdi");
+
 
                 uri=data.getData();
 
-                System.out.println("uri path : "+uri.getPath());
+
 
             }
         }
@@ -127,8 +135,7 @@ public class HastalarActivity extends AppCompatActivity {
 
         try {
 
-            fragments.add(new frg_ZiyaretListesiTum(context));
-            fragments.add(new frg_TumRandevuler(context));
+
             fragments.add(new frg_HastaListesiTum(context));
             fragments.add(new frg_HastaListesiBagimli(context));
             fragments.add(new frg_HastaListesiYariBagimli(context));
@@ -145,8 +152,7 @@ public class HastalarActivity extends AppCompatActivity {
 
 
 
-        tab_isimleri.add("ziyaretler");
-        tab_isimleri.add("TÜM RANDEVULER");
+
         tab_isimleri.add("TÜM HASTALAR");
         tab_isimleri.add("BAÐIMLI HASTALAR");
         tab_isimleri.add("YARI BAÐIMLI HASTALAR");
