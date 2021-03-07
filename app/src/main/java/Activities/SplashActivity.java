@@ -1,10 +1,6 @@
 package Activities;
 
-import DataBaseSQLite.DataBaseSQLiteOfPatient.DBSQLiteOfAllPatients;
-import Excel.*;
-import Patient.Patient;
 import Utils.CustomTime;
-import android.Manifest;
 import android.content.Intent;
 import android.os.Handler;
 import android.view.animation.Animation;
@@ -12,12 +8,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.core.app.ActivityCompat;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.esh_ajanda.R;
-import org.w3c.dom.Text;
-
-import java.io.File;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -57,7 +49,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent  intent=new Intent(SplashActivity.this,LoginActivity.class);
+                Intent  intent=new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }

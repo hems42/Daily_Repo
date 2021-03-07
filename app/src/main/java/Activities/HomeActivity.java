@@ -7,10 +7,14 @@ import Utils.ProgressBar;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -44,6 +48,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_home);
 
         fragment=new frg_TumRandevuler(context);
@@ -125,7 +130,18 @@ public class HomeActivity extends AppCompatActivity {
         crdview_istatistikler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 startProgress();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressBar.stopProgress();
+
+                        Toast.makeText(context,"Modül Henüz Kullanýmda Deðil!!",Toast.LENGTH_SHORT).show();
+                    }
+                },1000);
+
             }
         });
 
@@ -133,6 +149,17 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startProgress();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressBar.stopProgress();
+
+                        Toast.makeText(context,"Modül Henüz Kullanýmda Deðil!!",Toast.LENGTH_SHORT).show();
+                    }
+                },1000);
+
+
+
             }
         });
 
@@ -140,6 +167,15 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startProgress();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressBar.stopProgress();
+
+                        Toast.makeText(context,"Modül Henüz Kullanýmda Deðil!!",Toast.LENGTH_SHORT).show();
+                    }
+                },1000);
+
             }
         });
 
@@ -213,6 +249,18 @@ public class HomeActivity extends AppCompatActivity {
                 progressBar.show();
             }
         });
+    }
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup contnr, Bundle savedInstSt) {
+        try {
+           View mContentView = inflater.inflate(R.layout.activity_home, null);
+            // ... rest of body of onCreateView() ...
+        } catch (Exception e) {
+            System.out.println("muhtemel hata : "+e.toString());
+            throw e;
+        }
+
+        return new View(context);
     }
 
     @Override

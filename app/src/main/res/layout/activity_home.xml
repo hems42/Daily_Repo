@@ -7,22 +7,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:openDrawer="end"
-
-
         android:id="@+id/layout_drawer_home_activty"
-    >
+        tools:context="Activities.HomeActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
-            tools:context="Activities.HomeActivity"
-            android:id="@+id/activity_home"
-
             android:background="@drawable/wave_2"
-
-    >
+            android:name="androidx.coordinatorlayout.widget.CoordinatorLayout"
+            >
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -32,7 +25,7 @@
                 android:layout_marginRight="35dp"
                 android:layout_marginLeft="12dp"
                 android:background="@drawable/shape_rect"
-                >
+        >
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -305,6 +298,7 @@
 
 
         </androidx.cardview.widget.CardView>
+
         <com.google.android.material.bottomappbar.BottomAppBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -337,8 +331,6 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-
-
     <com.google.android.material.navigation.NavigationView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -346,10 +338,10 @@
             app:menu="@menu/menu_home_drawer"
             android:id="@+id/navi_view"
             android:scrollIndicators="start"
-
             android:nestedScrollingEnabled="true"
             app:headerLayout="@layout/lyt_drawerheader"
     />
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
 
