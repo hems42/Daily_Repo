@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/layout_uygulama_hakkinda"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="15dp"
+        android:backgroundTint="#710A30"
+>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            >
+
+
+        <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@drawable/error"
+        />
+
+
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="UYGULAMA HAKKINDA"
+                android:textSize="25sp"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="35dp"
+                android:textStyle="bold|italic"
+                />
+
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Uygulama ÇAĞLAR PEKER tarafından hiç bir ticari amaç güdülmeden sadece Evde Sağlık Hizmeti sunarken iş organizasyonuna yardımcı olabilmesi amacıyla kullanılmak üzere yazılmıştır. Tüm hakları saklıdır!!!"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:layout_margin="3dp"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="15dp"
+                android:textStyle="bold|italic"
+        />
+
+        <com.google.android.material.button.MaterialButton
+                app:cornerRadius="15dp"
+                android:backgroundTint="@android:color/darker_gray"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="4dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_height="wrap_content"
+                android:text="TAMAM"
+                android:textColor="@android:color/black"
+                android:id="@+id/btn_lyt_uygulama_hakkinda_ok"
+
+        />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

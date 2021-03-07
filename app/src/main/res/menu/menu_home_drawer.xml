@@ -14,41 +14,52 @@
         <item
               android:icon="@drawable/ic_import"
               android:title="içe veri aktar"
+              android:id="@+id/menu_drawer_uygulama_ice_veri_aktar"
+
         />
 
         <item
                 android:icon="@drawable/ic_export"
                 android:title="dışa veri aktar"
+                android:id="@+id/menu_drawer_uygulama_disa_veri_aktar"
+
         />
 
 
         <item
                 android:icon="@drawable/ic_fingerprint"
                 android:title="parmak izi"
+                android:id="@+id/menu_drawer_uygulama_parmak_izi"
+
         />
 
 
         <item
                 android:icon="@drawable/ic_done"
                 android:title="istatistik"
+                android:id="@+id/menu_drawer_uygulama_istatistik"
+
         />
 
 
         <item
                 android:icon="@drawable/ic_backup"
                 android:title="yedeklemeler"
+                android:id="@+id/menu_drawer_uygulama_guvenlik"
         />
 
 
         <item
                 android:icon="@drawable/ic_security"
                 android:title="guvenlik"
+                android:id="@+id/menu_drawer_guvenlik"
         />
 
 
         <item android:id="@+id/menu_drawer_ayar"
               android:icon="@drawable/ic_baseline_settings_24"
               android:title="ayarlar"
+
               />
 
 
@@ -65,6 +76,7 @@
 
             <item android:title="eflatun126@gmail.com"
                   android:icon="@drawable/ic_email"
+                  android:id="@+id/menu_drawer_iletisim"
                   />
 
         </menu>
@@ -77,6 +89,8 @@
 
             <item android:title="Uygulama Hakkında"
                   android:icon="@drawable/ic_baseline_info_24"
+                  android:id="@+id/menu_drawer_uygulama_hakkinda"
+
             />
 
 

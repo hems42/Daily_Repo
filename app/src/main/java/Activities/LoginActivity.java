@@ -1,6 +1,7 @@
 package Activities;
 
 import Dialogs.BottomSheet_Dialog_ChangePassWord;
+import Utils.PassWordManager;
 import android.content.Context;
 import android.content.Intent;
 
@@ -23,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btn_login, btn_cange_password;
     ImageView btn_finger_print;
     EditText edtxt_password;
-
+    PassWordManager passWordManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +35,13 @@ public class LoginActivity extends AppCompatActivity {
         edtxt_password = findViewById(R.id.edtxt_login_pasword);
         btn_finger_print = findViewById(R.id.img_login_finger_print);
         btn_cange_password = findViewById(R.id.btn_login_change_password);
-        final String[] gelen_parola = {null};
+        passWordManager= new PassWordManager(context);
 
 
 
 
 
-        gotoHome();
+       // gotoHome();
 
 
 
@@ -100,9 +101,9 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gelen_parola[0] = edtxt_password.getText().toString();
-                if (gelen_parola[0] != null && !gelen_parola[0].matches("")) {
-                    if (gelen_parola[0].matches("1234")) {
+              String  gelen_parola = edtxt_password.getText().toString();
+                if (gelen_parola!= null && !gelen_parola.matches("")) {
+                    if (gelen_parola.matches(String.valueOf(passWordManager.getCurrentUserPassWord()))) {
                         Toast.makeText(context, "Giriþ Baþarýlý!!!", Toast.LENGTH_SHORT).show();
                         gotoHome();
                     } else {

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -228,6 +229,26 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                boolean sonuc=false;
+
+                switch (item.getItemId())
+                {
+                    case R.id.menu_drawer_uygulama_hakkinda:
+
+
+
+                        sonuc=true;
+                        break;
+                }
+
+
+                return sonuc;
+            }
+        });
 
     }
 
