@@ -1966,6 +1966,75 @@ public class HastalarOrtakAdapterIslemleri {
 
     }
 
+    public void EditVisits(Patient patient,VisitInformations visit_first) {
+      /*  TextView txt_ziyaret_sayisi, txt_baslik;
+        RecyclerView recyclerView;
+        RecyclerViewAdapterOfZiyaretListesi adapter;
+        ArrayList<VisitInformations> innerVisits;
+        LinearLayoutManager layoutManager;
+        ImageView img_geri_don;
+
+        innerVisits = patientInnerManager.tum_ziyaretleri_getir(patient);
+
+
+        if (innerVisits.size() > 0) {
+
+            layoutManager = new LinearLayoutManager(activity);
+            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+            adapter = new RecyclerViewAdapterOfZiyaretListesi(context, innerVisits, null);
+
+            View view = inflater.inflate(R.layout.layout_visit_list_dialog,null);
+
+            txt_baslik = view.findViewById(R.id.txt_layout_visit_list_baslik_yazisi);
+            txt_ziyaret_sayisi = view.findViewById(R.id.txt_layout_visit_list_listelenen_ziayret_sayisi);
+            img_geri_don = view.findViewById(R.id.img_layout_visit_list_dialog_geri_don);
+            recyclerView = view.findViewById(R.id.recyclerview_dialog_ziyaretlistesi_tum);
+
+            txt_baslik.setText("KAYDEDÝLMÝÞ ZÝYARETLER");
+
+
+            txt_ziyaret_sayisi.setText("" + innerVisits.size());
+
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapter);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+            builder.setView(view);
+
+
+
+            AlertDialog dialog = builder.create();
+
+            img_geri_don.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+        } else {
+            Toast.makeText(context, "Hasta Adýna Kayýtlý Ziyaret Bulunamadý!!", Toast.LENGTH_SHORT).show();
+        }*/
+
+        if(patientInnerManager.tum_ziyaretleri_getir(patient).size()>0)
+        {
+            new Dialog_ShowVisits(context,patient).show();
+        }
+        else
+
+        {
+
+            Toast.makeText(context, "Hasta Adýna Kayýtlý Ziyaret Bulunamadý!!", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
+    }
+
 
     public void deletePatient(Patient patient, int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
@@ -2117,6 +2186,124 @@ public class HastalarOrtakAdapterIslemleri {
                 } else {
                     Toast.makeText(context, "Randevü gününden önce ziyaret ekleyemessiniz!!", Toast.LENGTH_SHORT).show();
                 }
+
+
+            }
+        });
+
+
+        dialog.show();
+
+    }
+
+    public void editVisit(Patient patient,VisitInformations appointment_old,RecyclerView.Adapter adapter) {
+        Button btn_ok, btn_cancel;
+
+        DigitalSign digitalSign;
+
+        EditText editText_not;
+
+        TextView txt_note_refresh, txt_sign_refresh;
+
+        VisitInformations appointment_new= new VisitInformations();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+        View view = inflater.inflate(R.layout.layout_add_visit, null);
+
+        btn_ok = view.findViewById(R.id.btn_lyt_add_visit_ok);
+        btn_cancel = view.findViewById(R.id.btn_lyt_add_visit_cancel);
+
+        editText_not = view.findViewById(R.id.edtxt_lyt_add_visit);
+
+        digitalSign = view.findViewById(R.id.dgtl_sign_lyt_add_visit);
+
+        txt_note_refresh = view.findViewById(R.id.txt_lyt_add_visit_note_refresh);
+        txt_sign_refresh = view.findViewById(R.id.txt_lyt_add_visit_sing_refresh);
+
+        Animation animation = AnimationUtils.loadAnimation(context, R.anim.bounce);
+        Animation animation1 = AnimationUtils.loadAnimation(context, R.anim.fade_in);
+
+
+        builder.setView(view);
+
+
+        AlertDialog dialog = builder.create();
+
+        txt_sign_refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txt_sign_refresh.startAnimation(animation);
+                digitalSign.clear();
+            }
+        });
+
+        txt_note_refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txt_note_refresh.startAnimation(animation1);
+                editText_not.setText("");
+            }
+        });
+
+        editText_not.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                selectTreatmentCheckBox(editText_not);
+
+                return true;
+            }
+        });
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String gelen_messaj = editText_not.getText().toString();
+
+
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+                digitalSign.getBitmap().compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+
+                appointment_new.visitType = "PERÝYODÝK ZÝYARET";
+
+                appointment_new.visitDate=appointment_old.visitDate;
+
+
+
+                if (gelen_messaj != null && !gelen_messaj.matches(""))
+                {
+                    appointment_new.notes = gelen_messaj;
+
+                    if (byteArrayOutputStream.size() > 4900) {
+                        appointment_new.sign = byteArrayOutputStream.toByteArray();
+                        appointment_new.visitResult = VisitInformations.TAMAMLANDI;
+
+                        if (patientInnerManager.ziyaret_guncelle(patient,appointment_old ,appointment_new)) {
+
+                            adapter.notifyItemChanged(0);
+                            dialog.dismiss();
+                            Toast.makeText(context, "Ziyaret Baþarýyla Güncellenmiþtir!!", Toast.LENGTH_SHORT).show();
+
+
+                        }
+                    } else {
+                        Toast.makeText(context, "Lütfen imza bilgisini girin!!", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }
+                else
+                    { editText_not.setError("bu alaný doldurun!!");  }
+
 
 
             }

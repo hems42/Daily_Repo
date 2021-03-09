@@ -10,7 +10,9 @@ import Fragments.frg_HastaDosyasi;
 import Manager.PatientInnerManager;
 import Patient.*;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.view.*;
 import android.widget.*;
@@ -33,7 +35,7 @@ public class RecyclerViewAdapterOfZiyaretListesi extends RecyclerView.Adapter<Re
     Activity activity;
     Context context;
     LayoutInflater inflater;
-
+    HastalarOrtakAdapterIslemleri comOp;
     PatientInnerManager patientInnerManager;
 
 
@@ -64,6 +66,8 @@ public class RecyclerViewAdapterOfZiyaretListesi extends RecyclerView.Adapter<Re
 
         this.adapterTAG = adapterTAG;
 
+        comOp= new HastalarOrtakAdapterIslemleri(context,patientInnerManager,dbsqLiteOfAllPatients,null,null);
+
 
     }
 
@@ -91,6 +95,71 @@ public class RecyclerViewAdapterOfZiyaretListesi extends RecyclerView.Adapter<Re
             txt_isim_soyisim=itemView.findViewById(R.id.txt_layout_visit_list_txtview_name_and_surname);
             txt_randevu_tarihi=itemView.findViewById(R.id.txt_layout_visit_list_txtview_appointment_date);
             txt_ziyaret_tarihi=itemView.findViewById(R.id.txt_layout_visit_list_txtview_visit_date);
+
+            img_sonuc.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+                @Override
+                public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                    menu.add("sil").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+
+                            AlertDialog.Builder builder= new AlertDialog.Builder(context);
+                            builder.setIcon(R.drawable.error);
+                            builder.setTitle("DÝKKAT!!");
+                            builder.setMessage("Ziyareti silemk istediðinize emin misiniz??");
+                            builder.setPositiveButton("evet", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    if(liteVisit.deletePatientVisit(visitInformations.get(getAbsoluteAdapterPosition())))
+                                    {
+                                        Toast.makeText(context,"Ziyaret Baþarýyla Silinmiþtir!!",Toast.LENGTH_SHORT).show();
+                                        notifyItemChanged(getBindingAdapterPosition());
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(context,"Ziyaret Silinememiþtir!!",Toast.LENGTH_SHORT).show();
+                                    }
+
+                                }
+                            });
+
+                            builder.setNegativeButton("hayýr", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+
+                            AlertDialog dialog=builder.create();
+                            dialog.show();
+
+                            return true;
+                        }
+                    });
+                    menu.add("düzenle").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+
+                            comOp.editVisit(dbsqLiteOfAllPatients.getPatient(visitInformations.get(getAbsoluteAdapterPosition()).tc_no)
+                                    ,visitInformations.get(getAbsoluteAdapterPosition())
+                                    ,RecyclerViewAdapterOfZiyaretListesi.this
+
+                                    );
+
+                            return true;
+                        }
+                    });
+                    menu.add("iptal edilmiþ yap").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+
+                            return true;
+                        }
+                    });
+
+                }
+            });
 
             img_sonuc.setOnClickListener(new View.OnClickListener() {
                 @Override

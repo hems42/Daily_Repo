@@ -21,11 +21,11 @@
     <style name="AlertCustomDialog" parent="Theme.MaterialComponents.Dialog.Alert"
            >
 
-        <item name="android:layout_width">match_parent</item>
 
+        <item name="windowFixedWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
 
-        <item name="background">@android:color/transparent</item>
-        <item name="backgroundTint">@android:color/transparent</item>
 
     </style>
 
@@ -41,16 +41,6 @@
 
     </style>
 
-    <style name="AlertDialogStyle" parent="MaterialAlertDialog.MaterialComponents.Title.Panel">
 
-
-
-
-        <item name="android:layout_width">match_parent</item>
-
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:backgroundTint">@android:color/transparent</item>
-
-    </style>
 
 </resources>

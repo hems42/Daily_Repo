@@ -3,6 +3,7 @@ package Activities;
 import Adapters.FragmentAdapters.FragmentPagerAdapterHastalar;
 import Adapters.FragmentAdapters.FragmentPagerAdapterZiyaretler;
 import DataBaseSQLite.DataBaseSQLiteOfPatient.DBSQLiteOfAllPatients;
+import Dialogs.Dialog_ExitApp;
 import Fragments.HastaListesi.*;
 import Fragments.RandevuListesi.frg_TumRandevuler;
 import Fragments.ZiyaretListesi.frg_ZiyaretListesiBasarili;
@@ -112,5 +113,11 @@ public class ZiyaretlerActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+        new Dialog_ExitApp(context).show();
+
+    }
 
 }

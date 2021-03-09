@@ -2,6 +2,7 @@ package Activities;
 
 import Dialogs.AddPatient_BottomSheetDialog;
 import Dialogs.Dialog_ExitApp;
+import Dialogs.Dialog_Uygulama_Hakkinda;
 import Fragments.HastaListesi.frg_HastaListesiTum;
 import Utils.ProgressBar;
 import android.content.Context;
@@ -239,8 +240,7 @@ public class HomeActivity extends AppCompatActivity {
                 {
                     case R.id.menu_drawer_uygulama_hakkinda:
 
-
-
+                        new Dialog_Uygulama_Hakkinda(context).show();
                         sonuc=true;
                         break;
                 }

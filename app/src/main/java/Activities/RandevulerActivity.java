@@ -1,6 +1,7 @@
 package Activities;
 
 import Adapters.FragmentAdapters.FragmentPagerAdapterZiyaretler;
+import Dialogs.Dialog_ExitApp;
 import Fragments.RandevuListesi.frg_BugunkuRandevuler;
 import Fragments.RandevuListesi.frg_TumRandevuler;
 import Fragments.RandevuListesi.frg_UzakRandevuler;
@@ -109,6 +110,13 @@ public class RandevulerActivity extends AppCompatActivity {
         tab_isimleri.add("UZAK RANDEVÜLER");
         tab_isimleri.add("YAKIN RANDEVÜLER");
 
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        new Dialog_ExitApp(context).show();
 
     }
 
