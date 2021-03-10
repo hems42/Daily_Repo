@@ -240,6 +240,8 @@ public class HomeActivity extends AppCompatActivity {
                 {
                     case R.id.menu_drawer_uygulama_hakkinda:
 
+                        drawerLayout.closeDrawers();
+
                         new Dialog_Uygulama_Hakkinda(context).show();
                         sonuc=true;
                         break;

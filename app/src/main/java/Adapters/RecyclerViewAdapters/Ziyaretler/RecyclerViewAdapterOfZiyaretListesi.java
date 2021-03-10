@@ -154,6 +154,42 @@ public class RecyclerViewAdapterOfZiyaretListesi extends RecyclerView.Adapter<Re
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
 
+                            AlertDialog.Builder builder= new AlertDialog.Builder(context);
+                            builder.setIcon(R.drawable.error);
+                            builder.setTitle("DÝKKAT!!");
+                            builder.setMessage("Ziyaretin detaylarýný silip  iptal edilmiþ saymak istediðinize emin misiniz??");
+                            builder.setPositiveButton("evet", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    VisitInformations visitcurrent =  new VisitInformations();
+                                    visitcurrent.visitResult=VisitInformations.TAMAMLANMADI;
+                                    visitcurrent.appointmentDate=visitInformations.get(getAbsoluteAdapterPosition()).appointmentDate;
+                                    visitcurrent.tc_no=visitInformations.get(getAbsoluteAdapterPosition()).tc_no;
+
+
+                                    if(liteVisit.updatePatientVisit(visitInformations.get(getAbsoluteAdapterPosition()),visitcurrent))
+                                    {
+                                        Toast.makeText(context,"Ziyaret Baþarýyla Ýptal Edilmiþttir!!",Toast.LENGTH_SHORT).show();
+                                        notifyItemChanged(getBindingAdapterPosition());
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(context,"Ziyaret Ýptal Edilmiþ Sayýlamamýþtýr!!",Toast.LENGTH_SHORT).show();
+                                    }
+
+                                }
+                            });
+
+                            builder.setNegativeButton("hayýr", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+
+                            AlertDialog dialog=builder.create();
+                            dialog.show();
                             return true;
                         }
                     });

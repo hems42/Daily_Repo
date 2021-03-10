@@ -163,6 +163,7 @@ public  class DBSQLiteOfVisit extends SQLiteOpenHelper  {
 
     }
 
+
     public boolean deletePatientAllVisit(Patient patient) {
         SQLiteDatabase db = this.getWritableDatabase();
 

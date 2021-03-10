@@ -2276,6 +2276,8 @@ public class HastalarOrtakAdapterIslemleri {
                 appointment_new.visitType = "PERÝYODÝK ZÝYARET";
 
                 appointment_new.visitDate=appointment_old.visitDate;
+                appointment_new.appointmentDate=appointment_old.appointmentDate;
+                appointment_new.tc_no=appointment_old.tc_no;
 
 
 
