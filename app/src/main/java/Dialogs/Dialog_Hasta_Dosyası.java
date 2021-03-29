@@ -107,6 +107,20 @@ public class Dialog_Hasta_Dosyasý extends AlertDialog {
 
         recyclerView.setAdapter(recyclerViewAdapterOfZiyaretListesi);
 
+        recyclerViewAdapterOfZiyaretListesi.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeChanged(int positionStart, int itemCount) {
+                super.onItemRangeChanged(positionStart, itemCount);
+
+
+                visitInformations=patientInnerManager.tum_ziyaretleri_getir(patient);
+                txt_ziyaret_sayisi.setText(""+visitInformations.size());
+                recyclerViewAdapterOfZiyaretListesi.setVisit(visitInformations);
+                recyclerViewAdapterOfZiyaretListesi.notifyDataSetChanged();
+
+            }
+        });
+
         for(VisitInformations visitInformations:visitInformations)
         {
             if(visitInformations.visitDate!=null)

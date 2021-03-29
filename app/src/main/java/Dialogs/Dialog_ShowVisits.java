@@ -27,6 +27,8 @@ public class Dialog_ShowVisits extends BottomSheetDialog
     private Context context;
     private Activity activity;
     private PatientInnerManager  patientInnerManager;
+    private ArrayList<VisitInformations> innerVisits;
+    private RecyclerViewAdapterOfZiyaretListesi adapter;
 
 
 
@@ -50,8 +52,8 @@ public class Dialog_ShowVisits extends BottomSheetDialog
         View view = getLayoutInflater().inflate(R.layout.layout_visit_list_dialog,activity.findViewById(R.id.lyt_visit_list_dialog));
             TextView txt_ziyaret_sayisi, txt_baslik;
             RecyclerView recyclerView;
-            RecyclerViewAdapterOfZiyaretListesi adapter;
-            ArrayList<VisitInformations> innerVisits;
+
+
             LinearLayoutManager layoutManager;
             ImageView img_geri_don;
 
@@ -74,11 +76,43 @@ public class Dialog_ShowVisits extends BottomSheetDialog
                 txt_baslik.setText("KAYDEDÝLMÝÞ ZÝYARETLER");
 
 
+
                 txt_ziyaret_sayisi.setText("" + innerVisits.size());
 
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setAdapter(adapter);
 
+
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeChanged(int positionStart, int itemCount) {
+                super.onItemRangeChanged(positionStart, itemCount);
+
+               guncelle();
+                txt_ziyaret_sayisi.setText("" + innerVisits.size());
+
+            }
+
+
+
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                super.onItemRangeInserted(positionStart, itemCount);
+
+
+                guncelle();
+
+            }
+
+            @Override
+            public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
+                super.onItemRangeMoved(fromPosition, toPosition, itemCount);
+
+
+                guncelle();
+
+            }
+        });
 
 
 
@@ -96,7 +130,16 @@ public class Dialog_ShowVisits extends BottomSheetDialog
 
 
 
+        }
 
+
+
+        void  guncelle()
+        {
+
+            innerVisits = patientInnerManager.tum_ziyaretleri_getir(patient);
+            adapter.setVisit(innerVisits);
+            adapter.notifyDataSetChanged();
         }
 
 

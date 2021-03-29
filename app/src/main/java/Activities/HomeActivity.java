@@ -245,6 +245,8 @@ public class HomeActivity extends AppCompatActivity {
                         new Dialog_Uygulama_Hakkinda(context).show();
                         sonuc=true;
                         break;
+
+
                 }
 
 
