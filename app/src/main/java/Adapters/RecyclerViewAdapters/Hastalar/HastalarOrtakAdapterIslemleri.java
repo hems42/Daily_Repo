@@ -969,7 +969,7 @@ public class HastalarOrtakAdapterIslemleri {
     }
 
 
-    public void listAllAppointments(Patient patient, RecyclerViewAdapter adapter, int position) {
+    public void listAllAppointments(Patient patient, RecyclerView.Adapter adapter, int position) {
         View view_randevuler_listesi = inflater.inflate(R.layout.layout_bottomsheet_hastanin_randevulari_listesi, null);
         RecyclerView recyclerView = view_randevuler_listesi.findViewById(R.id.recyclerview_hasta_randevulari_oluturulmus_randevuler_listesi);
         Button btn_yeni_randevu_ekle = view_randevuler_listesi.findViewById(R.id.btn_lyt_hastanin_olusuturlmus_randevuleri_listesi_randevu_ekle);
