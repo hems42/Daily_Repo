@@ -403,7 +403,8 @@ public class HastalarOrtakAdapterIslemleri {
     }
 
 
-    public void tedaviPlani(Patient patient, RecyclerViewAdapterOfHastaListesi adapter, int position, ArrayList<Patient> refreshablePatients) {
+    public void tedaviPlani(Patient patient, RecyclerViewAdapterOfHastaListesi adapter, int position, ArrayList<Patient> refreshablePatients)
+    {
         if (patientInnerManager.tum_randevulari_getir(patient).size() > 0) {
             listAllAppointments(patient, adapter, position);
 
@@ -503,7 +504,8 @@ public class HastalarOrtakAdapterIslemleri {
         }
     }
 
-    public void createAppointment(Patient patient, RecyclerView.Adapter adapter, int position) {
+    public void createAppointment(Patient patient, RecyclerView.Adapter adapter, int position)
+    {
         AlertDialog.Builder builder_randevu_olustur = new AlertDialog.Builder(activity);
 
         View view_randevu_olusturma = inflater.inflate(R.layout.layout_randevu_olusturma, null);
@@ -618,7 +620,8 @@ public class HastalarOrtakAdapterIslemleri {
 
     }
 
-    public void createAppointment(Patient patient, RecyclerView.Adapter adapter,RecyclerView.Adapter adapter_2, int position) {
+    public void createAppointment(Patient patient, RecyclerView.Adapter adapter,RecyclerView.Adapter adapter_2, int position)
+    {
         AlertDialog.Builder builder_randevu_olustur = new AlertDialog.Builder(activity);
 
         View view_randevu_olusturma = inflater.inflate(R.layout.layout_randevu_olusturma, null);
@@ -738,7 +741,8 @@ public class HastalarOrtakAdapterIslemleri {
 
     }
 
-    public void cancelAppointment(Patient patient, String appointmentDate, RecyclerView.Adapter adapter) {
+    public void cancelAppointment(Patient patient, String appointmentDate, RecyclerView.Adapter adapter)
+    {
         TextView txt_title, txt_message;
         Button btn_ok, btn_cancel;
 
@@ -804,7 +808,8 @@ public class HastalarOrtakAdapterIslemleri {
     }
 
 
-    public void cancelAllAppointmentOfPatient(Patient patient, RecyclerView.Adapter adapter) {
+    public void cancelAllAppointmentOfPatient(Patient patient, RecyclerView.Adapter adapter)
+    {
         TextView txt_title, txt_message;
         Button btn_ok, btn_cancel;
 
@@ -883,7 +888,8 @@ public class HastalarOrtakAdapterIslemleri {
 
     }
 
-    public void cancelAllAppointment(RecyclerView.Adapter adapter) {
+    public void cancelAllAppointment(RecyclerView.Adapter adapter)
+    {
         TextView txt_title, txt_message;
         Button btn_ok, btn_cancel;
 
@@ -963,7 +969,7 @@ public class HastalarOrtakAdapterIslemleri {
     }
 
 
-    public void listAllAppointments(Patient patient, RecyclerViewAdapterOfHastaListesi adapter, int position) {
+    public void listAllAppointments(Patient patient, RecyclerViewAdapter adapter, int position) {
         View view_randevuler_listesi = inflater.inflate(R.layout.layout_bottomsheet_hastanin_randevulari_listesi, null);
         RecyclerView recyclerView = view_randevuler_listesi.findViewById(R.id.recyclerview_hasta_randevulari_oluturulmus_randevuler_listesi);
         Button btn_yeni_randevu_ekle = view_randevuler_listesi.findViewById(R.id.btn_lyt_hastanin_olusuturlmus_randevuleri_listesi_randevu_ekle);
